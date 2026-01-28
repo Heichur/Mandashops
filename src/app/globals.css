@@ -1,0 +1,1259 @@
+/* Importação de Fontes Customizadas */
+@font-face {
+  font-family: 'Minercraftory';
+  src: url('/fontes/Minercraftory.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'minecraftia';
+  src: url('/fontes/Minecraftia-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset Global */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body com Background Fixo */
+body {
+  background-image: url('/img/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Textos Padrão */
+p {
+  color: white;
+}
+
+.NomeManda {
+  display: flex;
+}
+
+.TextoManda {
+  display: flex;
+}
+
+/* =====================================================
+   HEADER / MENU SUPERIOR
+===================================================== */
+#Opções {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #000000 50%, #c2a10f 55%);
+  height: auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+#Opções img {
+  width: 60px;
+  height: auto;
+}
+
+#LinksTopo {
+  display: flex;
+  gap: clamp(20px, 5vw, 50px);
+  flex-wrap: wrap;
+}
+
+#LinksTopo p,
+#LinksTopo a {
+  margin: 0;
+  color: white;
+  font-family: 'minecraftia';
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#LinksTopo p:hover,
+#LinksTopo a:hover {
+  color: #ffd700;
+}
+
+/* =====================================================
+   CONTEÚDO PRINCIPAL
+===================================================== */
+#ConteudoPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#Site_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+#Site_Container h1 {
+  color: white;
+  font-family: 'Minercraftory';
+  font-size: clamp(35px, 8vw, 55px);
+  margin: 0 0 5px 0;
+}
+
+#Site_Container h4 {
+  color: white;
+  font-family: 'minecraftia';
+  font-size: clamp(20px, 5vw, 35px);
+  margin: 0 0 15px 0;
+}
+
+#Logo {
+  height: clamp(200px, 30vw, 300px);
+  width: clamp(200px, 30vw, 300px);
+}
+
+#Compra {
+  border: 10px solid white;
+  border-radius: 20px;
+  font-family: 'minecraftia';
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#Compra:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   OPÇÕES DE COMPRA (Modal de Escolha)
+===================================================== */
+#opcaoCompra {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid yellow;
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease;
+  width: clamp(300px, 80vw, 500px);
+  z-index: 1000;
+}
+
+#opcaoCompra h2 {
+  color: yellow;
+  font-family: 'Minercraftory';
+  font-size: clamp(20px, 4vw, 28px);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#opcaoCompra button {
+  width: 100%;
+  padding: clamp(12px, 2vw, 15px);
+  margin: 10px 0;
+  font-family: 'minecraftia';
+  font-size: clamp(16px, 3vw, 20px);
+  background-color: yellow;
+  color: black;
+  border: 2px solid #c2a10f;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+#opcaoCompra button:hover {
+  background-color: #ffff66;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
+}
+
+#opcaoCompra button:last-child {
+  background-color: #666;
+  color: white;
+  border-color: #444;
+}
+
+#opcaoCompra button:last-child:hover {
+  background-color: #888;
+  box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
+}
+
+/* =====================================================
+   TELA DE LOGIN
+===================================================== */
+#TelaLogin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(300px, 90vw, 500px);
+  max-height: 100vh;
+  background-color: black;
+  border: 4px solid #ffcf40;
+  border-radius: 40px;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#Login,
+#LoginAdm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#Login h1,
+#LoginAdm h1 {
+  font-family: 'Minercraftory';
+  font-size: 24px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+#Login input,
+#LoginAdm input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 16px;
+  font-family: 'minecraftia';
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  box-sizing: border-box;
+}
+
+#Login input:focus,
+#LoginAdm input:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+#Login button,
+#LoginAdm button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-family: 'minecraftia';
+  font-size: 18px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#Login button:hover,
+#LoginAdm button:hover {
+  background-color: #ffff66;
+}
+
+#Saida {
+  position: absolute;
+  top: 2px;
+  right: 1px;
+}
+
+#Saida img {
+  width: 88px;
+  height: 88px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#Saida img:hover {
+  transform: scale(1.1);
+}
+
+#TelaLogin img:not(#Saida img) {
+  height: 200px;
+  width: 200px;
+}
+
+/* =====================================================
+   COMPRA NORMAL
+===================================================== */
+#Comprando {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(320px, 85vw, 600px);
+  max-height: 90vh;
+  background-color: black;
+  border: 2px solid yellow;
+  border-radius: 40px;
+  padding: clamp(20px, 3vw, 30px);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#Comprando h1 {
+  font-family: 'Minercraftory';
+  font-size: 28px;
+  color: yellow;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#Comprando input[type="search"],
+#Comprando input[type="text"] {
+  width: 100%;
+  padding: clamp(8px, 2vw, 12px);
+  margin: 8px 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-family: 'Minercraftory';
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+#Comprando input:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+#Comprando input::placeholder {
+  color: #888;
+}
+
+#Comprando button {
+  width: 100%;
+  padding: clamp(10px, 2vw, 12px);
+  margin: 10px 0;
+  font-family: 'minecraftia';
+  font-size: clamp(16px, 3vw, 20px);
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+#Comprando button:hover {
+  background-color: #ffff66;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
+}
+
+#VoltarCompra {
+  background-color: #666 !important;
+  color: white !important;
+}
+
+#VoltarCompra:hover {
+  background-color: #888 !important;
+}
+
+/* =====================================================
+   COMPRA COMPETITIVA
+===================================================== */
+#ComprandoCompetitivo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(320px, 85vw, 600px);
+  max-height: 90vh;
+  background-color: black;
+  border: 2px solid yellow;
+  border-radius: 40px;
+  padding: clamp(20px, 3vw, 30px);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#ComprandoCompetitivo h1 {
+  font-family: 'Minercraftory';
+  font-size: 28px;
+  color: yellow;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#ComprandoCompetitivo input[type="text"],
+#ComprandoCompetitivo input[type="number"],
+#ComprandoCompetitivo input[type="search"] {
+  width: 100%;
+  padding: clamp(8px, 2vw, 12px);
+  margin: 8px 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-family: 'Minercraftory';
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+#ComprandoCompetitivo input:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+#ComprandoCompetitivo button {
+  width: 100%;
+  padding: clamp(10px, 2vw, 12px);
+  margin: 10px 0;
+  font-family: 'minecraftia';
+  font-size: clamp(16px, 3vw, 20px);
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+#ComprandoCompetitivo button:hover {
+  background-color: #ffff66;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
+}
+
+#VoltarCompraComp {
+  background-color: #666 !important;
+  color: white !important;
+}
+
+#VoltarCompraComp:hover {
+  background-color: #888 !important;
+}
+
+/* Seção EVs */
+.ev-section {
+  width: 100%;
+  background: rgba(255, 255, 0, 0.1);
+  border: 2px solid #c2a10f;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.ev-title {
+  font-family: 'Minercraftory';
+  font-size: 20px;
+  color: yellow;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.ev-info {
+  font-family: 'minecraftia';
+  font-size: 12px;
+  color: #aaa;
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+
+.ev-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.ev-input-group label {
+  font-family: 'minecraftia';
+  color: white;
+  font-size: 14px;
+  min-width: 100px;
+}
+
+.ev-input-group input {
+  width: 80px;
+  padding: 8px;
+  margin: 0;
+}
+
+.ev-total {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+  font-family: 'minecraftia';
+  color: white;
+  font-size: 14px;
+}
+
+.ev-total strong {
+  color: yellow;
+}
+
+/* Seção Level */
+.level-section {
+  width: 100%;
+  background: rgba(255, 255, 0, 0.1);
+  border: 2px solid #c2a10f;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.level-title {
+  font-family: 'Minercraftory';
+  font-size: 20px;
+  color: yellow;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.level-section select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-family: 'minecraftia';
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.level-section select:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+.level-section select option {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* =====================================================
+   COMPRA GENDERLESS
+===================================================== */
+#ComprandoGenderless {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(320px, 85vw, 600px);
+  max-height: 90vh;
+  background-color: black;
+  border: 2px solid yellow;
+  border-radius: 40px;
+  padding: clamp(20px, 3vw, 30px);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#ComprandoGenderless h1 {
+  font-family: 'Minercraftory';
+  font-size: 28px;
+  color: yellow;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#ComprandoGenderless input[type="search"],
+#ComprandoGenderless input[type="text"] {
+  width: 100%;
+  padding: clamp(8px, 2vw, 12px);
+  margin: 8px 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-family: 'Minercraftory';
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+#ComprandoGenderless input:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+#ComprandoGenderless button {
+  width: 100%;
+  padding: clamp(10px, 2vw, 12px);
+  margin: 10px 0;
+  font-family: 'minecraftia';
+  font-size: clamp(16px, 3vw, 20px);
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+#ComprandoGenderless button:hover {
+  background-color: #ffff66;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 0, 0.4);
+}
+
+#VoltarCompraGenderless {
+  background-color: #666 !important;
+  color: white !important;
+}
+
+#VoltarCompraGenderless:hover {
+  background-color: #888 !important;
+}
+
+/* =====================================================
+   TABELA DE PREÇOS :3 amo a mandashop
+===================================================== */
+#Tabela {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  max-width: 900px;
+  height: 90vh;
+  background-color: black;
+  border: 2px solid yellow;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+#Tabela img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+#FecharTabela {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1001;
+}
+
+#FecharTabela:hover {
+  transform: scale(1.2);
+}
+
+/* Responsivo para Tabela */
+@media (max-width: 768px) {
+  #Tabela {
+    width: 95vw;
+    height: 95vh;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  #FecharTabela {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #Tabela {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 10px;
+  }
+
+  #FecharTabela {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* =====================================================
+   TOP COMPRADORES
+===================================================== */
+#TopCompradores {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(320px, 90vw, 800px);
+  max-height: 90vh;
+  background: linear-gradient(135deg, #000000 5%, #58121c 95%);
+  border: 6px solid black;
+  border-radius: 40px;
+  padding: clamp(20px, 3vw, 30px);
+  z-index: 1000;
+  overflow-y: auto;
+  color: white;
+  font-family: 'Minercraftory', monospace;
+}
+
+#SaidaCompradores {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#SaidaCompradores img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#SaidaCompradores img:hover {
+  transform: scale(1.1);
+}
+
+#TopCompradores h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: yellow;
+  font-family: 'Minercraftory';
+}
+
+#MesAtual h3 {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  color: white;
+  font-family: 'minecraftia';
+  text-align: center;
+}
+
+.ranking-lista {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.comprador-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 15px;
+  padding: 15px 20px;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.comprador-item:hover {
+  border-color: yellow;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.comprador-item:nth-child(1) {
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a1a 100%);
+}
+
+.comprador-item:nth-child(2) {
+  border-color: #c0c0c0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+}
+
+.comprador-item:nth-child(3) {
+  border-color: #cd7f32;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+}
+
+.posicao {
+  font-family: 'VT323';
+  font-size: 1.5em;
+  font-weight: bold;
+  color: yellow;
+  min-width: 60px;
+}
+
+.nome {
+  flex: 1;
+  font-family: 'minecraftia';
+  font-size: 1.3em;
+  margin: 3px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.pedidos {
+  font-family: 'minecraftia';
+  font-size: 1.1em;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+#TopCompradores > button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 1.2em;
+  font-family: 'minecraftia', monospace;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+#TopCompradores > button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   POKEMON SELECT (Componente Customizado)
+===================================================== */
+.pokemon-select {
+  position: relative;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.pokemon-select-trigger {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Minercraftory';
+  font-size: clamp(14px, 2.5vw, 16px);
+  padding: clamp(8px, 2vw, 12px);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.pokemon-select-trigger:hover,
+.pokemon-select-trigger:focus {
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+  outline: none;
+}
+
+.pokemon-select-trigger.active {
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+.pokemon-select-placeholder {
+  color: #888;
+}
+
+.pokemon-select-selected {
+  color: white;
+  font-weight: normal;
+}
+
+.pokemon-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #888;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.pokemon-select-trigger.active .pokemon-select-arrow {
+  transform: rotate(180deg);
+}
+
+.pokemon-select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.pokemon-search-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-family: 'Minercraftory';
+  background-color: #2a2a2a;
+  border: none;
+  border-bottom: 1px solid #444;
+  color: white;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.pokemon-search-input::placeholder {
+  color: #888;
+}
+
+.pokemon-search-input:focus {
+  background-color: #333;
+  border-bottom-color: yellow;
+}
+
+.pokemon-options-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.pokemon-option {
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'minecraftia';
+  font-size: 14px;
+  color: white;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pokemon-option:last-child {
+  border-bottom: none;
+}
+
+.pokemon-option:hover {
+  background-color: #333;
+}
+
+.pokemon-option.selected {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
+
+.pokemon-name {
+  flex: 1;
+}
+
+.pokemon-id {
+  color: #888;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.pokemon-option.selected .pokemon-id {
+  color: #333;
+}
+
+.pokemon-no-results {
+  padding: 20px;
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  font-family: 'minecraftia';
+  font-size: 12px;
+}
+
+/* Scrollbar customizada para listas de Pokémon */
+.pokemon-options-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pokemon-options-list::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.pokemon-options-list::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.pokemon-options-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* =====================================================
+   ABILITY SELECT (Habilidades)
+===================================================== */
+.ability-header {
+  padding: 10px 15px;
+  background-color: #2a2a2a;
+  font-weight: bold;
+  font-size: 14px;
+  color: yellow;
+  border-bottom: 1px solid #444;
+  font-family: 'minecraftia';
+}
+
+.ability-header.hidden {
+  background: linear-gradient(135deg, #c2a10f, #ffcf40);
+  color: black;
+}
+
+.ability-option {
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+  font-family: 'minecraftia';
+  color: white;
+}
+
+.ability-option:hover {
+  background-color: #333;
+}
+
+.ability-option.hidden {
+  background: linear-gradient(135deg, rgba(194, 161, 15, 0.2), rgba(255, 207, 64, 0.2));
+  border-left: 4px solid #c2a10f;
+}
+
+.ability-option.hidden:hover {
+  background: linear-gradient(135deg, rgba(194, 161, 15, 0.3), rgba(255, 207, 64, 0.3));
+}
+
+.ability-option.selected {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
+
+.ability-option.selected.hidden {
+  background: linear-gradient(135deg, #c2a10f, #ffcf40);
+  color: black;
+}
+
+/* =====================================================
+   EGG MOVES SELECT
+===================================================== */
+.egg-move-option {
+  position: relative;
+}
+
+.egg-move-option.selected::before {
+  content: '✓ ';
+  color: black;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.egg-move-option.selected {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: black;
+  font-weight: bold;
+  border-left: 4px solid #c2a10f;
+}
+
+.egg-move-option.selected:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+}
+
+.egg-move-option:active {
+  transform: scale(0.98);
+}
+
+.pokemon-select-selected.egg-moves-count {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* =====================================================
+   ANIMAÇÕES
+===================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   MEDIA QUERIES - RESPONSIVIDADE
+===================================================== */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  #Opções {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  #LinksTopo {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  #LinksTopo p {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  #ConteudoPrincipal {
+    padding: 2rem 1rem;
+  }
+
+  #TelaLogin,
+  #Comprando,
+  #ComprandoCompetitivo,
+  #ComprandoGenderless,
+  #TopCompradores {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  .ev-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .ev-input-group label {
+    min-width: auto;
+  }
+
+  .ev-input-group input {
+    width: 100%;
+  }
+
+  .pokemon-select-trigger {
+    padding: 15px;
+    font-size: 16px;
+    min-height: 54px;
+  }
+
+  .pokemon-search-input {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .pokemon-option {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  #Opções {
+    padding: 10px;
+  }
+
+  #LinksTopo p {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  #opcaoCompra {
+    padding: 12px;
+  }
+
+  #opcaoCompra h2 {
+    font-size: 20px;
+  }
+
+  #opcaoCompra button {
+    padding: 12px;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+}
