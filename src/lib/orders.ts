@@ -1,18 +1,16 @@
 // src/lib/orders.ts
 import type { Pedido } from './types'
+import { sendOrderWebhook } from './discord'
 
 export async function createOrder(orderData: Partial<Pedido>) {
   try {
-    // Import dinâmico - só carrega no cliente
     const { db } = await import('./firebase')
     const { collection, addDoc, serverTimestamp } = await import('firebase/firestore')
 
-    // Verifica se db foi inicializado
     if (!db) {
       throw new Error('Firebase não foi inicializado')
     }
 
-    // Pega dados do usuário do localStorage
     const nickname = localStorage.getItem('userNickname')
     const discord = localStorage.getItem('userDiscord')
 
@@ -20,7 +18,6 @@ export async function createOrder(orderData: Partial<Pedido>) {
       throw new Error('Usuário não está logado')
     }
 
-    // Cria o pedido completo
     const pedido: Omit<Pedido, 'timestamp'> = {
       nomeUsuario: nickname,
       nickDiscord: discord,
@@ -57,12 +54,29 @@ export async function createOrder(orderData: Partial<Pedido>) {
     })
 
     console.log('Pedido criado com ID:', docRef.id)
+
+    // Envia webhook para Discord
+    await sendOrderWebhook({
+      pokemon: pedido.pokemon,
+      tipoCompra: pedido.tipoCompra || 'normal',
+      natureza: pedido.natureza,
+      ivs: pedido.ivsSolicitados,
+      habilidades: pedido.habilidades,
+      eggMoves: pedido.eggMoves,
+      sexo: pedido.sexo,
+      breedable: pedido.castradoOuBreedavel,
+      hiddenAbility: pedido.hiddenHabilidade,
+      precoTotal: pedido.precoTotal,
+      userNickname: nickname,
+      userDiscord: discord
+    })
+
     return { success: true, orderId: docRef.id }
   } catch (error) {
     console.error('Erro ao criar pedido:', error)
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Erro desconhecido' 
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Erro desconhecido'
     }
   }
 }
