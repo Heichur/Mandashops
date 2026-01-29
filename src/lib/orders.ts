@@ -1,10 +1,17 @@
 // src/lib/orders.ts
-import { db } from './firebase'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import type { Pedido } from './types'
 
 export async function createOrder(orderData: Partial<Pedido>) {
   try {
+    // Import dinâmico - só carrega no cliente
+    const { db } = await import('./firebase')
+    const { collection, addDoc, serverTimestamp } = await import('firebase/firestore')
+
+    // Verifica se db foi inicializado
+    if (!db) {
+      throw new Error('Firebase não foi inicializado')
+    }
+
     // Pega dados do usuário do localStorage
     const nickname = localStorage.getItem('userNickname')
     const discord = localStorage.getItem('userDiscord')
