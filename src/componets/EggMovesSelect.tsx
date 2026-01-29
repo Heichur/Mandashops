@@ -1,4 +1,4 @@
-// src/components/EggMovesSelect.tsx
+// src/componets/EggMovesSelect.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -6,20 +6,117 @@ import { useState, useEffect } from 'react'
 interface EggMovesSelectProps {
   pokemonName: string
   id?: string
+  onMovesChange?: (moves: string[]) => void
 }
 
-export default function EggMovesSelect({ pokemonName, id = 'eggMovesSelect' }: EggMovesSelectProps) {
+interface EggMove {
+  name: string
+  displayName: string
+}
+
+export default function EggMovesSelect({ 
+  pokemonName, 
+  id = 'eggMovesSelect',
+  onMovesChange 
+}: EggMovesSelectProps) {
   const [selectedMoves, setSelectedMoves] = useState<string[]>([])
   const [isOpen, setIsOpen] = useState(false)
-  const [eggMoves] = useState<string[]>(['Move 1', 'Move 2', 'Move 3']) // Placeholder
+  const [eggMoves, setEggMoves] = useState<EggMove[]>([])
+  const [loading, setLoading] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const toggleMove = (move: string) => {
-    if (selectedMoves.includes(move)) {
-      setSelectedMoves(selectedMoves.filter((m: string) => m !== move))
-    } else {
-      setSelectedMoves([...selectedMoves, move])
+  useEffect(() => {
+    if (!pokemonName) {
+      setEggMoves([])
+      setSelectedMoves([])
+      return
     }
+
+    const fetchEggMoves = async () => {
+      setLoading(true)
+      try {
+        // Busca dados da espécie do Pokémon
+        const speciesResponse = await fetch(
+          `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`
+        )
+        
+        if (!speciesResponse.ok) {
+          throw new Error('Espécie não encontrada')
+        }
+
+        const speciesData = await speciesResponse.json()
+        
+        // Busca todos os egg moves de todas as versões
+        const eggMovesSet = new Set<string>()
+        
+        for (const variety of speciesData.varieties) {
+          try {
+            const pokemonResponse = await fetch(variety.pokemon.url)
+            const pokemonData = await pokemonResponse.json()
+            
+            // Busca moves que são aprendidos por egg
+            for (const moveEntry of pokemonData.moves) {
+              const learnMethods = moveEntry.version_group_details
+              
+              const hasEggMove = learnMethods.some(
+                (detail: any) => detail.move_learn_method.name === 'egg'
+              )
+              
+              if (hasEggMove) {
+                eggMovesSet.add(moveEntry.move.name)
+              }
+            }
+          } catch (error) {
+            console.error('Erro ao buscar variedade:', error)
+          }
+        }
+
+        // Converte para array e formata os nomes
+        const movesArray = Array.from(eggMovesSet).map(move => ({
+          name: move,
+          displayName: formatMoveName(move)
+        }))
+
+        // Ordena alfabeticamente
+        movesArray.sort((a, b) => a.displayName.localeCompare(b.displayName))
+        
+        setEggMoves(movesArray)
+      } catch (error) {
+        console.error('Erro ao buscar egg moves:', error)
+        setEggMoves([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchEggMoves()
+  }, [pokemonName])
+
+  const formatMoveName = (name: string): string => {
+    return name
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
   }
+
+  const toggleMove = (move: EggMove) => {
+    let newSelectedMoves: string[]
+    
+    if (selectedMoves.includes(move.name)) {
+      newSelectedMoves = selectedMoves.filter((m) => m !== move.name)
+    } else {
+      newSelectedMoves = [...selectedMoves, move.name]
+    }
+    
+    setSelectedMoves(newSelectedMoves)
+    onMovesChange?.(newSelectedMoves)
+  }
+
+  const filteredMoves = searchTerm
+    ? eggMoves.filter(move =>
+        move.displayName.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : eggMoves
 
   return (
     <div className="pokemon-select" id={id}>
@@ -44,18 +141,34 @@ export default function EggMovesSelect({ pokemonName, id = 'eggMovesSelect' }: E
             className="pokemon-search-input" 
             placeholder="Buscar Egg Move..." 
             autoComplete="off"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             onClick={(e) => e.stopPropagation()}
           />
           <div className="pokemon-options-list">
-            {eggMoves.map((move: string) => (
-              <div 
-                key={move} 
-                className={`pokemon-option egg-move-option ${selectedMoves.includes(move) ? 'selected' : ''}`}
-                onClick={() => toggleMove(move)}
-              >
-                {move}
+            {loading ? (
+              <div className="pokemon-no-results">Carregando egg moves...</div>
+            ) : filteredMoves.length === 0 ? (
+              <div className="pokemon-no-results">
+                {searchTerm 
+                  ? 'Nenhum egg move encontrado' 
+                  : 'Este Pokémon não possui egg moves'
+                }
               </div>
-            ))}
+            ) : (
+              filteredMoves.map((move) => (
+                <div 
+                  key={move.name} 
+                  className={`pokemon-option egg-move-option ${selectedMoves.includes(move.name) ? 'selected' : ''}`}
+                  onClick={() => toggleMove(move)}
+                >
+                  <span>{move.displayName}</span>
+                  {selectedMoves.includes(move.name) && (
+                    <span style={{ marginLeft: 'auto', color: '#4CAF50' }}>✓</span>
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </div>
       )}
