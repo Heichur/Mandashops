@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react'
 import { pokemonAPI } from '@/lib/pokemonAPI'
-import type { Pokemon } from '@/lib/types'
+import type { Pokemon } from '@/lib/types' // ← Volta para Pokemon (seu tipo original)
 
 interface PokemonSelectProps {
   onSelect: (pokemon: string) => void
@@ -14,7 +14,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]) // ← Já estava correto
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
     loadPokemon()
   }, [])
 
-  const handleSelect = (pokemon: Pokemon) => {
+  const handleSelect = (pokemon: Pokemon) => { // ← Já estava correto
     setSelectedPokemon(pokemon.name)
     onSelect(pokemon.name)
     setIsOpen(false)
@@ -74,7 +74,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
                 Nenhum Pokémon encontrado
               </div>
             ) : (
-              filteredPokemon.map((pokemon: Pokemon) => (
+              filteredPokemon.map((pokemon) => ( // ← Removi a tipagem aqui (já está no array)
                 <div 
                   key={pokemon.id} 
                   className="pokemon-option"
