@@ -1,6 +1,7 @@
 // src/app/comprar/normal/page.tsx
 'use client'
 
+export const dynamic = 'force-dynamic'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -9,8 +10,6 @@ import AbilitySelect from '@/componets/AbilitySelect'
 import EggMovesSelect from '@/componets/EggMovesSelect'
 import { createOrder } from '@/lib/orders'
 
-
-export const dynamic = 'force-dynamic'
 
 export default function CompraNormal() {
   const router = useRouter()
