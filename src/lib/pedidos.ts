@@ -108,11 +108,7 @@ export function validarCamposObrigatorios(dados: any): { valido: boolean, mensag
   if (!dados.pokemon) {
     return { valido: false, mensagem: 'Selecione um Pokémon!' }
   }
-  
-  if (!dados.nature) {
-    return { valido: false, mensagem: 'Digite a natureza do Pokémon!' }
-  }
-  
+    
   if (!dados.habilidades) {
     return { valido: false, mensagem: 'Selecione uma habilidade!' }
   }

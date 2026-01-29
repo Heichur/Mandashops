@@ -48,7 +48,6 @@ export default function CompraNormal() {
     // Validar campos obrigatórios
     const validacao = validarCamposObrigatorios({
       pokemon: selectedPokemon,
-      nature,
       habilidades: habilidade,
       ivs,
       breedable
@@ -146,8 +145,9 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
       />
       
       <EggMovesSelect 
-        pokemonName={selectedPokemon}
-      />
+  pokemonName={selectedPokemon}
+  onMovesChange={(moves) => setEggMoves(moves)}
+/>
       
       <input 
         type="search" 
@@ -157,9 +157,14 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
         onChange={(e) => setNature(e.target.value)}
       />
       
-      <AbilitySelect 
+     
+     <AbilitySelect 
         pokemonName={selectedPokemon}
-      />
+       onSelect={(ability: string, isHidden: boolean) => {
+       setHabilidade(ability)
+        setHiddenHabilidade(isHidden)
+       }}
+/>
       
       <input 
         type="text" 
