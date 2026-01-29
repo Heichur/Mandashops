@@ -9,6 +9,9 @@ import AbilitySelect from '@/componets/AbilitySelect'
 import EggMovesSelect from '@/componets/EggMovesSelect'
 import { createOrder } from '@/lib/orders'
 
+
+export const dynamic = 'force-dynamic'
+
 export default function CompraNormal() {
   const router = useRouter()
   const [selectedPokemon, setSelectedPokemon] = useState('')

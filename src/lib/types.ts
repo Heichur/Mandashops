@@ -102,37 +102,3 @@ export interface UserData {
   discord: string
   isAdmin?: boolean
 }
-
-// Adicione este tipo no final do arquivo types.ts
-
-export interface PokemonAPIResponse {
-  id: number
-  name: string
-  sprites: {
-    front_default: string
-    other?: {
-      'official-artwork'?: {
-        front_default: string
-      }
-    }
-  }
-  types: Array<{
-    type: {
-      name: string
-    }
-  }>
-  height: number
-  weight: number
-  abilities: Array<{
-    ability: {
-      name: string
-    }
-    is_hidden: boolean
-  }>
-  stats: Array<{
-    base_stat: number
-    stat: {
-      name: string
-    }
-  }>
-}
