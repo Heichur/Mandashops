@@ -5,10 +5,12 @@ import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
 
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { login } = useAuth()
   const isAdmin = searchParams.get('admin') === 'true'
 
   const [nickname, setNickname] = useState('')
@@ -17,23 +19,20 @@ function LoginForm() {
 
   const handleLogin = () => {
     if (isAdmin) {
-      // Lógica de login admin
       if (!nickname || !senha) {
         alert('Por favor, preencha todos os campos!')
         return
       }
-      // Validar senha...
       alert('Login admin realizado!')
       router.push('/')
     } else {
-      // Lógica de login normal
       if (!nickname || !discord) {
         alert('Por favor, preencha os dois campos!')
         return
       }
-      // Salvar no localStorage ou contexto
-      localStorage.setItem('userNickname', nickname)
-      localStorage.setItem('userDiscord', discord)
+      
+      // Usa o contexto de autenticação
+      login(nickname, discord)
       alert(`Seja bem-vindo ${nickname}!`)
       router.push('/')
     }
