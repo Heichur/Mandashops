@@ -1,4 +1,4 @@
-// src/components/AbilitySelect.tsx
+// src/componets/AbilitySelect.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -7,9 +7,14 @@ import { pokemonAPI } from '@/lib/pokemonAPI'
 interface AbilitySelectProps {
   pokemonName: string
   id?: string
+  onSelect?: (ability: string, isHidden: boolean) => void
 }
 
-export default function AbilitySelect({ pokemonName, id = 'abilitySelect' }: AbilitySelectProps) {
+export default function AbilitySelect({ 
+  pokemonName, 
+  id = 'abilitySelect',
+  onSelect 
+}: AbilitySelectProps) {
   const [selectedAbility, setSelectedAbility] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [abilities, setAbilities] = useState<Array<{name: string, isHidden: boolean}>>([])
@@ -18,6 +23,9 @@ export default function AbilitySelect({ pokemonName, id = 'abilitySelect' }: Abi
   useEffect(() => {
     if (pokemonName) {
       loadAbilities()
+    } else {
+      setAbilities([])
+      setSelectedAbility('')
     }
   }, [pokemonName])
 
@@ -38,6 +46,7 @@ export default function AbilitySelect({ pokemonName, id = 'abilitySelect' }: Abi
   const handleSelect = (ability: {name: string, isHidden: boolean}) => {
     setSelectedAbility(ability.name)
     setIsOpen(false)
+    onSelect?.(ability.name, ability.isHidden)
   }
 
   const normalAbilities = abilities.filter(a => !a.isHidden)
