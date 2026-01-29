@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import './globals.css'
 import Header from '@/componets/Header'
+import { AuthProvider } from '@/contexts/AuthContext'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -19,16 +20,18 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <link 
-          rel="stylesheet" 
-          href="https://fonts.googleapis.com/css2?family=VT323&display=swap" 
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
         />
       </head>
       <body>
-        <Header />
-        <div id="ConteudoPrincipal">
-          {children}
-        </div>
+        <AuthProvider>
+          <Header />
+          <div id="ConteudoPrincipal">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   )
