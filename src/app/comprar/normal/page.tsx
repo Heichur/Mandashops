@@ -1,15 +1,24 @@
 // src/app/comprar/normal/page.tsx
 'use client'
 
-export const dynamic = 'force-dynamic'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import PokemonSelect from '@/componets/PokemonSelect'
-import AbilitySelect from '@/componets/AbilitySelect'
-import EggMovesSelect from '@/componets/EggMovesSelect'
-import { createOrder } from '@/lib/orders'
+import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
+import { analisarIVsUnificado, calcularPrecoIVs } from '@/lib/utils'
+import { 
+  enviarWebhook, 
+  buscarWebhookUrl, 
+  registrarPedidoRanking, 
+  formatarPedidoWebhook,
+  validarCamposObrigatorios 
+} from '@/lib/pedidos'
+import { db } from '@/lib/firebase'
+import { collection, addDoc } from 'firebase/firestore'
 
+const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { ssr: false })
+const AbilitySelect = dynamic(() => import("@/componets/AbilitySelect"), { ssr: false })
+const EggMovesSelect = dynamic(() => import("@/componets/EggMovesSelect"), { ssr: false })
 
 export default function CompraNormal() {
   const router = useRouter()
@@ -18,130 +27,168 @@ export default function CompraNormal() {
   const [gender, setGender] = useState('')
   const [ivs, setIvs] = useState('')
   const [breedable, setBreedable] = useState('')
-  const [selectedAbility, setSelectedAbility] = useState('')
-  const [isHiddenAbility, setIsHiddenAbility] = useState(false)
-  const [selectedEggMoves, setSelectedEggMoves] = useState<string[]>([])
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [habilidade, setHabilidade] = useState('')
+  const [hiddenHabilidade, setHiddenHabilidade] = useState(false)
+  const [eggMoves, setEggMoves] = useState<string[]>([])
+  const [enviando, setEnviando] = useState(false)
 
   const handleSubmit = async () => {
-    // Validações
-    if (!selectedPokemon) {
-      alert('Por favor, selecione um Pokémon!')
+    if (enviando) return
+
+    // Pegar dados do usuário do localStorage
+    const nomeUsuario = localStorage.getItem('userNickname') || ''
+    const nickDiscord = localStorage.getItem('userDiscord') || ''
+
+    if (!nomeUsuario || !nickDiscord) {
+      alert('Por favor, faça login primeiro!')
+      router.push('/login')
       return
     }
 
-    if (!nature) {
-      alert('Por favor, informe a nature!')
+    // Validar campos obrigatórios
+    const validacao = validarCamposObrigatorios({
+      pokemon: selectedPokemon,
+      nature,
+      habilidades: habilidade,
+      ivs,
+      breedable
+    })
+
+    if (!validacao.valido) {
+      alert(validacao.mensagem)
       return
     }
 
-    if (!ivs) {
-      alert('Por favor, informe os IVs desejados!')
-      return
-    }
-
-    if (!breedable) {
-      alert('Por favor, informe se é castrado ou breedável!')
-      return
-    }
-
-    setIsSubmitting(true)
+    setEnviando(true)
 
     try {
-      // Cálculo de preço
-      const basePrice = 50000
-      const eggMovesPrice = selectedEggMoves.length * 10000
-      const hiddenAbilityPrice = isHiddenAbility ? 15000 : 0
-      const totalPrice = basePrice + eggMovesPrice + hiddenAbilityPrice
+      // Analisar IVs
+      const dadosIVs = analisarIVsUnificado(ivs)
+      
+      if (!dadosIVs.valido) {
+        alert(dadosIVs.mensagem)
+        setEnviando(false)
+        return
+      }
 
-      const result = await createOrder({
+      // Calcular preços
+      const calculoIVs = calcularPrecoIVs(dadosIVs)
+      const precoBreedavel = (breedable.toLowerCase() === 'breedavel' || breedable.toLowerCase() === 'breedável') ? 10000 : 0
+      const precoHidden = hiddenHabilidade ? 15000 : 0
+      const precoEggMoves = eggMoves.length * 10000
+      const precoTotal = calculoIVs.preco + precoBreedavel + precoHidden + precoEggMoves
+
+      // Montar objeto do pedido
+      const pedidoData = {
+        nomeUsuario,
+        nickDiscord,
         pokemon: selectedPokemon,
         tipoCompra: 'normal',
-        natureza: nature,
-        sexo: gender,
-        ivsSolicitados: ivs,
         castradoOuBreedavel: breedable,
-        habilidades: selectedAbility,
-        eggMoves: selectedEggMoves.join(', '),
-        hiddenHabilidade: isHiddenAbility,
-        precoBase: basePrice,
-        precoTotal: totalPrice
-      })
-
-      if (result.success) {
-        alert('Pedido enviado com sucesso! 🎉')
-        router.push('/')
-      } else {
-        alert(`Erro ao enviar pedido: ${result.error}`)
+        natureza: nature,
+        habilidades: habilidade,
+        sexo: gender || 'N/A',
+        ivsSolicitados: dadosIVs.tipoIV,
+        ivsZerados: dadosIVs.statsZerados.join(', ') || 'Nenhum',
+        informacoesAdicionais: dadosIVs.informacoesAdicionais.join(', ') || 'Nenhuma',
+        ivsFinal: calculoIVs.tipoFinal,
+        ivsUpgradado: calculoIVs.foiUpgradado,
+        detalhesUpgrade: calculoIVs.detalhesUpgrade || '',
+        eggMoves: eggMoves.join(', ') || 'Nenhum',
+        hiddenHabilidade,
+        precoTotal,
+        timestamp: new Date(),
+        status: 'pendente'
       }
+
+      // Salvar no Firestore
+      if (db) {
+        await addDoc(collection(db, 'pedidos'), pedidoData)
+      }
+
+      // Registrar no ranking
+      await registrarPedidoRanking(nomeUsuario)
+
+      // Enviar webhook
+      const webhookUrl = await buscarWebhookUrl()
+      if (webhookUrl) {
+        const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
+        await enviarWebhook(mensagemWebhook, webhookUrl)
+      }
+
+      // Mostrar mensagem de sucesso
+      const haInfo = hiddenHabilidade ? ' + Hidden Ability (+15k)' : ''
+      alert(`✅ Pedido enviado com sucesso!
+
+Seu pokémon já está em preparação, assim que ficar pronto, te notificamos para retirar na loja. Agradecemos a preferência!
+
+🔵 Pokémon: ${selectedPokemon}
+📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}${haInfo}
+💰 Preço total: ${Math.round(precoTotal/1000)}k`)
+
+      // Redirecionar para página inicial
+      router.push('/')
+
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Erro ao enviar pedido. Tente novamente.')
+      console.error('Erro ao enviar pedido:', error)
+      alert('❌ Erro ao enviar pedido. Tente novamente.')
     } finally {
-      setIsSubmitting(false)
+      setEnviando(false)
     }
   }
 
   return (
     <section id="Comprando">
       <h1 id="TituloCompra">Escolha o pokémon!</h1>
-
-      <PokemonSelect
+      
+      <PokemonSelect 
         onSelect={(pokemon: string) => setSelectedPokemon(pokemon)}
       />
-
-      <EggMovesSelect
+      
+      <EggMovesSelect 
         pokemonName={selectedPokemon}
-        onMovesChange={(moves) => setSelectedEggMoves(moves)}
       />
-
-      <input
-        type="search"
-        id="Nature"
+      
+      <input 
+        type="search" 
+        id="Nature" 
         placeholder="Nature do pokemon"
         value={nature}
         onChange={(e) => setNature(e.target.value)}
       />
-
-      <AbilitySelect
+      
+      <AbilitySelect 
         pokemonName={selectedPokemon}
-        onSelect={(ability: string, isHidden: boolean) => {
-          setSelectedAbility(ability)
-          setIsHiddenAbility(isHidden)
-        }}
       />
-
-      <input
-        type="text"
-        id="GeneroDoPoke"
+      
+      <input 
+        type="text" 
+        id="GeneroDoPoke" 
         placeholder="Macho ou Femea / Não é obrigatório"
         value={gender}
         onChange={(e) => setGender(e.target.value)}
       />
-
-      <input
-        type="text"
-        id="Ivs"
-        placeholder="Ivs desejados"
+      
+      <input 
+        type="text" 
+        id="Ivs" 
+        placeholder="Ivs desejados (ex: F5, 0atk)"
         value={ivs}
         onChange={(e) => setIvs(e.target.value)}
       />
-
-      <input
-        type="text"
-        id="CastradoOuBreedavel"
+      
+      <input 
+        type="text" 
+        id="CastradoOuBreedavel" 
         placeholder="Castrado ou Breedavel?"
         value={breedable}
         onChange={(e) => setBreedable(e.target.value)}
       />
-
-      <button 
-        onClick={handleSubmit}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Enviando...' : 'Enviar Pedido'}
+      
+      <button onClick={handleSubmit} disabled={enviando}>
+        {enviando ? 'Enviando...' : 'Enviar Pedido'}
       </button>
-
+      
       <Link href="/comprar">
         <button id="VoltarCompra">Voltar</button>
       </Link>
