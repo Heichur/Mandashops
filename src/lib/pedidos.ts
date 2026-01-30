@@ -1,5 +1,5 @@
 // src/lib/pedidos.ts
-import { db } from './firebase'
+import { getDb } from './firebase'
 import { collection, addDoc, doc, getDoc, updateDoc } from 'firebase/firestore'
 import { analisarIVsUnificado, calcularPrecoIVs } from './utils'
 import type { Pedido } from './types'
@@ -25,8 +25,7 @@ export async function enviarWebhook(conteudo: string, webhookUrl: string): Promi
 // Função para buscar URL do webhook
 export async function buscarWebhookUrl(): Promise<string> {
   try {
-    if (!db) return ''
-    
+    const db = getDb() 
     const configDoc = await getDoc(doc(db, 'configuracoes', 'admin'))
     if (configDoc.exists()) {
       const data = configDoc.data()
@@ -41,7 +40,7 @@ export async function buscarWebhookUrl(): Promise<string> {
 // Função para registrar pedido no ranking mensal
 export async function registrarPedidoRanking(nomeUsuario: string): Promise<void> {
   try {
-    if (!db) return
+    const db = getDb() 
 
     const agora = new Date()
     const chaveMes = `compradores_${agora.getFullYear()}_${(agora.getMonth() + 1).toString().padStart(2, '0')}`
@@ -80,7 +79,7 @@ export function formatarPedidoWebhook(pedido: any, dadosIVs: any, calculoIVs: an
 💬 **Discord:** ${pedido.nickDiscord}
 🔵 **Pokémon:** ${pedido.pokemon}
 🧬 **Tipo:** ${pedido.castradoOuBreedavel}
-🌿 **Natureza:** ${pedido.natureza}
+🌿 **Nature:** ${pedido.natureza}
 ⚡ **Habilidade:** ${pedido.habilidades}
 ⚧ **Gênero:** ${pedido.sexo || 'N/A'}
 📊 **IVs:** ${linhaIVs}`

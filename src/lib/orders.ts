@@ -1,16 +1,11 @@
 // src/lib/orders.ts
 import type { Pedido } from './types'
 import { sendOrderWebhook } from './discord'
+import { getDb } from './firebase'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 export async function createOrder(orderData: Partial<Pedido>) {
   try {
-    const { db } = await import('./firebase')
-    const { collection, addDoc, serverTimestamp } = await import('firebase/firestore')
-
-    if (!db) {
-      throw new Error('Firebase não foi inicializado')
-    }
-
     const nickname = localStorage.getItem('userNickname')
     const discord = localStorage.getItem('userDiscord')
 
@@ -46,6 +41,9 @@ export async function createOrder(orderData: Partial<Pedido>) {
       precoTotal: orderData.precoTotal || 0,
       status: 'pendente'
     }
+
+    // Obtém a instância do Firestore 
+    const db = getDb()
 
     // Salva no Firestore
     const docRef = await addDoc(collection(db, 'pedidos'), {

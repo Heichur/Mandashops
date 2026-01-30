@@ -13,7 +13,7 @@ import {
   formatarPedidoWebhook,
   validarCamposObrigatorios 
 } from '@/lib/pedidos'
-import { db } from '@/lib/firebase'
+import { getDb } from '@/lib/firebase' // MUDANÇA AQUI: usar getDb em vez de db
 import { collection, addDoc } from 'firebase/firestore'
 
 const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { ssr: false })
@@ -100,9 +100,14 @@ export default function CompraNormal() {
         status: 'pendente'
       }
 
-      // Salvar no Firestore
-      if (db) {
+      // Salvar no Firestore - MUDANÇA AQUI
+      try {
+        const db = getDb() // Obtém a instância do Firestore
         await addDoc(collection(db, 'pedidos'), pedidoData)
+        console.log('Pedido salvo no Firestore com sucesso!')
+      } catch (firestoreError) {
+        console.error('Erro ao salvar no Firestore:', firestoreError)
+        // Continua o fluxo mesmo se falhar no Firestore
       }
 
       // Registrar no ranking
@@ -145,9 +150,9 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
       />
       
       <EggMovesSelect 
-  pokemonName={selectedPokemon}
-  onMovesChange={(moves) => setEggMoves(moves)}
-/>
+        pokemonName={selectedPokemon}
+        onMovesChange={(moves) => setEggMoves(moves)}
+      />
       
       <input 
         type="search" 
@@ -157,14 +162,13 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
         onChange={(e) => setNature(e.target.value)}
       />
       
-     
-     <AbilitySelect 
+      <AbilitySelect 
         pokemonName={selectedPokemon}
-       onSelect={(ability: string, isHidden: boolean) => {
-       setHabilidade(ability)
-        setHiddenHabilidade(isHidden)
-       }}
-/>
+        onSelect={(ability: string, isHidden: boolean) => {
+          setHabilidade(ability)
+          setHiddenHabilidade(isHidden)
+        }}
+      />
       
       <input 
         type="text" 

@@ -1,4 +1,4 @@
-/* Importação de Fontes Customizadas */
+
 @font-face {
   font-family: 'Minercraftory';
   src: url('/fontes/Minercraftory.ttf') format('truetype');
@@ -13,14 +13,14 @@
   font-style: normal;
 }
 
-/* Reset Global */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body com Background Fixo */
+
 body {
   background-image: url('/img/background.png');
   background-size: cover;
@@ -31,7 +31,7 @@ body {
   margin: 0;
 }
 
-/* Textos Padrão */
+
 p {
   color: white;
 }
@@ -45,7 +45,7 @@ p {
 }
 
 /* =====================================================
-   HEADER / MENU SUPERIOR
+   HEADER
 ===================================================== */
 #Opções {
   display: flex;
@@ -144,7 +144,7 @@ p {
 }
 
 /* =====================================================
-   OPÇÕES DE COMPRA (Modal de Escolha)
+   OPÇÕES DE COMPRA 
 ===================================================== */
 #opcaoCompra {
   position: fixed;
@@ -878,7 +878,7 @@ p {
 }
 
 /* =====================================================
-   POKEMON SELECT (Componente Customizado)
+   POKEMON SELECT
 ===================================================== */
 .pokemon-select {
   position: relative;
@@ -1030,7 +1030,7 @@ p {
   font-size: 12px;
 }
 
-/* Scrollbar customizada para listas de Pokémon */
+
 .pokemon-options-list::-webkit-scrollbar {
   width: 6px;
 }
@@ -1049,7 +1049,7 @@ p {
 }
 
 /* =====================================================
-   ABILITY SELECT (Habilidades)
+   ABILITY SELECT 
 ===================================================== */
 .ability-header {
   padding: 10px 15px;
