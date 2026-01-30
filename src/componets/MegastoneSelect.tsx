@@ -3,12 +3,12 @@
 
 import { useState, useEffect } from 'react'
 import { getDb } from '@/lib/firebase'
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 
 interface Megastone {
   id: string
   nome: string
-  preco: number
+  valor: number
   estoque: number
 }
 
@@ -25,40 +25,43 @@ export default function MegastoneSelect() {
         const db = getDb()
         const megastonesRef = collection(db, 'megapedras')
         
-        // Buscar apenas megapedras com estoque > 0
-        const q = query(megastonesRef, where('estoque', '>', 0))
-        const querySnapshot = await getDocs(q)
+        // Buscar todas as megapedras
+        const querySnapshot = await getDocs(megastonesRef)
+        
+        console.log('🔍 Total de documentos no Firebase:', querySnapshot.size)
         
         const megastonesData: Megastone[] = []
+        
         querySnapshot.forEach((doc) => {
           const data = doc.data()
           
-          // Validar se os campos obrigatórios existem
-          if (data.nome && typeof data.preco === 'number' && typeof data.estoque === 'number') {
-            megastonesData.push({
-              id: doc.id,
-              nome: data.nome,
-              preco: data.preco,
-              estoque: data.estoque
-            })
-          } else {
-            console.warn(`Megapedra com ID ${doc.id} possui dados incompletos:`, data)
+          // Aceita tanto 'nome' quanto 'name', com fallback para o ID do documento
+          const nome = data.nome || data.name || doc.id
+          
+          const megastone: Megastone = {
+            id: doc.id,
+            nome: nome,
+            valor: Number(data.valor) || Number(data.value) || 0,
+            estoque: Number(data.estoque) || Number(data.stock) || 0
+          }
+          
+          console.log('📦', megastone.nome, '- Estoque:', megastone.estoque, '- Valor:', megastone.valor)
+          
+          // Só adiciona se tiver estoque
+          if (megastone.estoque > 0) {
+            megastonesData.push(megastone)
           }
         })
 
-        // Ordenar alfabeticamente apenas se houver dados válidos
-        if (megastonesData.length > 0) {
-          megastonesData.sort((a, b) => {
-            const nomeA = a.nome || ''
-            const nomeB = b.nome || ''
-            return nomeA.localeCompare(nomeB)
-          })
-        }
+        console.log('✅ Megapedras com estoque:', megastonesData.length)
+
+        // Ordenar alfabeticamente
+        megastonesData.sort((a, b) => a.nome.localeCompare(b.nome))
         
         setMegastones(megastonesData)
         setLoading(false)
       } catch (error) {
-        console.error('Erro ao buscar megapedras:', error)
+        console.error('❌ Erro ao buscar megapedras:', error)
         setMegastones([])
         setLoading(false)
       }
@@ -69,7 +72,7 @@ export default function MegastoneSelect() {
 
   // Filtrar megapedras baseado na busca
   const filteredMegastones = megastones.filter(stone =>
-    stone.nome && stone.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    stone.nome.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   const handleSelect = (megastone: Megastone) => {
@@ -93,7 +96,7 @@ export default function MegastoneSelect() {
         <span className={selectedMegastone ? "pokemon-select-selected" : "pokemon-select-placeholder"}>
           {loading 
             ? 'Carregando megapedras...' 
-            : selectedMegastone || 'Selecione uma Megapedra (opcional)...'
+            : selectedMegastone || `Selecione uma Megapedra (${megastones.length} disponíveis)...`
           }
         </span>
         <div className="pokemon-select-arrow"></div>
@@ -128,7 +131,7 @@ export default function MegastoneSelect() {
                       (Estoque: {stone.estoque})
                     </span>
                   </span>
-                  <span className="pokemon-id">{stone.preco / 1000}k</span>
+                  <span className="pokemon-id">{Math.round(stone.valor / 1000)}k</span>
                 </div>
               ))
             ) : (
