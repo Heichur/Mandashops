@@ -16,6 +16,7 @@ import {
 import { db } from '@/lib/firebase'
 import { collection, addDoc } from 'firebase/firestore'
 
+const IVSelector = dynamic(() => import("@/componets/IVSelector"), { ssr: false })
 const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { ssr: false })
 const AbilitySelect = dynamic(() => import("@/componets/AbilitySelect"), { ssr: false })
 const EggMovesSelect = dynamic(() => import("@/componets/EggMovesSelect"), { ssr: false })
@@ -174,13 +175,9 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
         onChange={(e) => setGender(e.target.value)}
       />
       
-      <input 
-        type="text" 
-        id="Ivs" 
-        placeholder="Ivs desejados (ex: F5, 0atk)"
-        value={ivs}
-        onChange={(e) => setIvs(e.target.value)}
-      />
+      <IVSelector 
+  onChange={(ivsString) => setIvs(ivsString)}
+/>
       
       <input 
         type="text" 
@@ -194,7 +191,7 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
         {enviando ? 'Enviando...' : 'Enviar Pedido'}
       </button>
       
-      <Link href="/comprar">
+      <Link href="/">
         <button id="VoltarCompra">Voltar</button>
       </Link>
     </section>

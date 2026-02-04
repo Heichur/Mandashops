@@ -10,28 +10,37 @@ import { useAuth } from '@/contexts/AuthContext'
 function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { login } = useAuth()
+  const { login, loginAdmin } = useAuth()
   const isAdmin = searchParams.get('admin') === 'true'
 
   const [nickname, setNickname] = useState('')
   const [discord, setDiscord] = useState('')
   const [senha, setSenha] = useState('')
+  const [carregando, setCarregando] = useState(false)
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (isAdmin) {
       if (!nickname || !senha) {
         alert('Por favor, preencha todos os campos!')
         return
       }
-      alert('Login admin realizado!')
-      router.push('/')
+      
+      setCarregando(true)
+      const success = await loginAdmin(nickname, senha)
+      setCarregando(false)
+      
+      if (success) {
+        alert('Login admin realizado com sucesso!')
+        router.push('/')
+      } else {
+        alert('Senha incorreta!')
+      }
     } else {
       if (!nickname || !discord) {
         alert('Por favor, preencha os dois campos!')
         return
       }
       
-      // Usa o contexto de autenticação
       login(nickname, discord)
       alert(`Seja bem-vindo ${nickname}!`)
       router.push('/')
@@ -99,7 +108,9 @@ function LoginForm() {
             width={200}
             height={200}
           />
-          <button onClick={handleLogin}>Entrar</button>
+          <button onClick={handleLogin} disabled={carregando}>
+            {carregando ? 'Verificando...' : 'Entrar'}
+          </button>
         </div>
       )}
     </div>

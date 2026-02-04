@@ -7,8 +7,10 @@ import PokemonSelect from '@/componets/PokemonSelect'
 import AbilitySelect from '@/componets/AbilitySelect'
 import EggMovesSelect from '@/componets/EggMovesSelect'
 import MegastoneSelect from '@/componets/MegastoneSelect'
+import dynamic from 'next/dynamic'
 import EVCalculator from '@/componets/EVCalculator'
 
+const IVSelector = dynamic(() => import("@/componets/IVSelector"), { ssr: false })
 interface EVs {
   hp: number
   atk: number
@@ -18,7 +20,9 @@ interface EVs {
   spe: number
 }
 
+
 export default function CompraCompetitiva() {
+ 
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [nature, setNature] = useState('')
   const [gender, setGender] = useState('')
@@ -93,13 +97,9 @@ export default function CompraCompetitiva() {
         onChange={(e) => setGender(e.target.value)}
       />
       
-      <input 
-        type="text" 
-        id="IvsComp" 
-        placeholder="IVs desejados (ex: F5, 0atk)"
-        value={ivs}
-        onChange={(e) => setIvs(e.target.value)}
-      />
+      <IVSelector 
+  onChange={(ivsString) => setIvs(ivsString)}
+/>
       
       <EVCalculator 
         onChange={(newEvs: EVs) => setEvs(newEvs)}
@@ -119,7 +119,7 @@ export default function CompraCompetitiva() {
       
       <button onClick={handleSubmit}>Enviar Pedido</button>
       
-      <Link href="/comprar">
+      <Link href="/">
         <button id="VoltarCompraComp">Voltar</button>
       </Link>
     </section>

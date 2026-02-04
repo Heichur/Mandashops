@@ -68,7 +68,7 @@ export default function CompraGenderless() {
       
       <button onClick={handleSubmit}>Enviar Pedido</button>
       
-      <Link href="/comprar">
+      <Link href="/">
         <button id="VoltarCompraGenderless">Voltar</button>
       </Link>
     </section>
