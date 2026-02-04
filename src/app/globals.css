@@ -2182,3 +2182,507 @@ p {
     line-height: 1.5;
   }
 }
+/* =====================================================
+   POKEPEDIA
+===================================================== */
+
+/* Container principal */
+.pokepedia-container {
+  min-height: 100vh;
+  background-image: url('/img/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 2rem;
+}
+
+/* Header da Pokédex */
+.pokepedia-header {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.pokepedia-title {
+  font-family: 'Minercraftory';
+  font-size: clamp(32px, 6vw, 48px);
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.pokepedia-subtitle {
+  font-family: 'minecraftia';
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: #cccccc;
+}
+
+/* Busca principal */
+.pokemon-search-container {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.pokemon-search-main {
+  width: 100%;
+  max-width: 500px;
+  padding: clamp(8px, 2vw, 12px);
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-family: 'Minercraftory';
+  background-color: #1a1a1a;
+  border: 2px solid #ffd700;
+  border-radius: 10px;
+  color: white;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.pokemon-search-main:focus {
+  outline: none;
+  border-color: #ffed4e;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.pokemon-search-main::placeholder {
+  color: #888;
+}
+
+/* Grid de Pokémon */
+.pokemon-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+/* Card de Pokémon */
+.pokemon-card {
+  background-color: #1a1a1a;
+  border: 3px solid #ffd700;
+  border-radius: 15px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pokemon-card:hover {
+  border-color: #ffed4e;
+  background-color: #252525;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+}
+
+.pokemon-card-image {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #444;
+  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.pokemon-card-image img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.pokemon-number {
+  font-family: 'minecraftia';
+  font-size: 11px;
+  color: #888;
+  margin: 0 0 4px 0;
+}
+
+.pokemon-card .lendario-nome {
+  font-family: 'Minercraftory';
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: #ffd700;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-transform: capitalize;
+}
+
+/* Loading */
+.pokepedia-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.pokepedia-loading p {
+  font-family: 'minecraftia';
+  font-size: 18px;
+  color: #ffd700;
+}
+
+.pokepedia-no-results {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+  font-size: 18px;
+  font-family: 'minecraftia';
+}
+
+/* =====================================================
+   PÁGINA DE DETALHES
+===================================================== */
+
+.pokemon-detail-wrapper {
+  min-height: 100vh;
+  background-image: url('/img/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 2rem;
+}
+
+.pokemon-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pokemon-detail-back {
+  display: inline-block;
+  font-family: 'minecraftia';
+  font-size: 14px;
+  color: #ffd700;
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.pokemon-detail-back:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffed4e;
+}
+
+/* Card principal */
+.pokemon-detail-card {
+  background: rgba(0, 0, 0, 0.95);
+  border: 3px solid #ffd700;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.pokemon-detail-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pokemon-detail-image-container {
+  flex-shrink: 0;
+}
+
+.pokemon-detail-image {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a1a 100%);
+  border: 3px solid #c2a10f;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pokemon-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pokemon-detail-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.pokemon-detail-title {
+  font-family: 'Minercraftory';
+  font-size: clamp(28px, 5vw, 36px);
+  color: #ffd700;
+  margin: 0 0 15px 0;
+  text-transform: capitalize;
+}
+
+/* Tipos */
+.pokemon-types {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.pokemon-type-badge {
+  padding: 6px 16px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'minecraftia';
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* Egg Groups */
+.pokemon-egg-section {
+  margin-top: 15px;
+}
+
+.pokemon-egg-title {
+  font-family: 'minecraftia';
+  font-size: 14px;
+  color: #ffd700;
+  margin: 0 0 8px 0;
+}
+
+.egg-groups-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.egg-group-badge {
+  background: rgba(194, 161, 15, 0.3);
+  border: 2px solid #c2a10f;
+  color: #ffd700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: 'minecraftia';
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+/* Seção de conteúdo */
+.pokemon-content-section {
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #ffd700;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.pokemon-section-header {
+  font-family: 'minecraftia';
+  font-size: 16px;
+  color: #ffd700;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pokemon-description-text {
+  font-family: 'minecraftia';
+  font-size: 13px;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Efetividade */
+.effectiveness-group {
+  margin-bottom: 15px;
+}
+
+.effectiveness-group:last-child {
+  margin-bottom: 0;
+}
+
+.effectiveness-label {
+  font-family: 'minecraftia';
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
+
+.damage-effective {
+  color: #ff4444;
+}
+
+.damage-resistant {
+  color: #44ff44;
+}
+
+.damage-immune {
+  color: #aaaaaa;
+}
+
+.pokemon-type-badge-small {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'minecraftia';
+  text-transform: capitalize;
+  color: #fff;
+}
+
+/* Habilidades */
+.ability-list-item {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  font-family: 'minecraftia';
+  font-size: 13px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.ability-list-item.is-hidden {
+  background: rgba(194, 161, 15, 0.3);
+  border-color: #c2a10f;
+}
+
+.hidden-ability-label {
+  margin-left: 8px;
+  color: #ffd700;
+  font-size: 11px;
+}
+
+/* Movimentos */
+.moves-toggle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.moves-toggle-btn {
+  font-family: 'minecraftia';
+  font-size: 14px;
+  background: linear-gradient(135deg, #ffd700 0%, #c2a10f 100%);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.moves-toggle-btn:hover {
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+  transform: scale(1.05);
+}
+
+.moves-category {
+  margin-bottom: 20px;
+}
+
+.moves-category:last-child {
+  margin-bottom: 0;
+}
+
+.moves-category-title {
+  font-family: 'minecraftia';
+  font-size: 15px;
+  margin: 0 0 10px 0;
+}
+
+.levelup-category-title {
+  color: #6890F0;
+}
+
+.tm-category-title {
+  color: #F85888;
+}
+
+.moves-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+.move-item-card {
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: 'minecraftia';
+  color: #fff;
+}
+
+.move-item-levelup {
+  background: #6890F0;
+  border: 2px solid #5070d0;
+}
+
+.move-item-tm {
+  background: #F85888;
+  border: 2px solid #d83868;
+}
+
+.move-item-name {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 3px;
+}
+
+.move-item-level {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .pokemon-detail-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pokemon-detail-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .pokemon-detail-info {
+    text-align: center;
+  }
+
+  .pokemon-types,
+  .egg-groups-list {
+    justify-content: center;
+  }
+
+  .moves-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokemon-card {
+    padding: 8px;
+  }
+
+  .pokemon-number {
+    font-size: 10px;
+  }
+
+  .pokemon-card .lendario-nome {
+    font-size: 12px;
+  }
+}

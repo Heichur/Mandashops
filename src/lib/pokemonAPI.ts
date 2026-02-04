@@ -3,6 +3,7 @@ import { Pokemon, PokemonDetails } from './types'
 
 class PokemonAPIManager {
   private pokemonList: Pokemon[] = []
+  private pokemonListWithoutLegendaries: Pokemon[] = [] // NOVA LISTA
   private pokemonDetails: Map<string, PokemonDetails> = new Map()
   private isLoading: boolean = false
   private isLoaded: boolean = false
@@ -18,7 +19,7 @@ class PokemonAPIManager {
     769, 774, 781, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809,
     859, 861, 870, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 924, 925,
     984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 999, 1000, 1004, 1005, 1006, 1007, 1008, 1009, 1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025,
-    10276, 10263, 10250, 10251, 10252
+    10276, 10263, 10250, 10251, 10252,  10264, 10265 ,10266 ,10267,  10268, 10269, 10270 ,10271, 10008, 10009, 10010, 10011
   ])
 
   private specialFormsKeywords = [
@@ -49,9 +50,16 @@ class PokemonAPIManager {
     return this.specialFormsKeywords.some(keyword => nameLower.includes(keyword))
   }
 
-  async loadPokemonList(): Promise<Pokemon[]> {
-    if (this.isLoaded) return this.pokemonList
-    if (this.isLoading) return this.loadPromise!.then(() => this.pokemonList)
+  //  Adiciona parâmetro excludeLegendaries
+  async loadPokemonList(excludeLegendaries: boolean = false): Promise<Pokemon[]> {
+    if (this.isLoaded) {
+      return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
+    }
+    
+    if (this.isLoading) {
+      await this.loadPromise!
+      return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
+    }
     
     this.isLoading = true
     this.loadPromise = this._fetchPokemonList()
@@ -63,7 +71,7 @@ class PokemonAPIManager {
       throw error
     }
     
-    return this.pokemonList
+    return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
   }
 
   private async _fetchPokemonList(): Promise<void> {
@@ -73,7 +81,8 @@ class PokemonAPIManager {
       
       const data = await response.json()
       
-      this.pokemonList = data.results
+      // Processar lista completa (sem filtro de lendários)
+      const allPokemon = data.results
         .map((pokemon: any) => {
           const id = this._extractIdFromUrl(pokemon.url)
           const formattedName = pokemon.name
@@ -89,17 +98,25 @@ class PokemonAPIManager {
           }
         })
         .filter((pokemon: Pokemon) => {
-          if (this.legendaryIds.has(pokemon.id)) return false
+          // Filtra apenas formas especiais
           if (this.isSpecialForm(pokemon.originalName)) return false
           return true
         })
       
-      this.pokemonList.sort((a, b) => a.id - b.id)
+      // Lista completa (COM lendários) - para Pokédex
+      this.pokemonList = allPokemon.sort((a: Pokemon, b: Pokemon) => a.id - b.id)
+      
+      // Lista sem lendários - para compras
+      this.pokemonListWithoutLegendaries = allPokemon
+        .filter((pokemon: Pokemon) => !this.legendaryIds.has(pokemon.id))
+        .sort((a: Pokemon, b: Pokemon) => a.id - b.id)
+      
       this.isLoaded = true
       this.isLoading = false
     } catch (error) {
       this.isLoading = false
       this.pokemonList = this._getFallbackList()
+      this.pokemonListWithoutLegendaries = this._getFallbackList()
       this.isLoaded = true
     }
   }
@@ -118,11 +135,14 @@ class PokemonAPIManager {
     ]
   }
 
-  searchPokemon(query: string): Pokemon[] {
+  // MODIFICADO: Adiciona parâmetro excludeLegendaries
+  searchPokemon(query: string, excludeLegendaries: boolean = false): Pokemon[] {
     if (!query || !this.isLoaded) return []
     const searchTerm = this._normalize(query)
     
-    return this.pokemonList.filter((pokemon) => {
+    const listToSearch = excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
+    
+    return listToSearch.filter((pokemon) => {
       const pokemonName = this._normalize(pokemon.name)
       const pokemonOriginal = this._normalize(pokemon.originalName)
       return pokemonName.includes(searchTerm) || pokemonOriginal.includes(searchTerm)
@@ -187,8 +207,9 @@ class PokemonAPIManager {
       .replace(/[^a-z0-9]/g, '')
   }
 
-  getAllPokemon(): Pokemon[] {
-    return this.pokemonList
+  //Adiciona parâmetro excludeLegendaries
+  getAllPokemon(excludeLegendaries: boolean = false): Pokemon[] {
+    return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
   }
 
   isLegendary(pokemonId: number): boolean {

@@ -61,7 +61,7 @@ export default function ComprarPage() {
         </Link>
 
         {/* Card 5 - PokéPédia */}
-        <Link href="/wiki" className="categoria-card">
+        <Link href="/pokepedia" className="categoria-card">
           <h3 className="categoria-titulo">
             PokéPédia
           </h3>

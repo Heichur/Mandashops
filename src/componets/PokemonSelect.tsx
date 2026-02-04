@@ -10,11 +10,12 @@ interface PokemonSelectProps {
   id?: string
 }
 
+const list = await pokemonAPI.loadPokemonList(true) 
 export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: PokemonSelectProps) {
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]) // ← Já estava correto
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]) 
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -31,8 +32,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
     loadPokemon()
   }, [])
 
-  const handleSelect = (pokemon: Pokemon) => { // ← Já estava correto
-    setSelectedPokemon(pokemon.name)
+  const handleSelect = (pokemon: Pokemon) => { 
     onSelect(pokemon.name)
     setIsOpen(false)
     setSearchTerm('')
@@ -74,7 +74,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
                 Nenhum Pokémon encontrado
               </div>
             ) : (
-              filteredPokemon.map((pokemon) => ( // ← Removi a tipagem aqui (já está no array)
+              filteredPokemon.map((pokemon) => ( 
                 <div 
                   key={pokemon.id} 
                   className="pokemon-option"
