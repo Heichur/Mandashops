@@ -101,7 +101,7 @@ export default function ModalAnuncio({ tipo, itemEditar, onClose, onSalvo }: Mod
               type="text"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              placeholder="Ex: Mewtwo Shiny"
+              placeholder="Ex: Squirtle Shiny"
               disabled={processando}
             />
           </div>
