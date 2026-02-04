@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import { pokemonAPI } from '@/lib/pokemonAPI'
 
 interface PokemonData {
   id: number
@@ -78,6 +79,7 @@ export default function PokemonDetailPage() {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [species, setSpecies] = useState<SpeciesData | null>(null)
   const [typeEffectiveness, setTypeEffectiveness] = useState<TypeEffectiveness | null>(null)
+  const [flavorText, setFlavorText] = useState<string>('Carregando descrição...')
   const [loading, setLoading] = useState(true)
   const [showMoves, setShowMoves] = useState(false)
 
@@ -97,6 +99,10 @@ export default function PokemonDetailPage() {
       const speciesData = await speciesRes.json()
       setSpecies(speciesData)
 
+      // Busca a descrição em português usando o método do pokemonAPI
+      const descricao = await pokemonAPI.getPokemonFlavorText(pokemonData.id)
+      setFlavorText(descricao)
+
       const typeRes = await fetch(pokemonData.types[0].type.url)
       const typeData = await typeRes.json()
       setTypeEffectiveness(typeData.damage_relations)
@@ -104,14 +110,13 @@ export default function PokemonDetailPage() {
       setLoading(false)
     } catch (error) {
       console.error('Erro ao buscar Pokémon:', error)
+      setFlavorText('Descrição não disponível.')
       setLoading(false)
     }
   }
 
   const getFlavorText = () => {
-    if (!species) return ''
-    const entry = species.flavor_text_entries.find(e => e.language.name === 'en')
-    return entry ? entry.flavor_text.replace(/\f/g, ' ') : ''
+    return flavorText
   }
 
   const getLevelUpMoves = () => {
@@ -220,7 +225,7 @@ export default function PokemonDetailPage() {
 
             {typeEffectiveness.double_damage_from.length > 0 && (
               <div className="effectiveness-group">
-                <h4 className="effectiveness-label damage-effective">⚡ Dano x2 (Efetivo)</h4>
+                <h4 className="effectiveness-label damage-effective">⚡ Dano x2 (Super Efetivo!)</h4>
                 <div className="pokemon-types">
                   {typeEffectiveness.double_damage_from.map(t => (
                     <span

@@ -3,8 +3,9 @@ import { Pokemon, PokemonDetails } from './types'
 
 class PokemonAPIManager {
   private pokemonList: Pokemon[] = []
-  private pokemonListWithoutLegendaries: Pokemon[] = [] // NOVA LISTA
+  private pokemonListWithoutLegendaries: Pokemon[] = []
   private pokemonDetails: Map<string, PokemonDetails> = new Map()
+  private flavorTextCache: Map<number, string> = new Map()
   private isLoading: boolean = false
   private isLoaded: boolean = false
   private loadPromise: Promise<void> | null = null
@@ -50,7 +51,6 @@ class PokemonAPIManager {
     return this.specialFormsKeywords.some(keyword => nameLower.includes(keyword))
   }
 
-  //  Adiciona parâmetro excludeLegendaries
   async loadPokemonList(excludeLegendaries: boolean = false): Promise<Pokemon[]> {
     if (this.isLoaded) {
       return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
@@ -81,7 +81,6 @@ class PokemonAPIManager {
       
       const data = await response.json()
       
-      // Processar lista completa (sem filtro de lendários)
       const allPokemon = data.results
         .map((pokemon: any) => {
           const id = this._extractIdFromUrl(pokemon.url)
@@ -98,15 +97,12 @@ class PokemonAPIManager {
           }
         })
         .filter((pokemon: Pokemon) => {
-          // Filtra apenas formas especiais
           if (this.isSpecialForm(pokemon.originalName)) return false
           return true
         })
       
-      // Lista completa (COM lendários) - para Pokédex
       this.pokemonList = allPokemon.sort((a: Pokemon, b: Pokemon) => a.id - b.id)
       
-      // Lista sem lendários - para compras
       this.pokemonListWithoutLegendaries = allPokemon
         .filter((pokemon: Pokemon) => !this.legendaryIds.has(pokemon.id))
         .sort((a: Pokemon, b: Pokemon) => a.id - b.id)
@@ -135,7 +131,6 @@ class PokemonAPIManager {
     ]
   }
 
-  // MODIFICADO: Adiciona parâmetro excludeLegendaries
   searchPokemon(query: string, excludeLegendaries: boolean = false): Pokemon[] {
     if (!query || !this.isLoaded) return []
     const searchTerm = this._normalize(query)
@@ -197,6 +192,127 @@ class PokemonAPIManager {
     }
   }
 
+  private async _translateText(text: string, to: string = 'pt'): Promise<string> {
+    try {
+    
+      const url = 'https://translate.googleapis.com/translate_a/single'
+      const params = new URLSearchParams({
+        client: 'gtx',
+        sl: 'en',
+        tl: to,
+        dt: 't',
+        q: text
+      })
+
+      const response = await fetch(`${url}?${params.toString()}`, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0'
+        }
+      })
+
+      if (!response.ok) {
+        // Fallback para LibreTranslate público se Google falhar
+        return await this._translateWithLibreTranslate(text, to)
+      }
+
+      const data = await response.json()
+      
+
+      if (data && data[0] && data[0][0] && data[0][0][0]) {
+        return data[0][0][0]
+      }
+
+      return text
+    } catch (error) {
+      console.warn('Erro ao traduzir com Google:', error)
+      // Fallback para LibreTranslate
+      return await this._translateWithLibreTranslate(text, to)
+    }
+  }
+
+  /**
+   * Fallback usando LibreTranslate (API pública e gratuita)
+   */
+  private async _translateWithLibreTranslate(text: string, to: string = 'pt'): Promise<string> {
+    try {
+      const response = await fetch('https://libretranslate.com/translate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          q: text,
+          source: 'en',
+          target: to,
+          format: 'text'
+        })
+      })
+
+      if (!response.ok) return text
+
+      const data = await response.json()
+      return data.translatedText || text
+    } catch (error) {
+      console.warn('Erro ao traduzir com LibreTranslate:', error)
+      return text
+    }
+  }
+
+  /**
+   * Busca a descrição do Pokémon e traduz automaticamente para português
+   */
+  async getPokemonFlavorText(pokemonId: number): Promise<string> {
+    // Verifica cache
+    if (this.flavorTextCache.has(pokemonId)) {
+      return this.flavorTextCache.get(pokemonId)!
+    }
+
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`)
+      if (!response.ok) return 'Descrição não disponível.'
+      
+      const species = await response.json()
+      
+      // Primeiro tenta português direto
+      const ptBR = species.flavor_text_entries.find(
+        (entry: any) => entry.language.name === 'pt-BR'
+      )
+      if (ptBR) {
+        const text = this._cleanFlavorText(ptBR.flavor_text)
+        this.flavorTextCache.set(pokemonId, text)
+        return text
+      }
+
+      // Busca em inglês para traduzir
+      const en = species.flavor_text_entries.find(
+        (entry: any) => entry.language.name === 'en'
+      )
+      
+      if (!en) {
+        return 'Descrição não disponível.'
+      }
+
+      const cleanEnglishText = this._cleanFlavorText(en.flavor_text)
+      
+      // Traduz para português usando Google Translate
+      const translatedText = await this._translateText(cleanEnglishText, 'pt')
+      
+      this.flavorTextCache.set(pokemonId, translatedText)
+      return translatedText
+      
+    } catch (error) {
+      console.error('Erro ao buscar descrição:', error)
+      return 'Descrição não disponível.'
+    }
+  }
+
+  private _cleanFlavorText(text: string): string {
+    return text
+      .replace(/\n|\f|\r/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+  }
+
   private _normalize(text: string): string {
     if (!text) return ''
     return text
@@ -207,7 +323,6 @@ class PokemonAPIManager {
       .replace(/[^a-z0-9]/g, '')
   }
 
-  //Adiciona parâmetro excludeLegendaries
   getAllPokemon(excludeLegendaries: boolean = false): Pokemon[] {
     return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
   }
