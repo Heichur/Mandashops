@@ -6,6 +6,29 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { pokemonAPI } from '@/lib/pokemonAPI'
 
+import dropsJson from '@/data/pokemon_drops.json'
+
+const drops = dropsJson as unknown as DropsData
+
+type DropItem = {
+  item: string | null
+  drop: string | null
+}
+
+type SpawnSpecificDrop = {
+  item: string | null
+  drop: string | null
+  biome: string | null
+}
+
+type DropsData = Record<
+  string,
+  {
+    Drops: DropItem[]
+    "Spawn Specific Drops": SpawnSpecificDrop[]
+  }
+>
+
 interface PokemonData {
   id: number
   name: string
@@ -157,7 +180,13 @@ export default function PokemonDetailPage() {
       </div>
     )
   }
+  const pokemonKey = pokemon.name.toLowerCase()
 
+  const dropEntry = drops[pokemonKey]
+  
+  const pokemonDrops = dropEntry?.Drops ?? []
+  const spawnSpecificDrops = dropEntry?.["Spawn Specific Drops"] ?? []
+  
   return (
     <div className="pokemon-detail-wrapper">
       <div className="pokemon-detail-container">
@@ -335,6 +364,55 @@ export default function PokemonDetailPage() {
                 </div>
               </div>
             </>
+          )}
+        </div>
+        
+        {/* Drops */}
+        <div className="pokemon-content-section">
+          <h3 className="pokemon-section-header">Drops</h3>
+
+          {/* Drops normais */}
+          {pokemonDrops.length > 0 && (
+            <div className="drops-group">
+              <h4 className="drops-subtitle">Drops Comuns</h4>
+
+              {pokemonDrops.map((drop, i) => (
+                <div key={i} className="drop-item">
+                  <span className="drop-item-name">{drop.item}</span>
+                  {drop.drop && (
+                    <span className="drop-item-value"> — {drop.drop}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Drops específicos de spawn */}
+          {spawnSpecificDrops.length > 0 && (
+            <div className="drops-group">
+              <h4 className="drops-subtitle">Drops por Bioma</h4>
+
+              {spawnSpecificDrops.map((drop, i) => (
+                <div key={i} className="drop-item">
+                  <span className="drop-item-name">{drop.item}</span>
+
+                  {drop.drop && (
+                    <span className="drop-item-value"> — {drop.drop}</span>
+                  )}
+
+                  {drop.biome && (
+                    <span className="drop-item-biome">
+                      {' '}
+                      ({drop.biome})
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {pokemonDrops.length === 0 && spawnSpecificDrops.length === 0 && (
+            <p>Este Pokémon não possui drops.</p>
           )}
         </div>
       </div>
