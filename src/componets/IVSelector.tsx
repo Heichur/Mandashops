@@ -99,63 +99,22 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
     }
   }
 
-  const setPreset = (preset: 'all31' | 'all0' | 'f5physical' | 'f5special') => {
-    switch (preset) {
-      case 'all31':
-        setStats({ HP: 31, ATK: 31, DEF: 31, SPA: 31, SPD: 31, SPE: 31 })
-        break
-      case 'all0':
-        setStats({ HP: 0, ATK: 0, DEF: 0, SPA: 0, SPD: 0, SPE: 0 })
-        break
-      case 'f5physical':
-        setStats({ HP: 31, ATK: 31, DEF: 31, SPA: 0, SPD: 31, SPE: 31 })
-        break
-      case 'f5special':
-        setStats({ HP: 31, ATK: 0, DEF: 31, SPA: 31, SPD: 31, SPE: 31 })
-        break
-    }
+  const setPreset = (preset: 'all31') => {
+    setStats({ HP: 31, ATK: 31, DEF: 31, SPA: 31, SPD: 31, SPE: 31 })
   }
 
   return (
     <div className="ev-section">
       <h3 className="ev-title">IVs do Pokémon</h3>
       
-      {/* Botões de Preset */}
+      {/* Botão de Preset - Apenas F6 */}
       <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', flexWrap: 'wrap' }}>
         <button type="button" onClick={() => setPreset('all31')} style={{ 
-          flex: '1', 
-          minWidth: '120px',
+          width: '100%',
           padding: '8px 12px',
           fontSize: '12px'
         }}>
           F6 (Todos 31)
-        </button>
-        
-        <button type="button" onClick={() => setPreset('f5physical')} style={{ 
-          flex: '1', 
-          minWidth: '120px',
-          padding: '8px 12px',
-          fontSize: '12px'
-        }}>
-          F5 Physical
-        </button>
-        
-        <button type="button" onClick={() => setPreset('f5special')} style={{ 
-          flex: '1', 
-          minWidth: '120px',
-          padding: '8px 12px',
-          fontSize: '12px'
-        }}>
-          F5 Special
-        </button>
-        
-        <button type="button" onClick={() => setPreset('all0')} style={{ 
-          flex: '1', 
-          minWidth: '120px',
-          padding: '8px 12px',
-          fontSize: '12px'
-        }}>
-          Todos 0
         </button>
       </div>
 

@@ -32,6 +32,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
   }, [])
 
   const handleSelect = (pokemon: Pokemon) => { 
+    setSelectedPokemon(pokemon.name)
     onSelect(pokemon.name)
     setIsOpen(false)
     setSearchTerm('')
