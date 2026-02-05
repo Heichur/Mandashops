@@ -139,29 +139,24 @@ export default function ModalAnuncio({ tipo, itemEditar, onClose, onSalvo }: Mod
                 />
                 <span>Está no ovo?</span>
               </label>
-              {estaNoOvo && (
-                <p className="ovo-info">* A imagem será substituída por um ovo automaticamente</p>
-              )}
             </div>
           )}
 
-          {(!estaNoOvo || tipo === 'lendarios') && (
-            <div className="admin-form-group">
-              <label>URL da Imagem {!estaNoOvo && '*'}</label>
-              <input
-                type="url"
-                value={imagemUrl}
-                onChange={(e) => setImagemUrl(e.target.value)}
-                placeholder="https://exemplo.com/imagem.png"
-                disabled={processando}
-              />
-              {imagemUrl && (
-                <div className="image-preview">
-                  <img src={imagemUrl} alt="Preview" />
-                </div>
-              )}
-            </div>
-          )}
+          <div className="admin-form-group">
+            <label>URL da Imagem *</label>
+            <input
+              type="url"
+              value={imagemUrl}
+              onChange={(e) => setImagemUrl(e.target.value)}
+              placeholder="https://exemplo.com/imagem.png"
+              disabled={processando}
+            />
+            {imagemUrl && (
+              <div className="image-preview">
+                <img src={imagemUrl} alt="Preview" />
+              </div>
+            )}
+          </div>
 
           <div className="admin-actions">
             <button

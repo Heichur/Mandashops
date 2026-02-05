@@ -42,6 +42,14 @@ export default function PokepediaPage() {
 
   return (
     <div className="pokepedia-container">
+      {/* Botão de voltar */}
+      <button 
+        onClick={() => router.push('/')}
+        className="back-button"
+      >
+        ← Voltar
+      </button>
+
       <div className="pokepedia-header">
         <h1 className="pokepedia-title">Pokepédia</h1>
         <p className="pokepedia-subtitle">Busque informações sobre qualquer Pokémon</p>

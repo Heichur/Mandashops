@@ -181,6 +181,7 @@ export default function ComprarLendarios() {
 
     alert('Compra realizada com sucesso!')
     fecharModal()
+    carregarTodosItens() // Recarrega a lista após deletar
     } catch (error) {
       console.error('Erro ao processar compra:', error)
       alert('Erro ao processar compra. Tente novamente.')
@@ -317,7 +318,10 @@ export default function ComprarLendarios() {
             <div className="lendario-modal-detalhes">
               <p><strong>Tipo:</strong> {itemSelecionado.tipo === 'lendario' ? '🔥 Lendário' : '✨ Shiny'}</p>
               <p><strong>Item:</strong> {itemSelecionado.nome}</p>
-              <p><strong>Descrição:</strong> {itemSelecionado.descricao}</p>
+              <div>
+                <strong>Descrição:</strong>
+                <p className="lendario-descricao-modal">{itemSelecionado.descricao}</p>
+              </div>
               {itemSelecionado.estaNoOvo && <p><strong>🥚 Este Pokémon está no ovo</strong></p>}
               <p className="lendario-modal-total">
                 Total: {itemSelecionado.preco}KK

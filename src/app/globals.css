@@ -1492,6 +1492,19 @@ p {
   animation: fadeIn 0.3s ease;
 }
 
+/* Preserva quebras de linha na descrição dos cards */
+.lendario-descricao {
+  white-space: pre-wrap; /* Mantém quebras de linha e espaços */
+  word-wrap: break-word; /* Quebra palavras longas se necessário */
+}
+
+/* Preserva quebras de linha na descrição do modal */
+.lendario-descricao-modal {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-top: 8px;
+}
+
 .lendario-modal {
   background: rgba(0, 0, 0, 0.98);
   border: 3px solid #ffd700;
@@ -2336,6 +2349,25 @@ p {
   font-family: 'minecraftia';
 }
 
+.back-button {
+  display: inline-block;
+  font-family: 'minecraftia';
+  font-size: 14px;
+  color: #ffd700;
+  text-decoration: none;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.back-button:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffed4e;
+}
 
 /* =====================================================
    PÁGINA DE DETALHES

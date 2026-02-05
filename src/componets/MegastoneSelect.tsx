@@ -1,21 +1,80 @@
 // src/components/MegastoneSelect.tsx
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/lib/firebase' // ajuste o caminho conforme sua configuração
+
+interface Megastone {
+  id: string
+  name?: string
+  nome?: string
+  value?: number
+  valor?: number
+  estoque?: number
+  stock?: number
+}
 
 export default function MegastoneSelect() {
   const [selectedMegastone, setSelectedMegastone] = useState('')
   const [isOpen, setIsOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [megastones, setMegastones] = useState<Megastone[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const megastones = [
-    { name: 'Charizardite X', price: 50000 },
-    { name: 'Charizardite Y', price: 50000 },
-    { name: 'Gengarite', price: 45000 },
-  ]
+  useEffect(() => {
+    const fetchMegastones = async () => {
+      try {
+        const megapedrasRef = collection(db, 'megapedras')
+        const snapshot = await getDocs(megapedrasRef)
+        
+        const stonesData: Megastone[] = []
+        snapshot.forEach((doc) => {
+          const data = doc.data()
+          stonesData.push({
+            id: doc.id,
+            name: data.name || data.nome,
+            nome: data.nome || data.name,
+            value: data.value || data.valor,
+            valor: data.valor || data.value,
+            estoque: data.estoque || data.stock,
+            stock: data.stock || data.estoque
+          })
+        })
+        
+        // Ordenar por preço (do maior para o menor)
+        stonesData.sort((a, b) => {
+          const priceA = a.value || a.valor || 0
+          const priceB = b.value || b.valor || 0
+          return priceB - priceA
+        })
+        
+        setMegastones(stonesData)
+      } catch (error) {
+        console.error('Erro ao buscar megapedras:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-  const handleSelect = (megastone: {name: string, price: number}) => {
-    setSelectedMegastone(megastone.name)
+    fetchMegastones()
+  }, [])
+
+  const filteredMegastones = megastones.filter(stone => {
+    const stoneName = stone.name || stone.nome || ''
+    return stoneName.toLowerCase().includes(searchTerm.toLowerCase())
+  })
+
+  const handleSelect = (megastone: Megastone) => {
+    const name = megastone.name || megastone.nome || ''
+    setSelectedMegastone(name)
     setIsOpen(false)
+    setSearchTerm('')
+  }
+
+  const getPrice = (stone: Megastone) => {
+    const price = stone.value || stone.valor || 0
+    return price / 1000 // Converte para "k" (ex: 700000 -> 700k)
   }
 
   return (
@@ -38,19 +97,31 @@ export default function MegastoneSelect() {
             className="pokemon-search-input" 
             placeholder="Buscar Megapedra..." 
             autoComplete="off"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             onClick={(e) => e.stopPropagation()}
           />
           <div className="pokemon-options-list">
-            {megastones.map((stone) => (
-              <div 
-                key={stone.name} 
-                className="pokemon-option"
-                onClick={() => handleSelect(stone)}
-              >
-                <span className="pokemon-name">{stone.name}</span>
-                <span className="pokemon-id">{stone.price / 1000}k</span>
+            {loading ? (
+              <div className="pokemon-option" style={{ textAlign: 'center', color: '#888' }}>
+                Carregando megapedras...
               </div>
-            ))}
+            ) : filteredMegastones.length === 0 ? (
+              <div className="pokemon-option" style={{ textAlign: 'center', color: '#888' }}>
+                Nenhuma megapedra encontrada
+              </div>
+            ) : (
+              filteredMegastones.map((stone) => (
+                <div 
+                  key={stone.id} 
+                  className="pokemon-option"
+                  onClick={() => handleSelect(stone)}
+                >
+                  <span className="pokemon-name">{stone.name || stone.nome}</span>
+                  <span className="pokemon-id">{getPrice(stone)}k</span>
+                </div>
+              ))
+            )}
           </div>
         </div>
       )}
