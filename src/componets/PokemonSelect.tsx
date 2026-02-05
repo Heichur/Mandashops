@@ -3,14 +3,13 @@
 
 import { useState, useEffect } from 'react'
 import { pokemonAPI } from '@/lib/pokemonAPI'
-import type { Pokemon } from '@/lib/types' // ← Volta para Pokemon (seu tipo original)
+import type { Pokemon } from '@/lib/types' 
 
 interface PokemonSelectProps {
   onSelect: (pokemon: string) => void
   id?: string
 }
 
-const list = await pokemonAPI.loadPokemonList(true) 
 export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: PokemonSelectProps) {
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [isOpen, setIsOpen] = useState(false)

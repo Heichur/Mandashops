@@ -1,0 +1,7766 @@
+{
+  "Bulbasaur": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Ivysaur": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Venusaur": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Charmander": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Charmeleon": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Charizard": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Squirtle": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Wartortle": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Blastoise": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Caterpie": {
+    "valid_spawns": [
+      "forest",
+      "plains",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Caterpie [Valencian]": {
+    "valid_spawns": [
+      "floral meadow",
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Metapod": {
+    "valid_spawns": [
+      "forest",
+      "plains",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Metapod [Valencian]": {
+    "valid_spawns": [
+      "floral meadow",
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Butterfree": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "floral",
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Butterfree [Valencian]": {
+    "valid_spawns": [
+      "floral meadow",
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Weedle": {
+    "valid_spawns": [
+      "bumblezone",
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Kakuna": {
+    "valid_spawns": [
+      "bumblezone",
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Beedrill": {
+    "valid_spawns": [
+      "bumblezone",
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Pidgey": {
+    "valid_spawns": [
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Pidgeotto": {
+    "valid_spawns": [
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Pidgeot": {
+    "valid_spawns": [
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Rattata": {
+    "valid_spawns": [
+      "grassland",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "spooky"
+    ]
+  },
+  "Rattata [Alolan]": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Raticate": {
+    "valid_spawns": [
+      "grassland",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "spooky"
+    ]
+  },
+  "Raticate [Alolan]": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Spearow": {
+    "valid_spawns": [
+      "badlands",
+      "savanna",
+      "sky"
+    ],
+    "excluded_spawns": []
+  },
+  "Fearow": {
+    "valid_spawns": [
+      "badlands",
+      "savanna",
+      "sky"
+    ],
+    "excluded_spawns": []
+  },
+  "Ekans": {
+    "valid_spawns": [
+      "arid",
+      "nether desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Arbok": {
+    "valid_spawns": [
+      "arid",
+      "nether desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Pikachu": {
+    "valid_spawns": [
+      "beach",
+      "forest",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Raichu": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Raichu [Alolan]": {
+    "valid_spawns": [
+      "beach",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Sandshrew": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Sandslash": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidoran♀": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidorina": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidoqueen": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidoran♂": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidorino": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Nidoking": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Clefairy": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "hills",
+      "magical"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Clefable": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "hills",
+      "magical"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Vulpix": {
+    "valid_spawns": [
+      "forest",
+      "nether forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "nether frozen"
+    ]
+  },
+  "Vulpix [Alolan]": {
+    "valid_spawns": [
+      "nether frozen",
+      "snowy forest",
+      "snowy taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Ninetales": {
+    "valid_spawns": [
+      "forest",
+      "nether forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "nether frozen"
+    ]
+  },
+  "Ninetales [Alolan]": {
+    "valid_spawns": [
+      "nether frozen",
+      "snowy forest",
+      "snowy taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Jigglypuff": {
+    "valid_spawns": [
+      "floral",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "floral"
+    ]
+  },
+  "Wigglytuff": {
+    "valid_spawns": [
+      "floral",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "floral"
+    ]
+  },
+  "Zubat": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "forest",
+      "overworld",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "forest",
+      "freezing",
+      "spooky",
+      "swamp"
+    ]
+  },
+  "Golbat": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "forest",
+      "overworld",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "forest",
+      "freezing",
+      "spooky",
+      "swamp"
+    ]
+  },
+  "Oddish": {
+    "valid_spawns": [
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Oddish [Valencian]": {
+    "valid_spawns": [
+      "savanna",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Gloom": {
+    "valid_spawns": [
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Gloom [Valencian]": {
+    "valid_spawns": [
+      "savanna",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Vileplume": {
+    "valid_spawns": [
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Vileplume [Valencian]": {
+    "valid_spawns": [
+      "savanna",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Paras": {
+    "valid_spawns": [
+      "lush",
+      "mushroom",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush",
+      "nether warped"
+    ]
+  },
+  "Parasect": {
+    "valid_spawns": [
+      "lush",
+      "mushroom",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush",
+      "nether warped"
+    ]
+  },
+  "Venonat": {
+    "valid_spawns": [
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Venomoth": {
+    "valid_spawns": [
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Diglett": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Diglett [Alolan]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Dugtrio": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Dugtrio [Alolan]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Meowth": {
+    "valid_spawns": [
+      "arid",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "taiga"
+    ]
+  },
+  "Meowth [Alolan]": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Meowth [Galarian]": {
+    "valid_spawns": [
+      "freezing",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Persian": {
+    "valid_spawns": [
+      "arid",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "taiga"
+    ]
+  },
+  "Persian [Alolan]": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Psyduck": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "magical",
+      "swamp",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "swamp"
+    ]
+  },
+  "Golduck": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "magical",
+      "swamp",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "swamp"
+    ]
+  },
+  "Mankey": {
+    "valid_spawns": [
+      "hills",
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Primeape": {
+    "valid_spawns": [
+      "hills",
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Growlithe": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "desert"
+    ]
+  },
+  "Arcanine": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "desert"
+    ]
+  },
+  "Poliwag": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush",
+      "swamp"
+    ]
+  },
+  "Poliwhirl": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush",
+      "swamp"
+    ]
+  },
+  "Poliwrath": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush",
+      "swamp"
+    ]
+  },
+  "Abra": {
+    "valid_spawns": [
+      "hills",
+      "magical",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "magical"
+    ]
+  },
+  "Kadabra": {
+    "valid_spawns": [
+      "hills",
+      "magical",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "magical"
+    ]
+  },
+  "Alakazam": {
+    "valid_spawns": [
+      "hills",
+      "magical",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "magical"
+    ]
+  },
+  "Machop": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Machoke": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Machamp": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Bellsprout": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Weepinbell": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Victreebel": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Tentacool": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "dripstone",
+      "lush"
+    ]
+  },
+  "Tentacruel": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "dripstone",
+      "lush"
+    ]
+  },
+  "Geodude": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Geodude [Alolan]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Graveler": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Graveler [Alolan]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Golem": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Golem [Alolan]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Ponyta": {
+    "valid_spawns": [
+      "grassland",
+      "nether overgrowth",
+      "nether wasteland"
+    ],
+    "excluded_spawns": [
+      "floral",
+      "magical"
+    ]
+  },
+  "Ponyta [Galarian]": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "magical"
+    ],
+    "excluded_spawns": []
+  },
+  "Rapidash": {
+    "valid_spawns": [
+      "grassland",
+      "nether overgrowth",
+      "nether wasteland"
+    ],
+    "excluded_spawns": [
+      "floral",
+      "magical"
+    ]
+  },
+  "Rapidash [Galarian]": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "magical"
+    ],
+    "excluded_spawns": []
+  },
+  "Slowpoke": {
+    "valid_spawns": [
+      "beach",
+      "freshwater",
+      "river"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Slowpoke [Galarian]": {
+    "valid_spawns": [
+      "mushroom fields",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Slowbro": {
+    "valid_spawns": [
+      "beach"
+    ],
+    "excluded_spawns": []
+  },
+  "Slowbro [Galarian]": {
+    "valid_spawns": [
+      "mushroom fields",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Magnemite": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Magneton": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Farfetch'd": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Farfetch'd [Galarian]": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Doduo": {
+    "valid_spawns": [
+      "savanna",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Dodrio": {
+    "valid_spawns": [
+      "savanna",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Seel": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Dewgong": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Grimer": {
+    "valid_spawns": [
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "swamp"
+    ]
+  },
+  "Grimer [Alolan]": {
+    "valid_spawns": [
+      "nether toxic",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Muk": {
+    "valid_spawns": [
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "swamp"
+    ]
+  },
+  "Muk [Alolan]": {
+    "valid_spawns": [
+      "nether toxic",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Shellder": {
+    "valid_spawns": [
+      "coast",
+      "cold ocean",
+      "frozen ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Cloyster": {
+    "valid_spawns": [
+      "coast",
+      "cold ocean",
+      "frozen ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Gastly": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Haunter": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Gengar": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Onix": {
+    "valid_spawns": [
+      "nether basalt",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Drowzee": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Hypno": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Krabby": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Kingler": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Voltorb": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Voltorb [Hisuian]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Electrode": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Electrode [Hisuian]": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Exeggcute": {
+    "valid_spawns": [
+      "beach",
+      "jungle",
+      "savanna",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Exeggutor": {
+    "valid_spawns": [
+      "jungle",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Exeggutor [Alolan]": {
+    "valid_spawns": [
+      "beach",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Cubone": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "nether desert",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Marowak": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Marowak [Alolan]": {
+    "valid_spawns": [
+      "nether desert",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Hitmonlee": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Hitmonchan": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Lickitung": {
+    "valid_spawns": [
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Koffing": {
+    "valid_spawns": [
+      "magical",
+      "nether toxic",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Weezing": {
+    "valid_spawns": [
+      "nether toxic",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Weezing [Galarian]": {
+    "valid_spawns": [
+      "magical",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Rhyhorn": {
+    "valid_spawns": [
+      "mountain",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "cold"
+    ]
+  },
+  "Rhydon": {
+    "valid_spawns": [
+      "mountain",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "cold"
+    ]
+  },
+  "Chansey": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Tangela": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Kangaskhan": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Horsea": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Seadra": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Goldeen": {
+    "valid_spawns": [
+      "aether",
+      "bamboo",
+      "floral",
+      "freezing",
+      "freshwater",
+      "jungle",
+      "magical",
+      "mountain",
+      "river",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Seaking": {
+    "valid_spawns": [
+      "aether",
+      "bamboo",
+      "floral",
+      "freezing",
+      "freshwater",
+      "jungle",
+      "magical",
+      "mountain",
+      "river",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Staryu": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Starmie": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Mr.Mime": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Mr.Mime [Galarian]": {
+    "valid_spawns": [
+      "freezing"
+    ],
+    "excluded_spawns": []
+  },
+  "Scyther": {
+    "valid_spawns": [
+      "forest",
+      "hills",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Jynx": {
+    "valid_spawns": [
+      "freezing"
+    ],
+    "excluded_spawns": []
+  },
+  "Electabuzz": {
+    "valid_spawns": [
+      "hills",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Magmar": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Pinsir": {
+    "valid_spawns": [
+      "aether",
+      "jungle",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Tauros": {
+    "valid_spawns": [
+      "grassland",
+      "highlands"
+    ],
+    "excluded_spawns": [
+      "hills"
+    ]
+  },
+  "Magikarp": {
+    "valid_spawns": [
+      "aether",
+      "freshwater",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gyarados": {
+    "valid_spawns": [
+      "aether",
+      "freshwater",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Lapras": {
+    "valid_spawns": [
+      "frozen ocean",
+      "ocean"
+    ],
+    "excluded_spawns": [
+      "frozen ocean"
+    ]
+  },
+  "Ditto": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "ocean"
+    ]
+  },
+  "Eevee": {
+    "valid_spawns": [
+      "aether",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "ocean",
+      "temperate"
+    ]
+  },
+  "Vaporeon": {
+    "valid_spawns": [
+      "freshwater",
+      "jungle",
+      "magical",
+      "overworld",
+      "temperate",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Jolteon": {
+    "valid_spawns": [
+      "grassland",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Flareon": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Porygon": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Omanyte": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Omastar": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Kabuto": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Kabutops": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Aerodactyl": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Snorlax": {
+    "valid_spawns": [
+      "aether",
+      "forest",
+      "hills",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Dratini": {
+    "valid_spawns": [
+      "aether",
+      "magical",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "frozen ocean"
+    ]
+  },
+  "Dragonair": {
+    "valid_spawns": [
+      "aether",
+      "magical",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "frozen ocean"
+    ]
+  },
+  "Dragonite": {
+    "valid_spawns": [
+      "aether",
+      "magical",
+      "ocean",
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "frozen ocean"
+    ]
+  },
+  "Chikorita": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Bayleef": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Meganium": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Cyndaquil": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether forest",
+      "nether overgrowth",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Quilava": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether forest",
+      "nether overgrowth",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Typhlosion": {
+    "valid_spawns": [
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Typhlosion [Hisuian]": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether forest",
+      "nether overgrowth",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Totodile": {
+    "valid_spawns": [
+      "arid",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Croconaw": {
+    "valid_spawns": [
+      "arid",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Feraligatr": {
+    "valid_spawns": [
+      "arid",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Sentret": {
+    "valid_spawns": [
+      "aether",
+      "taiga",
+      "temperate",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Furret": {
+    "valid_spawns": [
+      "aether",
+      "taiga",
+      "temperate",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Hoothoot": {
+    "valid_spawns": [
+      "forest",
+      "sky",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Noctowl": {
+    "valid_spawns": [
+      "forest",
+      "sky",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Ledyba": {
+    "valid_spawns": [
+      "aether",
+      "floral meadow",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Ledian": {
+    "valid_spawns": [
+      "aether",
+      "floral meadow",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Spinarak": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "freezing"
+    ]
+  },
+  "Ariados": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "freezing"
+    ]
+  },
+  "Crobat": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "forest",
+      "overworld",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "forest",
+      "freezing",
+      "spooky",
+      "swamp"
+    ]
+  },
+  "Chinchou": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Lanturn": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Pichu": {
+    "valid_spawns": [
+      "beach",
+      "forest",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Cleffa": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "hills",
+      "magical"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Igglybuff": {
+    "valid_spawns": [
+      "floral",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "floral"
+    ]
+  },
+  "Togepi": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "magical",
+      "sky",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "plains",
+      "spooky"
+    ]
+  },
+  "Togetic": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "magical",
+      "sky",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "plains",
+      "spooky"
+    ]
+  },
+  "Natu": {
+    "valid_spawns": [
+      "badlands",
+      "overworld",
+      "plateau"
+    ],
+    "excluded_spawns": []
+  },
+  "Xatu": {
+    "valid_spawns": [
+      "badlands",
+      "overworld",
+      "plateau"
+    ],
+    "excluded_spawns": []
+  },
+  "Mareep": {
+    "valid_spawns": [
+      "highlands",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Flaaffy": {
+    "valid_spawns": [
+      "highlands",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Ampharos": {
+    "valid_spawns": [
+      "highlands",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Bellossom": {
+    "valid_spawns": [
+      "floral",
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Bellossom [Valencian]": {
+    "valid_spawns": [
+      "savanna",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Marill": {
+    "valid_spawns": [
+      "floral",
+      "hills",
+      "magical",
+      "river",
+      "snowy forest",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Azumarill": {
+    "valid_spawns": [
+      "floral",
+      "hills",
+      "magical",
+      "river",
+      "snowy forest",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Sudowoodo": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Politoed": {
+    "valid_spawns": [
+      "freshwater",
+      "hills",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush",
+      "swamp"
+    ]
+  },
+  "Hoppip": {
+    "valid_spawns": [
+      "floral meadow",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Skiploom": {
+    "valid_spawns": [
+      "floral meadow",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Jumpluff": {
+    "valid_spawns": [
+      "floral meadow",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Aipom": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Sunkern": {
+    "valid_spawns": [
+      "floral meadow",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "sunflower plains"
+    ],
+    "excluded_spawns": [
+      "sunflower plains"
+    ]
+  },
+  "Sunflora": {
+    "valid_spawns": [
+      "floral meadow",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "sunflower plains"
+    ],
+    "excluded_spawns": [
+      "sunflower plains"
+    ]
+  },
+  "Yanma": {
+    "valid_spawns": [
+      "aether",
+      "bumblezone",
+      "freshwater",
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush"
+    ]
+  },
+  "Wooper": {
+    "valid_spawns": [
+      "aether",
+      "lush",
+      "mushroom",
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush",
+      "muddy"
+    ]
+  },
+  "Wooper [Paldean]": {
+    "valid_spawns": [
+      "arid",
+      "muddy",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Quagsire": {
+    "valid_spawns": [
+      "aether",
+      "lush",
+      "mushroom",
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush",
+      "muddy"
+    ]
+  },
+  "Espeon": {
+    "valid_spawns": [
+      "hills",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Umbreon": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Murkrow": {
+    "valid_spawns": [
+      "sky",
+      "spooky",
+      "swamp",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Slowking": {
+    "valid_spawns": [
+      "beach"
+    ],
+    "excluded_spawns": []
+  },
+  "Slowking [Galarian]": {
+    "valid_spawns": [
+      "mushroom fields",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Misdreavus": {
+    "valid_spawns": [
+      "nether warped",
+      "overworld",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Unown": {
+    "valid_spawns": [
+      "end",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Wobbuffet": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Girafarig": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Pineco": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Forretress": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Dunsparce": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Gligar": {
+    "valid_spawns": [
+      "badlands",
+      "nether mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Steelix": {
+    "valid_spawns": [
+      "nether basalt",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Snubbull": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Granbull": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Qwilfish": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold",
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Qwilfish [Hisuian]": {
+    "valid_spawns": [
+      "cold",
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Scizor": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Shuckle": {
+    "valid_spawns": [
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Heracross": {
+    "valid_spawns": [
+      "aether",
+      "crystal canyon",
+      "forest",
+      "jungle",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Sneasel": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Sneasel [Hisuian]": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "taiga",
+      "volcanic"
+    ]
+  },
+  "Teddiursa": {
+    "valid_spawns": [
+      "aether",
+      "crystal canyon",
+      "floral meadow",
+      "forest",
+      "mountain",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Ursaring": {
+    "valid_spawns": [
+      "aether",
+      "crystal canyon",
+      "floral meadow",
+      "forest",
+      "mountain",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Slugma": {
+    "valid_spawns": [
+      "nether",
+      "nether basalt",
+      "nether wasteland",
+      "overworld",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Magcargo": {
+    "valid_spawns": [
+      "nether",
+      "nether basalt",
+      "nether wasteland",
+      "overworld",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Swinub": {
+    "valid_spawns": [
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Piloswine": {
+    "valid_spawns": [
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Corsola": {
+    "valid_spawns": [
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "warm ocean"
+    ]
+  },
+  "Corsola [Galarian]": {
+    "valid_spawns": [
+      "beach",
+      "nether quartz",
+      "overworld",
+      "warm ocean",
+      "warped desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Remoraid": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Octillery": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Delibird": {
+    "valid_spawns": [
+      "aether",
+      "peak"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Mantine": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Skarmory": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "sky"
+    ],
+    "excluded_spawns": []
+  },
+  "Houndour": {
+    "valid_spawns": [
+      "badlands",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Houndoom": {
+    "valid_spawns": [
+      "badlands",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Kingdra": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Phanpy": {
+    "valid_spawns": [
+      "badlands",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Donphan": {
+    "valid_spawns": [
+      "badlands",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Porygon2": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Stantler": {
+    "valid_spawns": [
+      "aether",
+      "snowy forest",
+      "snowy taiga",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Smeargle": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Tyrogue": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Hitmontop": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Smoochum": {
+    "valid_spawns": [
+      "freezing"
+    ],
+    "excluded_spawns": []
+  },
+  "Elekid": {
+    "valid_spawns": [
+      "hills",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Magby": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Miltank": {
+    "valid_spawns": [
+      "grassland",
+      "mushroom fields"
+    ],
+    "excluded_spawns": []
+  },
+  "Blissey": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Larvitar": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Pupitar": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Tyranitar": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Treecko": {
+    "valid_spawns": [
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Grovyle": {
+    "valid_spawns": [
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Sceptile": {
+    "valid_spawns": [
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Torchic": {
+    "valid_spawns": [
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Combusken": {
+    "valid_spawns": [
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Blaziken": {
+    "valid_spawns": [
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Mudkip": {
+    "valid_spawns": [
+      "badlands",
+      "forest",
+      "jungle",
+      "lush",
+      "mushroom",
+      "overworld",
+      "savanna",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Marshtomp": {
+    "valid_spawns": [
+      "badlands",
+      "forest",
+      "jungle",
+      "lush",
+      "mushroom",
+      "overworld",
+      "savanna",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Swampert": {
+    "valid_spawns": [
+      "badlands",
+      "forest",
+      "jungle",
+      "lush",
+      "mushroom",
+      "overworld",
+      "savanna",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Poochyena": {
+    "valid_spawns": [
+      "badlands",
+      "overworld",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Mightyena": {
+    "valid_spawns": [
+      "badlands",
+      "overworld",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Zigzagoon": {
+    "valid_spawns": [
+      "skyroot forest",
+      "skyroot woodland",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Zigzagoon [Galarian]": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Linoone": {
+    "valid_spawns": [
+      "skyroot forest",
+      "skyroot woodland",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Linoone [Galarian]": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Lotad": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Lombre": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Ludicolo": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Seedot": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Nuzleaf": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Shiftry": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Taillow": {
+    "valid_spawns": [
+      "aether",
+      "sky",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Swellow": {
+    "valid_spawns": [
+      "aether",
+      "sky",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Wingull": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Pelipper": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Ralts": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Kirlia": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Gardevoir": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Surskit": {
+    "valid_spawns": [
+      "bumblezone",
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Masquerain": {
+    "valid_spawns": [
+      "bumblezone",
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Shroomish": {
+    "valid_spawns": [
+      "forest",
+      "mushroom",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Breloom": {
+    "valid_spawns": [
+      "forest",
+      "mushroom",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Slakoth": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Vigoroth": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Slaking": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Nincada": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Ninjask": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Shedinja": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Whismur": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Loudred": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Exploud": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Makuhita": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Hariyama": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Azurill": {
+    "valid_spawns": [
+      "floral",
+      "hills",
+      "magical",
+      "river",
+      "snowy forest",
+      "taiga",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Nosepass": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Sableye": {
+    "valid_spawns": [
+      "aether",
+      "crystal canyon",
+      "crystalline chasm",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Mawile": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Aron": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Lairon": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Aggron": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Meditite": {
+    "valid_spawns": [
+      "overworld",
+      "peak"
+    ],
+    "excluded_spawns": []
+  },
+  "Medicham": {
+    "valid_spawns": [
+      "overworld",
+      "peak"
+    ],
+    "excluded_spawns": []
+  },
+  "Electrike": {
+    "valid_spawns": [
+      "grassland",
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Manectric": {
+    "valid_spawns": [
+      "grassland",
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Plusle": {
+    "valid_spawns": [
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Minun": {
+    "valid_spawns": [
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Volbeat": {
+    "valid_spawns": [
+      "bumblezone",
+      "floral meadow",
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Illumise": {
+    "valid_spawns": [
+      "bumblezone",
+      "floral meadow",
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Roselia": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Carvanha": {
+    "valid_spawns": [
+      "jungle",
+      "ocean",
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Sharpedo": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Wailmer": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Wailord": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Numel": {
+    "valid_spawns": [
+      "badlands",
+      "nether overgrowth",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Camerupt": {
+    "valid_spawns": [
+      "badlands",
+      "nether overgrowth",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Torkoal": {
+    "valid_spawns": [
+      "mountain",
+      "nether basalt",
+      "overworld",
+      "thermal"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "mountain",
+      "thermal"
+    ]
+  },
+  "Spoink": {
+    "valid_spawns": [
+      "hills",
+      "nether fungus"
+    ],
+    "excluded_spawns": []
+  },
+  "Grumpig": {
+    "valid_spawns": [
+      "hills",
+      "nether fungus"
+    ],
+    "excluded_spawns": []
+  },
+  "Spinda": {
+    "valid_spawns": [
+      "bamboo",
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Trapinch": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Vibrava": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Flygon": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Cacnea": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Cacturne": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Swablu": {
+    "valid_spawns": [
+      "overworld",
+      "peak",
+      "sky",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "peak",
+      "sky",
+      "volcanic"
+    ]
+  },
+  "Altaria": {
+    "valid_spawns": [
+      "overworld",
+      "peak",
+      "sky",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "peak",
+      "sky",
+      "volcanic"
+    ]
+  },
+  "Lunatone": {
+    "valid_spawns": [
+      "dripstone",
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Solrock": {
+    "valid_spawns": [
+      "dripstone",
+      "mountain",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Barboach": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Whiscash": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "mushroom",
+      "overworld",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Corphish": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Crawdaunt": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Baltoy": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Claydol": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Lileep": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Cradily": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Anorith": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Armaldo": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Feebas": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "coast",
+      "ocean"
+    ]
+  },
+  "Milotic": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "coast",
+      "ocean"
+    ]
+  },
+  "Kecleon": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Shuppet": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Banette": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Duskull": {
+    "valid_spawns": [
+      "nether soul sand",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Dusclops": {
+    "valid_spawns": [
+      "nether soul sand",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Tropius": {
+    "valid_spawns": [
+      "aether",
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Chimecho": {
+    "valid_spawns": [
+      "forest",
+      "magical",
+      "mountain",
+      "overworld",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Absol": {
+    "valid_spawns": [
+      "mountain",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Wynaut": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Snorunt": {
+    "valid_spawns": [
+      "glacial",
+      "nether frozen",
+      "overworld",
+      "snowy",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Glalie": {
+    "valid_spawns": [
+      "glacial",
+      "nether frozen",
+      "snowy",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Spheal": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Sealeo": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Walrein": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Clamperl": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Huntail": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Gorebyss": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld",
+      "warm ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Relicanth": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep ocean",
+      "lush"
+    ]
+  },
+  "Luvdisc": {
+    "valid_spawns": [
+      "warm ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Bagon": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "peak"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Shelgon": {
+    "valid_spawns": [
+      "aether",
+      "dripstone"
+    ],
+    "excluded_spawns": []
+  },
+  "Salamence": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "peak",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Beldum": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "end",
+      "howling constructs",
+      "peak"
+    ],
+    "excluded_spawns": []
+  },
+  "Metang": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "end",
+      "howling constructs",
+      "peak"
+    ],
+    "excluded_spawns": []
+  },
+  "Metagross": {
+    "valid_spawns": [
+      "aether",
+      "dripstone",
+      "end",
+      "howling constructs",
+      "peak"
+    ],
+    "excluded_spawns": []
+  },
+  "Turtwig": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Grotle": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Torterra": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Chimchar": {
+    "valid_spawns": [
+      "mountain",
+      "nether forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Monferno": {
+    "valid_spawns": [
+      "mountain",
+      "nether forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Infernape": {
+    "valid_spawns": [
+      "mountain",
+      "nether forest"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Piplup": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean",
+      "frozen river",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Prinplup": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean",
+      "frozen river",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Empoleon": {
+    "valid_spawns": [
+      "cold ocean",
+      "frozen ocean",
+      "frozen river",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Starly": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Staravia": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Staraptor": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Bidoof": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Bibarel": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Kricketot": {
+    "valid_spawns": [
+      "forest",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Kricketune": {
+    "valid_spawns": [
+      "forest",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Shinx": {
+    "valid_spawns": [
+      "desert",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Luxio": {
+    "valid_spawns": [
+      "desert",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Luxray": {
+    "valid_spawns": [
+      "desert",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Budew": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Roserade": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Cranidos": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Rampardos": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Shieldon": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Bastiodon": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Combee": {
+    "valid_spawns": [
+      "aether",
+      "bumblezone",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Vespiquen": {
+    "valid_spawns": [
+      "aether",
+      "bumblezone",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Pachirisu": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Buizel": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "hills",
+      "jungle",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Floatzel": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "hills",
+      "jungle",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Shellos": {
+    "valid_spawns": [
+      "beach",
+      "cold ocean",
+      "frozen ocean",
+      "lukewarm ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Gastrodon": {
+    "valid_spawns": [
+      "beach",
+      "cold ocean",
+      "frozen ocean",
+      "lukewarm ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Ambipom": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Drifloon": {
+    "valid_spawns": [
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Drifblim": {
+    "valid_spawns": [
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Buneary": {
+    "valid_spawns": [
+      "forest",
+      "hills",
+      "snowy forest",
+      "snowy taiga",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Lopunny": {
+    "valid_spawns": [
+      "forest",
+      "hills",
+      "snowy forest",
+      "snowy taiga",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Mismagius": {
+    "valid_spawns": [
+      "nether warped",
+      "overworld",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Honchkrow": {
+    "valid_spawns": [
+      "sky",
+      "spooky",
+      "swamp",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Glameow": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Purugly": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Chingling": {
+    "valid_spawns": [
+      "forest",
+      "magical",
+      "mountain",
+      "overworld",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Bronzor": {
+    "valid_spawns": [
+      "howling constructs",
+      "jungle",
+      "overworld",
+      "peak"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Bronzong": {
+    "valid_spawns": [
+      "howling constructs",
+      "jungle",
+      "overworld",
+      "peak"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Bonsly": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Mime Jr.": {
+    "valid_spawns": [
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Happiny": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Chatot": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Spiritomb": {
+    "valid_spawns": [
+      "deep dark",
+      "desert",
+      "howling constructs",
+      "jungle",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gible": {
+    "valid_spawns": [
+      "aether",
+      "badlands",
+      "mountain",
+      "overworld",
+      "thermal"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "deep dark",
+      "mountain",
+      "thermal"
+    ]
+  },
+  "Gabite": {
+    "valid_spawns": [
+      "aether",
+      "badlands",
+      "mountain",
+      "overworld",
+      "thermal"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "deep dark",
+      "mountain",
+      "thermal"
+    ]
+  },
+  "Garchomp": {
+    "valid_spawns": [
+      "aether",
+      "badlands",
+      "mountain",
+      "overworld",
+      "thermal"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "deep dark",
+      "mountain",
+      "thermal"
+    ]
+  },
+  "Munchlax": {
+    "valid_spawns": [
+      "aether",
+      "forest",
+      "hills",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Riolu": {
+    "valid_spawns": [
+      "aether",
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Lucario": {
+    "valid_spawns": [
+      "aether",
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Hippopotas": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Hippowdon": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Skorupi": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Drapion": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Croagunk": {
+    "valid_spawns": [
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Toxicroak": {
+    "valid_spawns": [
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Carnivine": {
+    "valid_spawns": [
+      "lush",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Finneon": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Lumineon": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Mantyke": {
+    "valid_spawns": [
+      "lukewarm ocean",
+      "ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "cold ocean",
+      "frozen ocean"
+    ]
+  },
+  "Weavile": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Magnezone": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Lickilicky": {
+    "valid_spawns": [
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Rhyperior": {
+    "valid_spawns": [
+      "mountain",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "cold"
+    ]
+  },
+  "Tangrowth": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Electivire": {
+    "valid_spawns": [
+      "hills",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Magmortar": {
+    "valid_spawns": [
+      "hills",
+      "nether basalt",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Togekiss": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "magical",
+      "sky",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "plains",
+      "spooky"
+    ]
+  },
+  "Yanmega": {
+    "valid_spawns": [
+      "aether",
+      "bumblezone",
+      "freshwater",
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "lush"
+    ]
+  },
+  "Leafeon": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Glaceon": {
+    "valid_spawns": [
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gliscor": {
+    "valid_spawns": [
+      "badlands",
+      "nether mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Mamoswine": {
+    "valid_spawns": [
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Porygon-Z": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gallade": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow",
+      "snowy forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Probopass": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Dusknoir": {
+    "valid_spawns": [
+      "nether soul sand",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Froslass": {
+    "valid_spawns": [
+      "glacial",
+      "nether frozen",
+      "overworld",
+      "snowy",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Snivy": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Servine": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Serperior": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Tepig": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether overgrowth",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Pignite": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether overgrowth",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Emboar": {
+    "valid_spawns": [
+      "nether crimson",
+      "nether overgrowth",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Oshawott": {
+    "valid_spawns": [
+      "beach",
+      "coast",
+      "cold ocean",
+      "ocean",
+      "snowy beach",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "beach",
+      "cold",
+      "freezing"
+    ]
+  },
+  "Dewott": {
+    "valid_spawns": [
+      "beach",
+      "coast",
+      "cold ocean",
+      "ocean",
+      "snowy beach",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "beach",
+      "cold",
+      "freezing"
+    ]
+  },
+  "Samurott": {
+    "valid_spawns": [
+      "beach",
+      "ocean",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "cold",
+      "freezing"
+    ]
+  },
+  "Samurott [Hisuian]": {
+    "valid_spawns": [
+      "coast",
+      "cold ocean",
+      "snowy beach"
+    ],
+    "excluded_spawns": [
+      "beach"
+    ]
+  },
+  "Patrat": {
+    "valid_spawns": [
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Watchog": {
+    "valid_spawns": [
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Lillipup": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "desert"
+    ]
+  },
+  "Herdier": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "desert"
+    ]
+  },
+  "Stoutland": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "desert"
+    ]
+  },
+  "Purrloin": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "savanna",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "taiga"
+    ]
+  },
+  "Liepard": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "savanna",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "taiga"
+    ]
+  },
+  "Pansage": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Simisage": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "skyroot forest",
+      "skyroot woodland",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Pansear": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Simisear": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Panpour": {
+    "valid_spawns": [
+      "jungle",
+      "river",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Simipour": {
+    "valid_spawns": [
+      "jungle",
+      "river",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Munna": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Musharna": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Pidove": {
+    "valid_spawns": [
+      "mountain",
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "tundra",
+      "volcanic"
+    ]
+  },
+  "Tranquill": {
+    "valid_spawns": [
+      "mountain",
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "tundra",
+      "volcanic"
+    ]
+  },
+  "Unfezant": {
+    "valid_spawns": [
+      "mountain",
+      "overworld",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "tundra",
+      "volcanic"
+    ]
+  },
+  "Blitzle": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Zebstrika": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Roggenrola": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Boldore": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Gigalith": {
+    "valid_spawns": [
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Woobat": {
+    "valid_spawns": [
+      "jungle",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Swoobat": {
+    "valid_spawns": [
+      "jungle",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Drilbur": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Excadrill": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Timburr": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "sandy",
+      "tundra"
+    ]
+  },
+  "Gurdurr": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "sandy",
+      "tundra"
+    ]
+  },
+  "Conkeldurr": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "sandy",
+      "tundra"
+    ]
+  },
+  "Sewaddle": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Swadloon": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Leavanny": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Venipede": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "lush",
+      "nether forest",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Whirlipede": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "lush",
+      "nether forest",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Scolipede": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "lush",
+      "nether forest",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Cottonee": {
+    "valid_spawns": [
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Whimsicott": {
+    "valid_spawns": [
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Petilil": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "forest",
+      "hills",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "hills",
+      "spooky"
+    ]
+  },
+  "Lilligant": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "forest",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "hills",
+      "spooky"
+    ]
+  },
+  "Lilligant [Hisuian]": {
+    "valid_spawns": [
+      "aether",
+      "hills"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Basculin": {
+    "valid_spawns": [
+      "arid",
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle",
+      "mountain",
+      "snowy forest",
+      "taiga",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Sandile": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Krokorok": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Krookodile": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Darumaka": {
+    "valid_spawns": [
+      "desert",
+      "jungle",
+      "nether"
+    ],
+    "excluded_spawns": [
+      "nether frozen",
+      "nether quartz",
+      "nether toxic"
+    ]
+  },
+  "Darmanitan": {
+    "valid_spawns": [
+      "desert",
+      "jungle",
+      "nether"
+    ],
+    "excluded_spawns": [
+      "nether frozen",
+      "nether quartz",
+      "nether toxic"
+    ]
+  },
+  "Maractus": {
+    "valid_spawns": [
+      "badlands",
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Dwebble": {
+    "valid_spawns": [
+      "badlands"
+    ],
+    "excluded_spawns": []
+  },
+  "Crustle": {
+    "valid_spawns": [
+      "badlands"
+    ],
+    "excluded_spawns": []
+  },
+  "Scraggy": {
+    "valid_spawns": [
+      "arid",
+      "badlands"
+    ],
+    "excluded_spawns": [
+      "badlands"
+    ]
+  },
+  "Scrafty": {
+    "valid_spawns": [
+      "arid",
+      "badlands"
+    ],
+    "excluded_spawns": [
+      "badlands"
+    ]
+  },
+  "Sigilyph": {
+    "valid_spawns": [
+      "aether",
+      "badlands",
+      "desert",
+      "end",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Yamask": {
+    "valid_spawns": [
+      "desert",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Cofagrigus": {
+    "valid_spawns": [
+      "desert",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Tirtouga": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Carracosta": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Archen": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Archeops": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Trubbish": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Garbodor": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Zorua": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Zorua [Hisuian]": {
+    "valid_spawns": [
+      "nether",
+      "snowy forest",
+      "snowy taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Zoroark": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Zoroark [Hisuian]": {
+    "valid_spawns": [
+      "nether",
+      "snowy forest",
+      "snowy taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Minccino": {
+    "valid_spawns": [
+      "magical",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "sandy",
+      "tundra"
+    ]
+  },
+  "Cinccino": {
+    "valid_spawns": [
+      "magical",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "sandy",
+      "tundra"
+    ]
+  },
+  "Gothita": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gothorita": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gothitelle": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Solosis": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Duosion": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Reuniclus": {
+    "valid_spawns": [
+      "end",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Ducklett": {
+    "valid_spawns": [
+      "aether",
+      "freshwater",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Swanna": {
+    "valid_spawns": [
+      "aether",
+      "freshwater",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Vanillite": {
+    "valid_spawns": [
+      "freezing",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Vanillish": {
+    "valid_spawns": [
+      "freezing",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Vanilluxe": {
+    "valid_spawns": [
+      "freezing",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Deerling": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "forest",
+      "hills",
+      "plains",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "savanna"
+    ]
+  },
+  "Sawsbuck": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "forest",
+      "hills",
+      "plains",
+      "snowy forest",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "savanna"
+    ]
+  },
+  "Emolga": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Karrablast": {
+    "valid_spawns": [
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Escavalier": {
+    "valid_spawns": [
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Foongus": {
+    "valid_spawns": [
+      "mushroom"
+    ],
+    "excluded_spawns": []
+  },
+  "Amoonguss": {
+    "valid_spawns": [
+      "mushroom"
+    ],
+    "excluded_spawns": []
+  },
+  "Frillish": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Jellicent": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Alomomola": {
+    "valid_spawns": [
+      "deep ocean",
+      "ocean"
+    ],
+    "excluded_spawns": [
+      "frozen ocean"
+    ]
+  },
+  "Joltik": {
+    "valid_spawns": [
+      "badlands",
+      "jungle",
+      "overworld",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Galvantula": {
+    "valid_spawns": [
+      "badlands",
+      "jungle",
+      "overworld",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Ferroseed": {
+    "valid_spawns": [
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Ferrothorn": {
+    "valid_spawns": [
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Klink": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Klang": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Klinklang": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Tynamo": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Eelektrik": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Eelektross": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Elgyem": {
+    "valid_spawns": [
+      "end",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Beheeyem": {
+    "valid_spawns": [
+      "end",
+      "howling constructs",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Litwick": {
+    "valid_spawns": [
+      "nether soul fire",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Lampent": {
+    "valid_spawns": [
+      "nether soul fire",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Chandelure": {
+    "valid_spawns": [
+      "nether soul fire",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Axew": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Fraxure": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Haxorus": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Cubchoo": {
+    "valid_spawns": [
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Beartic": {
+    "valid_spawns": [
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Cryogonal": {
+    "valid_spawns": [
+      "freezing",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Shelmet": {
+    "valid_spawns": [
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Accelgor": {
+    "valid_spawns": [
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Stunfisk": {
+    "valid_spawns": [
+      "arid",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Stunfisk [Galarian]": {
+    "valid_spawns": [
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Mienfoo": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "hills"
+    ]
+  },
+  "Mienshao": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "hills"
+    ]
+  },
+  "Druddigon": {
+    "valid_spawns": [
+      "mountain",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark",
+      "mountain"
+    ]
+  },
+  "Golett": {
+    "valid_spawns": [
+      "deep dark",
+      "desert",
+      "howling constructs",
+      "jungle",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Golurk": {
+    "valid_spawns": [
+      "deep dark",
+      "desert",
+      "howling constructs",
+      "jungle",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Bouffalant": {
+    "valid_spawns": [
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Rufflet": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "mountain",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "hills",
+      "volcanic"
+    ]
+  },
+  "Braviary": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "sky"
+    ],
+    "excluded_spawns": []
+  },
+  "Braviary [Hisuian]": {
+    "valid_spawns": [
+      "mountain",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "hills",
+      "volcanic"
+    ]
+  },
+  "Heatmor": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "nether mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Durant": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "nether mountain"
+    ],
+    "excluded_spawns": []
+  },
+  "Deino": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Zweilous": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Hydreigon": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Larvesta": {
+    "valid_spawns": [
+      "aether",
+      "desert",
+      "jungle",
+      "nether crimson",
+      "nether forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Volcarona": {
+    "valid_spawns": [
+      "aether",
+      "desert",
+      "jungle",
+      "nether crimson",
+      "nether forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Chespin": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Quilladin": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Chesnaught": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Fennekin": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Braixen": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Delphox": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Froakie": {
+    "valid_spawns": [
+      "bamboo",
+      "freshwater",
+      "jungle"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Frogadier": {
+    "valid_spawns": [
+      "bamboo",
+      "freshwater",
+      "jungle"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Greninja": {
+    "valid_spawns": [
+      "bamboo",
+      "freshwater",
+      "jungle"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Bunnelby": {
+    "valid_spawns": [
+      "hills",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Diggersby": {
+    "valid_spawns": [
+      "hills",
+      "temperate"
+    ],
+    "excluded_spawns": []
+  },
+  "Fletchling": {
+    "valid_spawns": [
+      "forest",
+      "nether forest",
+      "nether fungus",
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "nether warped"
+    ]
+  },
+  "Fletchinder": {
+    "valid_spawns": [
+      "forest",
+      "nether forest",
+      "nether fungus",
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "nether warped"
+    ]
+  },
+  "Talonflame": {
+    "valid_spawns": [
+      "forest",
+      "nether forest",
+      "nether fungus",
+      "sky",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "nether warped"
+    ]
+  },
+  "Scatterbug": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "plains",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Spewpa": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "plains",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Vivillon": {
+    "valid_spawns": [
+      "aether",
+      "badlands",
+      "cherry blossom",
+      "coast",
+      "desert",
+      "floral",
+      "floral meadow",
+      "forest",
+      "freshwater",
+      "frozen ocean",
+      "glacial",
+      "jungle",
+      "magical",
+      "mountain",
+      "mushroom",
+      "ocean",
+      "overworld",
+      "plains",
+      "savanna",
+      "sky",
+      "snowy forest",
+      "spooky",
+      "sunflower plains",
+      "taiga",
+      "tropical island",
+      "tundra",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "cherry blossom",
+      "cold ocean",
+      "desert",
+      "floral",
+      "forest",
+      "frozen ocean",
+      "jungle",
+      "lukewarm ocean",
+      "magical",
+      "mountain",
+      "mushroom",
+      "plains",
+      "savanna",
+      "spooky",
+      "sunflower plains",
+      "swamp",
+      "temperate ocean",
+      "tropical island",
+      "volcanic",
+      "warm ocean"
+    ]
+  },
+  "Flabebe": {
+    "valid_spawns": [
+      "aether",
+      "floral meadow",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Floette": {
+    "valid_spawns": [
+      "aether",
+      "floral meadow",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Florges": {
+    "valid_spawns": [
+      "aether",
+      "floral meadow",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Skiddo": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Gogoat": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Furfrou": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Espurr": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Meowstic": {
+    "valid_spawns": [
+      "arid",
+      "freezing",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "freezing"
+    ]
+  },
+  "Honedge": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Doublade": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Aegislash": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Inkay": {
+    "valid_spawns": [
+      "coast",
+      "end",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "beach"
+    ]
+  },
+  "Malamar": {
+    "valid_spawns": [
+      "coast",
+      "end",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "beach"
+    ]
+  },
+  "Binacle": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Barbaracle": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Skrelp": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Dragalge": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Clauncher": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Clawitzer": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Tyrunt": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Tyrantrum": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Amaura": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Aurorus": {
+    "valid_spawns": [
+      "lush"
+    ],
+    "excluded_spawns": []
+  },
+  "Sylveon": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "overworld",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "spooky"
+    ]
+  },
+  "Hawlucha": {
+    "valid_spawns": [
+      "badlands",
+      "jungle",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Dedenne": {
+    "valid_spawns": [
+      "savanna",
+      "shrubland"
+    ],
+    "excluded_spawns": []
+  },
+  "Carbink": {
+    "valid_spawns": [
+      "crystal canyon",
+      "nether quartz",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Goomy": {
+    "valid_spawns": [
+      "dripstone",
+      "lush",
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "coast",
+      "dripstone",
+      "freezing",
+      "lush",
+      "ocean",
+      "swamp"
+    ]
+  },
+  "Sliggoo": {
+    "valid_spawns": [
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "coast",
+      "freezing",
+      "ocean",
+      "swamp"
+    ]
+  },
+  "Sliggoo [Hisuian]": {
+    "valid_spawns": [
+      "dripstone",
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "dripstone",
+      "lush"
+    ]
+  },
+  "Goodra": {
+    "valid_spawns": [
+      "overworld",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "coast",
+      "freezing",
+      "ocean",
+      "swamp"
+    ]
+  },
+  "Goodra [Hisuian]": {
+    "valid_spawns": [
+      "dripstone",
+      "lush",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "dripstone",
+      "lush"
+    ]
+  },
+  "Klefki": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Phantump": {
+    "valid_spawns": [
+      "forest",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Trevenant": {
+    "valid_spawns": [
+      "forest",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Pumpkaboo": {
+    "valid_spawns": [
+      "nether overgrowth",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gourgeist": {
+    "valid_spawns": [
+      "nether overgrowth",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Bergmite": {
+    "valid_spawns": [
+      "frozen ocean",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Avalugg": {
+    "valid_spawns": [
+      "frozen ocean",
+      "nether frozen"
+    ],
+    "excluded_spawns": []
+  },
+  "Noibat": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Noivern": {
+    "valid_spawns": [
+      "aether",
+      "deep dark",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Rowlet": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland",
+      "snowy forest",
+      "snowy taiga",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Dartrix": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland",
+      "snowy forest",
+      "snowy taiga",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Decidueye": {
+    "valid_spawns": [
+      "forest",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Decidueye [Hisuian]": {
+    "valid_spawns": [
+      "snowy forest",
+      "snowy taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Litten": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Torracat": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Incineroar": {
+    "valid_spawns": [
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Popplio": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Brionne": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Primarina": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Pikipek": {
+    "valid_spawns": [
+      "jungle",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Trumbeak": {
+    "valid_spawns": [
+      "jungle",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Toucannon": {
+    "valid_spawns": [
+      "jungle",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Yungoos": {
+    "valid_spawns": [
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Gumshoos": {
+    "valid_spawns": [
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Crabrawler": {
+    "valid_spawns": [
+      "coast"
+    ],
+    "excluded_spawns": []
+  },
+  "Crabominable": {
+    "valid_spawns": [
+      "peak"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Cutiefly": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "overworld",
+      "pollinated fields"
+    ],
+    "excluded_spawns": [
+      "floral"
+    ]
+  },
+  "Ribombee": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "overworld",
+      "pollinated fields"
+    ],
+    "excluded_spawns": [
+      "floral"
+    ]
+  },
+  "Wishiwashi": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Mareanie": {
+    "valid_spawns": [
+      "coast",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Toxapex": {
+    "valid_spawns": [
+      "coast",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Mudbray": {
+    "valid_spawns": [
+      "badlands",
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Mudsdale": {
+    "valid_spawns": [
+      "badlands",
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Dewpider": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Araquanid": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Fomantis": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Lurantis": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Morelull": {
+    "valid_spawns": [
+      "aether",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Shiinotic": {
+    "valid_spawns": [
+      "aether",
+      "jungle",
+      "lush",
+      "magical",
+      "mushroom",
+      "nether fungus",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "lush"
+    ]
+  },
+  "Salandit": {
+    "valid_spawns": [
+      "badlands",
+      "mountain",
+      "nether basalt",
+      "nether desert",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Salazzle": {
+    "valid_spawns": [
+      "badlands",
+      "mountain",
+      "nether basalt",
+      "nether desert",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Stufful": {
+    "valid_spawns": [
+      "bamboo"
+    ],
+    "excluded_spawns": []
+  },
+  "Bewear": {
+    "valid_spawns": [
+      "bamboo"
+    ],
+    "excluded_spawns": []
+  },
+  "Bounsweet": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Steenee": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Tsareena": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Comfey": {
+    "valid_spawns": [
+      "aether",
+      "floral",
+      "floral meadow",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Wimpod": {
+    "valid_spawns": [
+      "coast",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Golisopod": {
+    "valid_spawns": [
+      "coast",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Sandygast": {
+    "valid_spawns": [
+      "beach"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Palossand": {
+    "valid_spawns": [
+      "beach"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Pyukumuku": {
+    "valid_spawns": [
+      "beach",
+      "ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "frozen ocean",
+      "warm ocean"
+    ]
+  },
+  "Komala": {
+    "valid_spawns": [
+      "savanna",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Turtonator": {
+    "valid_spawns": [
+      "nether basalt",
+      "thermal",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Togedemaru": {
+    "valid_spawns": [
+      "hills"
+    ],
+    "excluded_spawns": []
+  },
+  "Mimikyu": {
+    "valid_spawns": [
+      "overworld",
+      "spooky"
+    ],
+    "excluded_spawns": []
+  },
+  "Bruxish": {
+    "valid_spawns": [
+      "warm ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Drampa": {
+    "valid_spawns": [
+      "peak",
+      "sky"
+    ],
+    "excluded_spawns": []
+  },
+  "Dhelmise": {
+    "valid_spawns": [
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Jangmo-o": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Hakamo-o": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Kommo-o": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Grookey": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Thwackey": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Rillaboom": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Scorbunny": {
+    "valid_spawns": [
+      "grassland",
+      "skyroot grove",
+      "skyroot meadow",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Raboot": {
+    "valid_spawns": [
+      "grassland",
+      "skyroot grove",
+      "skyroot meadow",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Cinderace": {
+    "valid_spawns": [
+      "grassland",
+      "skyroot grove",
+      "skyroot meadow",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Sobble": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Drizzile": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Inteleon": {
+    "valid_spawns": [
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Skwovet": {
+    "valid_spawns": [
+      "forest",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Greedent": {
+    "valid_spawns": [
+      "forest",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Rookidee": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Corvisquire": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Corviknight": {
+    "valid_spawns": [
+      "hills",
+      "sky",
+      "spooky",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "arid"
+    ]
+  },
+  "Nickit": {
+    "valid_spawns": [
+      "forest",
+      "plains",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Thievul": {
+    "valid_spawns": [
+      "forest",
+      "plains",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Gossifleur": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Eldegoss": {
+    "valid_spawns": [
+      "floral",
+      "floral meadow",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": []
+  },
+  "Wooloo": {
+    "valid_spawns": [
+      "mountain",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Dubwool": {
+    "valid_spawns": [
+      "mountain",
+      "plains",
+      "skyroot grove",
+      "skyroot meadow"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Chewtle": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Drednaw": {
+    "valid_spawns": [
+      "arid",
+      "freshwater",
+      "hills",
+      "jungle",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Yamper": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Boltund": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Silicobra": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Sandaconda": {
+    "valid_spawns": [
+      "desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Cramorant": {
+    "valid_spawns": [
+      "aether",
+      "coast",
+      "island",
+      "ocean",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Arrokuda": {
+    "valid_spawns": [
+      "aether",
+      "coast",
+      "ocean",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Barraskewda": {
+    "valid_spawns": [
+      "aether",
+      "coast",
+      "ocean",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Toxel": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Toxtricity": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Sizzlipede": {
+    "valid_spawns": [
+      "badlands",
+      "nether basalt",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Centiskorch": {
+    "valid_spawns": [
+      "badlands",
+      "nether basalt",
+      "nether wasteland",
+      "volcanic"
+    ],
+    "excluded_spawns": []
+  },
+  "Clobbopus": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "frozen ocean"
+    ]
+  },
+  "Grapploct": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "frozen ocean"
+    ]
+  },
+  "Sinistea": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "mountain",
+      "overworld",
+      "plains",
+      "snowy",
+      "spooky",
+      "taiga",
+      "tundra"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "bamboo",
+      "cherry blossom",
+      "island",
+      "jungle",
+      "ocean",
+      "swamp",
+      "thermal",
+      "volcanic"
+    ]
+  },
+  "Polteageist": {
+    "valid_spawns": [
+      "floral",
+      "magical",
+      "mountain",
+      "overworld",
+      "plains",
+      "snowy",
+      "spooky",
+      "taiga",
+      "tundra"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "bamboo",
+      "cherry blossom",
+      "island",
+      "jungle",
+      "ocean",
+      "swamp",
+      "thermal",
+      "volcanic"
+    ]
+  },
+  "Hatenna": {
+    "valid_spawns": [
+      "magical",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Hattrem": {
+    "valid_spawns": [
+      "magical",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Hatterene": {
+    "valid_spawns": [
+      "magical",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": []
+  },
+  "Impidimp": {
+    "valid_spawns": [
+      "magical",
+      "nether forest",
+      "nether warped"
+    ],
+    "excluded_spawns": [
+      "nether desert"
+    ]
+  },
+  "Morgrem": {
+    "valid_spawns": [
+      "magical",
+      "nether forest",
+      "nether warped"
+    ],
+    "excluded_spawns": [
+      "nether desert"
+    ]
+  },
+  "Grimmsnarl": {
+    "valid_spawns": [
+      "magical",
+      "nether forest",
+      "nether warped"
+    ],
+    "excluded_spawns": [
+      "nether desert"
+    ]
+  },
+  "Obstagoon": {
+    "valid_spawns": [
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Perrserker": {
+    "valid_spawns": [
+      "freezing",
+      "taiga"
+    ],
+    "excluded_spawns": []
+  },
+  "Cursola": {
+    "valid_spawns": [
+      "beach",
+      "nether quartz",
+      "overworld",
+      "warm ocean",
+      "warped desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Sirfetch'd": {
+    "valid_spawns": [
+      "forest"
+    ],
+    "excluded_spawns": []
+  },
+  "Mr. Rime": {
+    "valid_spawns": [
+      "freezing"
+    ],
+    "excluded_spawns": []
+  },
+  "Milcery": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Alcremie": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Falinks": {
+    "valid_spawns": [
+      "badlands",
+      "nether"
+    ],
+    "excluded_spawns": []
+  },
+  "Pincurchin": {
+    "valid_spawns": [
+      "coast",
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Stonjourner": {
+    "valid_spawns": [
+      "overworld",
+      "plains"
+    ],
+    "excluded_spawns": []
+  },
+  "Eiscue": {
+    "valid_spawns": [
+      "frozen ocean",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Morpeko": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Cufant": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Copperajah": {
+    "valid_spawns": [
+      "badlands",
+      "hills",
+      "savanna"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Dreepy": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Drakloak": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Dragapult": {
+    "valid_spawns": [
+      "coast",
+      "ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Wyrdeer": {
+    "valid_spawns": [
+      "snowy forest",
+      "snowy taiga",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Kleavor": {
+    "valid_spawns": [
+      "forest",
+      "hills",
+      "skyroot forest",
+      "skyroot woodland"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "spooky"
+    ]
+  },
+  "Ursaluna": {
+    "valid_spawns": [
+      "aether",
+      "crystal canyon",
+      "floral meadow",
+      "forest",
+      "mountain",
+      "overworld",
+      "skyroot forest",
+      "skyroot woodland",
+      "taiga"
+    ],
+    "excluded_spawns": [
+      "volcanic"
+    ]
+  },
+  "Basculegion": {
+    "valid_spawns": [
+      "arid",
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle",
+      "mountain",
+      "snowy forest",
+      "taiga",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Sneasler": {
+    "valid_spawns": [
+      "mountain"
+    ],
+    "excluded_spawns": [
+      "arid",
+      "taiga",
+      "volcanic"
+    ]
+  },
+  "Overqwil": {
+    "valid_spawns": [
+      "cold",
+      "cold ocean",
+      "frozen ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Sprigatito": {
+    "valid_spawns": [
+      "floral",
+      "magical"
+    ],
+    "excluded_spawns": []
+  },
+  "Floragato": {
+    "valid_spawns": [
+      "floral",
+      "magical"
+    ],
+    "excluded_spawns": []
+  },
+  "Meowscarada": {
+    "valid_spawns": [
+      "floral",
+      "magical"
+    ],
+    "excluded_spawns": []
+  },
+  "Fuecoco": {
+    "valid_spawns": [
+      "badlands",
+      "nether wasteland"
+    ],
+    "excluded_spawns": []
+  },
+  "Crocalor": {
+    "valid_spawns": [
+      "badlands",
+      "nether wasteland"
+    ],
+    "excluded_spawns": []
+  },
+  "Skeledirge": {
+    "valid_spawns": [
+      "badlands",
+      "nether wasteland"
+    ],
+    "excluded_spawns": []
+  },
+  "Quaxly": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle",
+      "river"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Quaxwell": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle",
+      "river"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Quaquaval": {
+    "valid_spawns": [
+      "forest",
+      "freshwater",
+      "grassland",
+      "jungle",
+      "river"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Lechonk": {
+    "valid_spawns": [
+      "mushroom",
+      "nether crimson",
+      "nether fungus",
+      "nether overgrowth",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "mushroom fields",
+      "nether warped"
+    ]
+  },
+  "Oinkologne": {
+    "valid_spawns": [
+      "mushroom",
+      "nether crimson",
+      "nether fungus",
+      "nether overgrowth",
+      "swamp",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "mushroom fields",
+      "nether warped"
+    ]
+  },
+  "Tarountula": {
+    "valid_spawns": [
+      "forest",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Spidops": {
+    "valid_spawns": [
+      "forest",
+      "spooky",
+      "swamp"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Tandemaus": {
+    "valid_spawns": [
+      "aether",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "sandy"
+    ]
+  },
+  "Maushold": {
+    "valid_spawns": [
+      "aether",
+      "overworld",
+      "temperate"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "sandy"
+    ]
+  },
+  "Fidough": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Dachsbun": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Smoliv": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Dolliv": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Arboliva": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Squawkabilly": {
+    "valid_spawns": [
+      "jungle",
+      "overworld",
+      "savanna",
+      "sky",
+      "tropical island"
+    ],
+    "excluded_spawns": [
+      "freezing",
+      "sandy"
+    ]
+  },
+  "Nacli": {
+    "valid_spawns": [
+      "badlands",
+      "nether quartz"
+    ],
+    "excluded_spawns": []
+  },
+  "Naclstack": {
+    "valid_spawns": [
+      "badlands",
+      "nether quartz"
+    ],
+    "excluded_spawns": []
+  },
+  "Garganacl": {
+    "valid_spawns": [
+      "badlands",
+      "nether quartz"
+    ],
+    "excluded_spawns": []
+  },
+  "Charcadet": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Armarouge": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Ceruledge": {
+    "valid_spawns": [
+      "aether",
+      "nether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Tadbulb": {
+    "valid_spawns": [
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Bellibolt": {
+    "valid_spawns": [
+      "freshwater"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Wattrel": {
+    "valid_spawns": [
+      "coast",
+      "island",
+      "ocean",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "beach",
+      "freezing"
+    ]
+  },
+  "Kilowattrel": {
+    "valid_spawns": [
+      "coast",
+      "island",
+      "ocean",
+      "sky"
+    ],
+    "excluded_spawns": [
+      "beach",
+      "freezing"
+    ]
+  },
+  "Maschiff": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Mabosstiff": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Shroodle": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Grafaiai": {
+    "valid_spawns": [
+      "jungle",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Bramblin": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "nether desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Brambleghast": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "nether desert"
+    ],
+    "excluded_spawns": []
+  },
+  "Toedscool": {
+    "valid_spawns": [
+      "mushroom",
+      "nether fungus"
+    ],
+    "excluded_spawns": [
+      "nether warped"
+    ]
+  },
+  "Toedscruel": {
+    "valid_spawns": [
+      "mushroom",
+      "nether fungus"
+    ],
+    "excluded_spawns": [
+      "nether warped"
+    ]
+  },
+  "Klawf": {
+    "valid_spawns": [
+      "badlands"
+    ],
+    "excluded_spawns": []
+  },
+  "Capsakid": {
+    "valid_spawns": [
+      "arid",
+      "nether overgrowth"
+    ],
+    "excluded_spawns": []
+  },
+  "Scovillain": {
+    "valid_spawns": [
+      "arid",
+      "nether overgrowth"
+    ],
+    "excluded_spawns": []
+  },
+  "Rellor": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Rabsca": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Flittle": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Espathra": {
+    "valid_spawns": [
+      "arid"
+    ],
+    "excluded_spawns": []
+  },
+  "Tinkatink": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Tinkatuff": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Tinkaton": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Wiglett": {
+    "valid_spawns": [
+      "beach",
+      "lukewarm ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Wugtrio": {
+    "valid_spawns": [
+      "beach",
+      "lukewarm ocean",
+      "warm ocean"
+    ],
+    "excluded_spawns": [
+      "freezing"
+    ]
+  },
+  "Finizen": {
+    "valid_spawns": [
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Palafin": {
+    "valid_spawns": [
+      "ocean"
+    ],
+    "excluded_spawns": []
+  },
+  "Varoom": {
+    "valid_spawns": [
+      "badlands",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Revavroom": {
+    "valid_spawns": [
+      "badlands",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Cyclizar": {
+    "valid_spawns": [
+      "badlands",
+      "grassland"
+    ],
+    "excluded_spawns": []
+  },
+  "Orthworm": {
+    "valid_spawns": [
+      "badlands",
+      "desert",
+      "nether desert",
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "badlands",
+      "desert"
+    ]
+  },
+  "Glimmet": {
+    "valid_spawns": [
+      "crystal canyon",
+      "crystalline chasm",
+      "nether quartz",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Glimmora": {
+    "valid_spawns": [
+      "crystal canyon",
+      "crystalline chasm",
+      "nether quartz",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Flamigo": {
+    "valid_spawns": [
+      "aether",
+      "jungle",
+      "savanna",
+      "swamp",
+      "tropical island"
+    ],
+    "excluded_spawns": []
+  },
+  "Cetoddle": {
+    "valid_spawns": [
+      "frozen ocean",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Cetitan": {
+    "valid_spawns": [
+      "frozen ocean",
+      "glacial",
+      "tundra"
+    ],
+    "excluded_spawns": []
+  },
+  "Veluza": {
+    "valid_spawns": [
+      "ocean",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Dondozo": {
+    "valid_spawns": [
+      "bamboo",
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Tatsugiri": {
+    "valid_spawns": [
+      "bamboo",
+      "forest",
+      "jungle",
+      "swamp"
+    ],
+    "excluded_spawns": []
+  },
+  "Annihilape": {
+    "valid_spawns": [
+      "hills",
+      "jungle"
+    ],
+    "excluded_spawns": []
+  },
+  "Clodsire": {
+    "valid_spawns": [
+      "arid",
+      "muddy",
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Farigiraf": {
+    "valid_spawns": [
+      "savanna"
+    ],
+    "excluded_spawns": []
+  },
+  "Dudunsparce": {
+    "valid_spawns": [
+      "overworld"
+    ],
+    "excluded_spawns": [
+      "deep dark"
+    ]
+  },
+  "Gimmighoul [Roaming]": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Gimmighoul [Chest]": {
+    "valid_spawns": [
+      "aether",
+      "overworld"
+    ],
+    "excluded_spawns": []
+  },
+  "Poltchageist": {
+    "valid_spawns": [
+      "arid",
+      "bamboo",
+      "cherry blossom",
+      "forest",
+      "island",
+      "jungle",
+      "ocean",
+      "swamp",
+      "thermal",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "magical",
+      "spooky"
+    ]
+  },
+  "Sinistcha": {
+    "valid_spawns": [
+      "arid",
+      "bamboo",
+      "cherry blossom",
+      "forest",
+      "island",
+      "jungle",
+      "ocean",
+      "swamp",
+      "thermal",
+      "volcanic"
+    ],
+    "excluded_spawns": [
+      "magical",
+      "spooky"
+    ]
+  }
+}

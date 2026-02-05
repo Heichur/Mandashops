@@ -5,10 +5,14 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { pokemonAPI } from '@/lib/pokemonAPI'
+import EVCalculatorDetail from '@/componets/EVCalculatorDetail'
+import CompetitiveUsage from '@/componets/CompetitiveUsage'
 
 import dropsJson from '@/data/pokemon_drops.json'
+import spawnsJson from '@/data/pokemon_spawns.json'
 
 const drops = dropsJson as unknown as DropsData
+const spawns = spawnsJson as unknown as SpawnsData
 
 type DropItem = {
   item: string | null
@@ -29,6 +33,14 @@ type DropsData = Record<
   }
 >
 
+type SpawnsData = Record<
+  string,
+  {
+    valid_spawns: string[]
+    excluded_spawns: string[]
+  }
+>
+
 interface PokemonData {
   id: number
   name: string
@@ -36,9 +48,11 @@ interface PokemonData {
   weight: number
   sprites: {
     front_default: string
+    front_shiny: string
     other: {
       'official-artwork': {
         front_default: string
+        front_shiny: string 
       }
     }
   }
@@ -105,6 +119,7 @@ export default function PokemonDetailPage() {
   const [flavorText, setFlavorText] = useState<string>('Carregando descrição...')
   const [loading, setLoading] = useState(true)
   const [showMoves, setShowMoves] = useState(false)
+  const [isShiny, setIsShiny] = useState(false)
 
   useEffect(() => {
     if (params.name) {
@@ -165,6 +180,26 @@ export default function PokemonDetailPage() {
       .slice(0, 16)
   }
 
+  const getBaseStats = () => {
+    if (!pokemon) return {
+      hp: 0,
+      attack: 0,
+      defense: 0,
+      specialAttack: 0,
+      specialDefense: 0,
+      speed: 0
+    }
+
+    return {
+      hp: pokemon.stats.find(s => s.stat.name === 'hp')?.base_stat || 0,
+      attack: pokemon.stats.find(s => s.stat.name === 'attack')?.base_stat || 0,
+      defense: pokemon.stats.find(s => s.stat.name === 'defense')?.base_stat || 0,
+      specialAttack: pokemon.stats.find(s => s.stat.name === 'special-attack')?.base_stat || 0,
+      specialDefense: pokemon.stats.find(s => s.stat.name === 'special-defense')?.base_stat || 0,
+      speed: pokemon.stats.find(s => s.stat.name === 'speed')?.base_stat || 0
+    }
+  }
+
   if (loading) {
     return (
       <div className="pokepedia-loading">
@@ -180,12 +215,23 @@ export default function PokemonDetailPage() {
       </div>
     )
   }
-  const pokemonKey = pokemon.name.toLowerCase()
+  // Capitalizar primeira letra para buscar no JSON
+  const capitalizeFirstLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+  }
+  
+  const pokemonKeyLowercase = pokemon.name.toLowerCase()
+  const pokemonKeyCapitalized = capitalizeFirstLetter(pokemon.name)
 
-  const dropEntry = drops[pokemonKey]
+  const dropEntry = drops[pokemonKeyLowercase]
   
   const pokemonDrops = dropEntry?.Drops ?? []
   const spawnSpecificDrops = dropEntry?.["Spawn Specific Drops"] ?? []
+  
+  // Buscar spawns do Pokémon (usando nome capitalizado)
+  const spawnEntry = spawns[pokemonKeyCapitalized]
+  const validSpawns = spawnEntry?.valid_spawns ?? []
+  const excludedSpawns = spawnEntry?.excluded_spawns ?? []
   
   return (
     <div className="pokemon-detail-wrapper">
@@ -194,18 +240,28 @@ export default function PokemonDetailPage() {
           ← Voltar para Pokédex
         </Link>
 
-        {/* Card Principal */}
-        <div className="pokemon-detail-card">
-          <div className="pokemon-detail-header">
-            <div className="pokemon-detail-image-container">
-              <div className="pokemon-detail-image">
-                <img
-                  src={pokemon.sprites.other['official-artwork'].front_default}
-                  alt={pokemon.name}
-                />
-              </div>
-            </div>
-
+     {/* Card Principal */}
+<div className="pokemon-detail-card">
+  <div className="pokemon-detail-header">
+    <div className="pokemon-detail-image-container">
+      <button 
+        onClick={() => setIsShiny(!isShiny)}
+        className="shiny-toggle-btn"
+        title={isShiny ? "Ver versão normal" : "Ver versão shiny"}
+      >
+        ⭐
+      </button>
+      <div className="pokemon-detail-image">
+        <img
+          src={isShiny 
+            ? pokemon.sprites.other['official-artwork'].front_shiny 
+            : pokemon.sprites.other['official-artwork'].front_default
+          }
+          alt={`${pokemon.name}${isShiny ? ' (shiny)' : ''}`}
+          className={isShiny ? 'shiny-sparkle' : ''}
+        />
+      </div>
+    </div>
             <div className="pokemon-detail-info">
               <h1 className="pokemon-detail-title">
                 {pokemon.name} #{pokemon.id.toString().padStart(3, '0')}
@@ -245,6 +301,20 @@ export default function PokemonDetailPage() {
         <div className="pokemon-content-section">
           <h3 className="pokemon-section-header">📖 Sobre {pokemon.name}</h3>
           <p className="pokemon-description-text">{getFlavorText()}</p>
+        </div>
+
+        {/* Uso Competitivo */}
+        <div className="pokemon-content-section">
+          <CompetitiveUsage 
+            pokemonName={pokemon.name}
+            baseStats={getBaseStats()}
+            types={pokemon.types.map(t => t.type.name)}
+          />
+        </div>
+
+        {/* EV Calculator */}
+        <div className="pokemon-content-section">
+          <EVCalculatorDetail baseStats={getBaseStats()} />
         </div>
 
         {/* Efetividade de Tipos */}
@@ -367,9 +437,51 @@ export default function PokemonDetailPage() {
           )}
         </div>
         
+              {/* SPAWNS - NOVA SEÇÃO */}
+        <div className="pokemon-content-section spawns-section">
+          <h3 className="pokemon-section-header">🌍 Spawns</h3>
+
+          {validSpawns.length > 0 ? (
+            <>
+              {/* Valid Spawns */}
+              <div className="spawns-group">
+                <h4 className="spawns-subtitle">✅ Locais Válidos</h4>
+                <div className="spawns-grid">
+                  {validSpawns.map((spawn, i) => (
+                    <div key={i} className="spawn-item spawn-valid">
+                      <span className="spawn-icon">📍</span>
+                      <span className="spawn-name">{spawn}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Excluded Spawns */}
+              {excludedSpawns.length > 0 && (
+                <div className="spawns-group">
+                  <h4 className="spawns-subtitle">❌ Locais Excluídos</h4>
+                  <div className="spawns-grid">
+                    {excludedSpawns.map((spawn, i) => (
+                      <div key={i} className="spawn-item spawn-excluded">
+                        <span className="spawn-icon">🚫</span>
+                        <span className="spawn-name">{spawn}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="no-spawns-message">
+              <span className="no-spawns-icon">🔍</span>
+              <p>Este Pokémon não possui locais de spawn registrados no momento.</p>
+            </div>
+          )}
+        </div>
+
         {/* Drops */}
-        <div className="pokemon-content-section">
-          <h3 className="pokemon-section-header">Drops</h3>
+        <div className="pokemon-content-section drops-section">
+          <h3 className="pokemon-section-header">💰 Drops</h3>
 
           {/* Drops normais */}
           {pokemonDrops.length > 0 && (
@@ -380,7 +492,7 @@ export default function PokemonDetailPage() {
                 <div key={i} className="drop-item">
                   <span className="drop-item-name">{drop.item}</span>
                   {drop.drop && (
-                    <span className="drop-item-value"> — {drop.drop}</span>
+                    <span className="drop-item-value">— {drop.drop}</span>
                   )}
                 </div>
               ))}
@@ -397,14 +509,11 @@ export default function PokemonDetailPage() {
                   <span className="drop-item-name">{drop.item}</span>
 
                   {drop.drop && (
-                    <span className="drop-item-value"> — {drop.drop}</span>
+                    <span className="drop-item-value">— {drop.drop}</span>
                   )}
 
                   {drop.biome && (
-                    <span className="drop-item-biome">
-                      {' '}
-                      ({drop.biome})
-                    </span>
+                    <span className="drop-item-biome">({drop.biome})</span>
                   )}
                 </div>
               ))}
@@ -412,7 +521,7 @@ export default function PokemonDetailPage() {
           )}
 
           {pokemonDrops.length === 0 && spawnSpecificDrops.length === 0 && (
-            <p>Este Pokémon não possui drops.</p>
+            <p>Este Pokémon não possui drops registrados.</p>
           )}
         </div>
       </div>

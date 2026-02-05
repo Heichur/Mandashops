@@ -37,7 +37,7 @@ export default function ModalAnuncio({ tipo, itemEditar, onClose, onSalvo }: Mod
         nome,
         preco: Number(preco),
         descricao,
-        imagem: estaNoOvo && tipo === 'shinys' ? '/img/ovo.png' : imagemUrl,
+        imagem: imagemUrl,
         criadoEm: itemEditar?.criadoEm || Timestamp.now()
       }
 
