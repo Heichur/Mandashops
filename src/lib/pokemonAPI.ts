@@ -25,29 +25,66 @@ class PokemonAPIManager {
 
   private specialFormsKeywords = [
     'mega', 'gigantamax', 'gmax', 'primal', 'ultra', 'eternamax',
-    'crowned', 'origin', 'sky', 'hangry', 'zen', 'therian',
+    'crowned', 'origin', 'sky', 'hangry', 'zen',
     'black', 'white', 'complete', 'unbound', 'resolute', 'pirouette',
     'blade', 'shield', 'dusk', 'dawn', 'ice', 'shadow', 'rider',
     'low-key', 'amped', 'full-belly', 'ruby', 'sapphire', 'emerald',
     'sunshine', 'east', 'west', 'autumn', 'summer', 'spring', 'winter',
-    'red-striped', 'blue-striped', 'incarnate', 'school', 'solo',
-    'midday', 'midnight', 'dusk', 'ultra', 'dawn-wings', 'dusk-mane',
-    'stellar', 'wellspring', 'hearthflame', 'cornerstone', 'teal', 'Heat', 'Wash', 'Frost', 'Fan', 'Mow'
+    'red-striped', 'blue-striped', 'school', 'solo',
+    'midday', 'midnight', 'dawn-wings', 'dusk-mane',
+    'stellar', 'wellspring', 'hearthflame', 'cornerstone', 'teal'
   ]
 
   private allowedRegionalForms = ['alola', 'galar', 'hisui', 'paldea']
+  
+  // Pokémon que têm formas específicas que devem ser mostradas (apenas uma forma)
+  private allowedSpecificForms = [
+    'thundurus-incarnate',
+    'tornadus-incarnate',
+    'landorus-incarnate',
+    'enamorus-incarnate',
+    'basculin-red-striped',
+    'darmanitan-standard',
+    'meloetta-aria',
+    'keldeo-ordinary',
+    'lycanroc-midday',
+    'oricorio-baile',
+    'wishiwashi-solo',
+    'minior-red-meteor',
+    'aegislash-shield',
+    'deoxys-normal',
+    'wormadam-plant',
+    'giratina-altered',
+    'shaymin-land',
+    'rotom-normal',
+    'ninetales-normal'
+  ]
 
   isSpecialForm(pokemonName: string): boolean {
     const nameLower = pokemonName.toLowerCase()
-    const basePokemonAllowed = ['morpeko']
     
-    if (basePokemonAllowed.includes(nameLower)) return false
+    // Lista de Pokémon base que devem sempre aparecer (versão sem hífen)
+    const basePokemonAllowed = [
+      'morpeko'
+    ]
     
+    // Se for exatamente um dos Pokémon base (sem hífen), permitir
+    if (basePokemonAllowed.includes(nameLower)) {
+      return false
+    }
+    
+    // Se for uma forma específica permitida, aceitar
+    if (this.allowedSpecificForms.includes(nameLower)) {
+      return false
+    }
+    
+    // Verificar se é uma forma regional permitida
     const isAllowedRegional = this.allowedRegionalForms.some(regional =>
       nameLower.includes(regional)
     )
     if (isAllowedRegional) return false
     
+    // Bloquear formas especiais
     return this.specialFormsKeywords.some(keyword => nameLower.includes(keyword))
   }
 
@@ -97,7 +134,9 @@ class PokemonAPIManager {
           }
         })
         .filter((pokemon: Pokemon) => {
-          if (this.isSpecialForm(pokemon.originalName)) return false
+          if (this.isSpecialForm(pokemon.originalName)) {
+            return false
+          }
           return true
         })
       
@@ -194,7 +233,6 @@ class PokemonAPIManager {
 
   private async _translateText(text: string, to: string = 'pt'): Promise<string> {
     try {
-    
       const url = 'https://translate.googleapis.com/translate_a/single'
       const params = new URLSearchParams({
         client: 'gtx',
@@ -211,12 +249,10 @@ class PokemonAPIManager {
       })
 
       if (!response.ok) {
-        // Fallback para LibreTranslate público se Google falhar
         return await this._translateWithLibreTranslate(text, to)
       }
 
       const data = await response.json()
-      
 
       if (data && data[0] && data[0][0] && data[0][0][0]) {
         return data[0][0][0]
@@ -225,14 +261,10 @@ class PokemonAPIManager {
       return text
     } catch (error) {
       console.warn('Erro ao traduzir com Google:', error)
-      // Fallback para LibreTranslate
       return await this._translateWithLibreTranslate(text, to)
     }
   }
 
-  /**
-   * Fallback usando LibreTranslate (API pública e gratuita)
-   */
   private async _translateWithLibreTranslate(text: string, to: string = 'pt'): Promise<string> {
     try {
       const response = await fetch('https://libretranslate.com/translate', {
@@ -258,11 +290,7 @@ class PokemonAPIManager {
     }
   }
 
-  /**
-   * Busca a descrição do Pokémon e traduz automaticamente para português
-   */
   async getPokemonFlavorText(pokemonId: number): Promise<string> {
-    // Verifica cache
     if (this.flavorTextCache.has(pokemonId)) {
       return this.flavorTextCache.get(pokemonId)!
     }
@@ -273,7 +301,6 @@ class PokemonAPIManager {
       
       const species = await response.json()
       
-      // Primeiro tenta português direto
       const ptBR = species.flavor_text_entries.find(
         (entry: any) => entry.language.name === 'pt-BR'
       )
@@ -283,7 +310,6 @@ class PokemonAPIManager {
         return text
       }
 
-      // Busca em inglês para traduzir
       const en = species.flavor_text_entries.find(
         (entry: any) => entry.language.name === 'en'
       )
@@ -293,8 +319,6 @@ class PokemonAPIManager {
       }
 
       const cleanEnglishText = this._cleanFlavorText(en.flavor_text)
-      
-      // Traduz para português usando Google Translate
       const translatedText = await this._translateText(cleanEnglishText, 'pt')
       
       this.flavorTextCache.set(pokemonId, translatedText)
