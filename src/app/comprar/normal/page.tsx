@@ -16,10 +16,26 @@ import {
 import { db } from '@/lib/firebase'
 import { collection, addDoc } from 'firebase/firestore'
 
-const IVSelector = dynamic(() => import("@/componets/IVSelector"), { ssr: false })
-const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { ssr: false })
-const AbilitySelect = dynamic(() => import("@/componets/AbilitySelect"), { ssr: false })
-const EggMovesSelect = dynamic(() => import("@/componets/EggMovesSelect"), { ssr: false })
+// Importações dinâmicas corrigidas
+const IVSelector = dynamic(() => import("@/componets/IVSelector"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const AbilitySelect = dynamic(() => import("@/componets/AbilitySelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const EggMovesSelect = dynamic(() => import("@/componets/EggMovesSelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
 
 export default function CompraNormal() {
   const router = useRouter()
@@ -141,14 +157,16 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
     <section id="Comprando">
       <h1 id="TituloCompra">Escolha o pokémon!</h1>
       
+      {/* IMPORTANTE: Passar excludeLegendaries={true} */}
       <PokemonSelect 
         onSelect={(pokemon: string) => setSelectedPokemon(pokemon)}
+        excludeLegendaries={true}
       />
       
       <EggMovesSelect 
-  pokemonName={selectedPokemon}
-  onMovesChange={(moves) => setEggMoves(moves)}
-/>
+        pokemonName={selectedPokemon}
+        onMovesChange={(moves) => setEggMoves(moves)}
+      />
       
       <input 
         type="search" 
@@ -158,14 +176,13 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
         onChange={(e) => setNature(e.target.value)}
       />
       
-     
-     <AbilitySelect 
+      <AbilitySelect 
         pokemonName={selectedPokemon}
-       onSelect={(ability: string, isHidden: boolean) => {
-       setHabilidade(ability)
-        setHiddenHabilidade(isHidden)
-       }}
-/>
+        onSelect={(ability: string, isHidden: boolean) => {
+          setHabilidade(ability)
+          setHiddenHabilidade(isHidden)
+        }}
+      />
       
       <input 
         type="text" 
@@ -176,8 +193,8 @@ Seu pokémon já está em preparação, assim que ficar pronto, te notificamos p
       />
       
       <IVSelector 
-  onChange={(ivsString) => setIvs(ivsString)}
-/>
+        onChange={(ivsString) => setIvs(ivsString)}
+      />
       
       <input 
         type="text" 

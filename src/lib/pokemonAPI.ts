@@ -37,30 +37,32 @@ class PokemonAPIManager {
 
   private allowedRegionalForms = ['alola', 'galar', 'hisui', 'paldea']
   
-  // Pokémon que têm formas específicas que devem ser mostradas (apenas uma forma)
-  private allowedSpecificForms = [
+  // Pokémon que têm formas específicas que devem ser mostradas APENAS na Pokepédia
+  private allowedSpecificFormsForPokedex = [
     'thundurus-incarnate',
     'tornadus-incarnate',
     'landorus-incarnate',
     'enamorus-incarnate',
-    'basculin-red-striped',
-    'darmanitan-standard',
+    'deoxys-normal',
+    'giratina-altered',
+    'shaymin-land',
     'meloetta-aria',
     'keldeo-ordinary',
+  ]
+  
+  // Pokémon com formas alternativas permitidas em AMBAS as seções
+  private allowedSpecificFormsEverywhere = [
+    'basculin-red-striped',
+    'darmanitan-standard',
     'lycanroc-midday',
     'oricorio-baile',
     'wishiwashi-solo',
     'minior-red-meteor',
     'aegislash-shield',
-    'deoxys-normal',
-    'wormadam-plant',
-    'giratina-altered',
-    'shaymin-land',
-    'rotom-normal',
-    'ninetales-normal'
+    'wormadam-plant'
   ]
 
-  isSpecialForm(pokemonName: string): boolean {
+  isSpecialForm(pokemonName: string, forPurchase: boolean = false): boolean {
     const nameLower = pokemonName.toLowerCase()
     
     // Lista de Pokémon base que devem sempre aparecer (versão sem hífen)
@@ -73,8 +75,18 @@ class PokemonAPIManager {
       return false
     }
     
-    // Se for uma forma específica permitida, aceitar
-    if (this.allowedSpecificForms.includes(nameLower)) {
+    // Se for uma forma específica permitida em todos os lugares, aceitar
+    if (this.allowedSpecificFormsEverywhere.includes(nameLower)) {
+      return false
+    }
+    
+    // Se for uma forma específica permitida APENAS na Pokepédia
+    if (this.allowedSpecificFormsForPokedex.includes(nameLower)) {
+      // Se for para compra, bloquear essas formas (são lendários)
+      if (forPurchase) {
+        return true
+      }
+      // Se for para Pokepédia, permitir
       return false
     }
     
@@ -89,15 +101,18 @@ class PokemonAPIManager {
   }
 
   async loadPokemonList(excludeLegendaries: boolean = false): Promise<Pokemon[]> {
+    // Se já está carregado, retorna a lista apropriada
     if (this.isLoaded) {
       return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
     }
     
-    if (this.isLoading) {
-      await this.loadPromise!
+    // Se está carregando, aguarda o carregamento
+    if (this.isLoading && this.loadPromise) {
+      await this.loadPromise
       return excludeLegendaries ? this.pokemonListWithoutLegendaries : this.pokemonList
     }
     
+    // Inicia o carregamento
     this.isLoading = true
     this.loadPromise = this._fetchPokemonList()
     
@@ -118,6 +133,7 @@ class PokemonAPIManager {
       
       const data = await response.json()
       
+      // Lista completa (para Pokepédia) - aceita formas lendárias
       const allPokemon = data.results
         .map((pokemon: any) => {
           const id = this._extractIdFromUrl(pokemon.url)
@@ -134,7 +150,9 @@ class PokemonAPIManager {
           }
         })
         .filter((pokemon: Pokemon) => {
-          if (this.isSpecialForm(pokemon.originalName)) {
+          // Para a lista completa (Pokepédia), não bloqueia formas lendárias
+          // mas ainda bloqueia formas especiais como mega, gigantamax, etc
+          if (this.isSpecialForm(pokemon.originalName, false)) {
             return false
           }
           return true
@@ -142,8 +160,33 @@ class PokemonAPIManager {
       
       this.pokemonList = allPokemon.sort((a: Pokemon, b: Pokemon) => a.id - b.id)
       
-      this.pokemonListWithoutLegendaries = allPokemon
-        .filter((pokemon: Pokemon) => !this.legendaryIds.has(pokemon.id))
+      // Lista sem lendários (para Comprar) - bloqueia formas lendárias também
+      this.pokemonListWithoutLegendaries = data.results
+        .map((pokemon: any) => {
+          const id = this._extractIdFromUrl(pokemon.url)
+          const formattedName = pokemon.name
+            .split('-')
+            .map((part: string) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join(' ')
+          
+          return {
+            id,
+            name: formattedName,
+            originalName: pokemon.name,
+            url: pokemon.url
+          }
+        })
+        .filter((pokemon: Pokemon) => {
+          // Bloqueia formas especiais (incluindo formas lendárias)
+          if (this.isSpecialForm(pokemon.originalName, true)) {
+            return false
+          }
+          // Bloqueia lendários por ID
+          if (this.legendaryIds.has(pokemon.id)) {
+            return false
+          }
+          return true
+        })
         .sort((a: Pokemon, b: Pokemon) => a.id - b.id)
       
       this.isLoaded = true

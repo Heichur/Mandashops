@@ -18,7 +18,8 @@ export default function PokepediaPage() {
 
   const loadPokemon = async () => {
     try {
-      const list = await pokemonAPI.loadPokemonList()
+      // IMPORTANTE: Passar false ou não passar nada para incluir lendários
+      const list = await pokemonAPI.loadPokemonList(false)
       setPokemonList(list)
       setLoading(false)
     } catch (error) {
@@ -29,7 +30,7 @@ export default function PokepediaPage() {
 
   // Mostrar apenas 9 primeiros se não tiver pesquisa
   const filteredPokemon = searchTerm
-    ? pokemonAPI.searchPokemon(searchTerm)
+    ? pokemonAPI.searchPokemon(searchTerm, false) // false = inclui lendários
     : pokemonList.slice(0, 9)
 
   if (loading) {

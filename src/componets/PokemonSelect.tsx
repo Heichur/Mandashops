@@ -8,9 +8,14 @@ import type { Pokemon } from '@/lib/types'
 interface PokemonSelectProps {
   onSelect: (pokemon: string) => void
   id?: string
+  excludeLegendaries?: boolean  // Nova prop
 }
 
-export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: PokemonSelectProps) {
+export default function PokemonSelect({ 
+  onSelect, 
+  id = 'pokemonSelect',
+  excludeLegendaries = false  // Por padrão não exclui (para Pokepédia)
+}: PokemonSelectProps) {
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -20,7 +25,8 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
   useEffect(() => {
     const loadPokemon = async () => {
       try {
-        const list = await pokemonAPI.loadPokemonList()
+        // Passa o parâmetro excludeLegendaries para o API
+        const list = await pokemonAPI.loadPokemonList(excludeLegendaries)
         setPokemonList(list)
       } catch (error) {
         console.error('Erro ao carregar Pokémon:', error)
@@ -29,7 +35,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
       }
     }
     loadPokemon()
-  }, [])
+  }, [excludeLegendaries])  // Adiciona excludeLegendaries como dependência
 
   const handleSelect = (pokemon: Pokemon) => { 
     setSelectedPokemon(pokemon.name)
@@ -39,7 +45,7 @@ export default function PokemonSelect({ onSelect, id = 'pokemonSelect' }: Pokemo
   }
 
   const filteredPokemon = searchTerm
-    ? pokemonAPI.searchPokemon(searchTerm).slice(0, 50)
+    ? pokemonAPI.searchPokemon(searchTerm, excludeLegendaries).slice(0, 50)  // Passa excludeLegendaries
     : pokemonList.slice(0, 50)
 
   return (

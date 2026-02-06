@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic'
 import EVCalculator from '@/componets/EVCalculator'
 
 const IVSelector = dynamic(() => import("@/componets/IVSelector"), { ssr: false })
+
 interface EVs {
   hp: number
   atk: number
@@ -20,9 +21,7 @@ interface EVs {
   spe: number
 }
 
-
 export default function CompraCompetitiva() {
- 
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [nature, setNature] = useState('')
   const [gender, setGender] = useState('')
@@ -56,9 +55,11 @@ export default function CompraCompetitiva() {
         Compra Competitiva - Escolha o pokémon!
       </h1>
       
+      {/* IMPORTANTE: Passar excludeLegendaries={true} */}
       <PokemonSelect 
         onSelect={(pokemon: string) => setSelectedPokemon(pokemon)}
         id="pokemonSelectComp"
+        excludeLegendaries={true}
       />
       
       <EggMovesSelect 
@@ -98,8 +99,8 @@ export default function CompraCompetitiva() {
       />
       
       <IVSelector 
-  onChange={(ivsString) => setIvs(ivsString)}
-/>
+        onChange={(ivsString) => setIvs(ivsString)}
+      />
       
       <EVCalculator 
         onChange={(newEvs: EVs) => setEvs(newEvs)}
