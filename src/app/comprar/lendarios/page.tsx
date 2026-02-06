@@ -102,98 +102,121 @@ export default function ComprarLendarios() {
     setItemSelecionado(null)
   }
 
-  const handleCompra = async () => {
-    if (!itemSelecionado) return
+ const handleCompra = async () => {
+  if (!itemSelecionado) return
+  
+  setProcessando(true)
+  try {
+    const db = getDb()
     
-    setProcessando(true)
-    try {
-      const db = getDb()
-      
-      // Nome do comprador para exibir
-      const nomeComprador = userNickname || userDiscord || 'Usuário desconhecido'
-      
-      // Salvar pedido no Firebase
-      await addDoc(collection(db, 'pedidos'), {
-        tipo: itemSelecionado.tipo,
-        item: itemSelecionado.nome,
-        preco: itemSelecionado.preco,
-        data: new Date().toISOString(),
-        status: 'pendente',
-        comprador: nomeComprador,
-        discord: userDiscord
-      })
+    // Nome do comprador para exibir
+    const nomeComprador = userNickname || userDiscord || 'Usuário desconhecido'
+    
+    console.log('📝 Iniciando compra...')
+    console.log('Item:', itemSelecionado)
+    console.log('Comprador:', nomeComprador)
+    console.log('Discord:', userDiscord)
+    
+    // Salvar pedido no Firebase
+    await addDoc(collection(db, 'pedidos'), {
+      tipo: itemSelecionado.tipo,
+      item: itemSelecionado.nome,
+      preco: itemSelecionado.preco,
+      data: new Date().toISOString(),
+      status: 'pendente',
+      comprador: nomeComprador,
+      discord: userDiscord
+    })
 
-      // Enviar para Discord
-      const webhookUrl = process.env.NEXT_PUBLIC_DISCORD_LENDSHINYS_WEBHOOK_URL
+    console.log('✅ Pedido salvo no Firebase')
+
+    // Enviar para Discord
+    const webhookUrl = process.env.NEXT_PUBLIC_DISCORD_LENDSHINYS_WEBHOOK_URL
+    
+    console.log('🔗 Webhook URL:', webhookUrl)
+    
+    if (!webhookUrl) {
+      console.error('❌ WEBHOOK URL NÃO ENCONTRADA!')
+      alert('Webhook não configurado. Verifique as variáveis de ambiente.')
+    } else {
+      const tipoEmoji = itemSelecionado.tipo === 'lendario' ? '🔥' : '✨'
+      const tipoNome = itemSelecionado.tipo === 'lendario' ? 'Lendário' : 'Shiny'
       
-      if (webhookUrl) {
-        const tipoEmoji = itemSelecionado.tipo === 'lendario' ? '🔥' : '✨'
-        const tipoNome = itemSelecionado.tipo === 'lendario' ? 'Lendário' : 'Shiny'
-        
-        const embed = {
-          embeds: [{
-            title: `${tipoEmoji} Nova Compra de ${tipoNome}!`,
-            color: itemSelecionado.tipo === 'lendario' ? 0xFF6B35 : 0xFFD700,
-            fields: [
-              {
-                name: '👤 Comprador',
-                value: nomeComprador,
-                inline: false
-              },
-              {
-                name: '💬 Discord',
-                value: userDiscord || 'Não informado',
-                inline: false
-              },
-              {
-                name: '🎯 Item',
-                value: itemSelecionado.nome,
-                inline: false
-              },
-              {
-                name: '💰 Preço',
-                value: `${itemSelecionado.preco}KK`,
-                inline: false
-              }
-            ],
-            timestamp: new Date().toISOString(),
-            footer: {
-              text: `MandaShop - Sistema de Pedidos • ${new Date().toLocaleString('pt-BR', { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-              })}`
+      const embed = {
+        embeds: [{
+          title: `${tipoEmoji} Nova Compra de ${tipoNome}!`,
+          color: itemSelecionado.tipo === 'lendario' ? 0xFF6B35 : 0xFFD700,
+          fields: [
+            {
+              name: '👤 Comprador',
+              value: nomeComprador,
+              inline: false
+            },
+            {
+              name: '💬 Discord',
+              value: userDiscord || 'Não informado',
+              inline: false
+            },
+            {
+              name: '🎯 Item',
+              value: itemSelecionado.nome,
+              inline: false
+            },
+            {
+              name: '💰 Preço',
+              value: `${itemSelecionado.preco}KK`,
+              inline: false
             }
-          }]
-        }
-
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(embed)
-        })
+          ],
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: `MandaShop - Sistema de Pedidos • ${new Date().toLocaleString('pt-BR', { 
+              day: '2-digit', 
+              month: '2-digit', 
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit'
+            })}`
+          }
+        }]
       }
 
-      const colecao = itemSelecionado.tipo === 'lendario' ? 'lendarios' : 'shinys'
-      const itemRef = doc(db, colecao, itemSelecionado.id)
-      await deleteDoc(itemRef)
-      
-      console.log(`✅ Item ${itemSelecionado.nome} deletado da coleção ${colecao}`)
+      console.log('📤 Enviando webhook...', JSON.stringify(embed, null, 2))
 
-      alert('Compra realizada com sucesso!')
-      fecharModal()
-      carregarTodosItens() // Recarrega a lista após deletar
-    } catch (error) {
-      console.error('Erro ao processar compra:', error)
-      alert('Erro ao processar compra. Tente novamente.')
-    } finally {
-      setProcessando(false)
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(embed)
+      })
+
+      console.log('📥 Resposta do webhook:', response.status, response.statusText)
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('❌ Erro na resposta:', errorText)
+      } else {
+        console.log('✅ Webhook enviado com sucesso!')
+      }
     }
+
+    const colecao = itemSelecionado.tipo === 'lendario' ? 'lendarios' : 'shinys'
+    const itemRef = doc(db, colecao, itemSelecionado.id)
+    await deleteDoc(itemRef)
+    
+    console.log(`✅ Item ${itemSelecionado.nome} deletado da coleção ${colecao}`)
+
+    alert('Compra realizada com sucesso!')
+    fecharModal()
+    carregarTodosItens() // Recarrega a lista após deletar
+  } catch (error) {
+    console.error('❌ Erro ao processar compra:', error)
+    alert('Erro ao processar compra. Tente novamente.')
+  } finally {
+    setProcessando(false)
   }
+}
 
   // Funções Admin
   const abrirCriarAnuncio = () => {
