@@ -27,22 +27,18 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
   const gerarStringIVs = (): string => {
     const parts: string[] = []
     
-    // Converter todos para número
     const statsNumericos = Object.entries(stats).map(([key, value]) => ({
       key,
-      value: value === '' ? 31 : (typeof value === 'string' ? parseInt(value) : value)
+      value: value === 'any' ? 31 : (typeof value === 'string' ? parseInt(value) : value)
     }))
     
-    // Verificar se é F6 (todos 31)
     const todosTrinta = statsNumericos.every(s => s.value === 31)
     if (todosTrinta) {
       return 'F6'
     }
 
-    // Contar quantos são 31
     const countTrinta = statsNumericos.filter(s => s.value === 31).length
     
-    // Só usar formato F se tiver pelo menos 2 stats em 31 (F2, F3, F4, F5, F6)
     if (countTrinta >= 2) {
       const statsNaoTrinta: string[] = []
       statsNumericos.forEach(({ key, value }) => {
@@ -59,7 +55,6 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
       return `F${countTrinta}${statsNaoTrinta.length > 0 ? ', ' + statsNaoTrinta.join(', ') : ''}`
     }
 
-    // Se tiver apenas 1 ou nenhum stat em 31, listar todos individualmente
     statsNumericos.forEach(({ key, value }) => {
       const statName = key.toLowerCase()
       parts.push(`${value}${statName}`)
@@ -69,34 +64,10 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
   }
 
   const handleStatChange = (stat: string, value: string) => {
-    // Permitir vazio ou apenas números
-    if (value === '') {
-      setStats(prev => ({
-        ...prev,
-        [stat]: value
-      }))
-      return
-    }
-    
-    // Validar se é número
-    if (/^\d+$/.test(value)) {
-      const num = parseInt(value)
-      // Limitar entre 0 e 31
-      const numValue = Math.min(31, Math.max(0, num))
-      setStats(prev => ({
-        ...prev,
-        [stat]: numValue
-      }))
-    }
-  }
-
-  const handleStatBlur = (stat: string) => {
-    if (stats[stat] === '' || stats[stat] === null) {
-      setStats(prev => ({
-        ...prev,
-        [stat]: 31
-      }))
-    }
+    setStats(prev => ({
+      ...prev,
+      [stat]: value === 'any' ? 'any' : parseInt(value)
+    }))
   }
 
   const setPreset = (preset: 'all31') => {
@@ -128,16 +99,22 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
         {Object.entries(stats).map(([stat, value]) => (
           <div key={stat} className="ev-input-group">
             <label>{stat}</label>
-            <input
-              type="text"
-              inputMode="numeric"
-              pattern="[0-9]*"
+            <select
               value={value}
               onChange={(e) => handleStatChange(stat, e.target.value)}
-              onBlur={() => handleStatBlur(stat)}
-              maxLength={2}
-              style={{ textAlign: 'center', fontSize: '16px', fontWeight: 'bold' }}
-            />
+              style={{ 
+                textAlign: 'center', 
+                fontSize: '16px', 
+                fontWeight: 'bold',
+                padding: '8px',
+                cursor: 'pointer',
+                appearance: 'auto'
+              }}
+            >
+              <option value={31}>31</option>
+              <option value={0}>0</option>
+              <option value="any">Qualquer um</option>
+            </select>
           </div>
         ))}
       </div>

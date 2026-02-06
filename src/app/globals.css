@@ -3721,3 +3721,138 @@ p {
     font-size: 12px !important;
   }
 }
+
+/* =====================================================
+   IV SELECTOR - Área de Compras
+===================================================== */
+
+.ev-section select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: 'minecraftia';
+  background-color: #1a1a1a;
+  border: 2px solid #444;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ev-section select:hover {
+  border-color: yellow;
+  background-color: #252525;
+}
+
+.ev-section select:focus {
+  outline: none;
+  border-color: yellow;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+  background-color: #252525;
+}
+
+.ev-section select option {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Grid de IVs - 3 colunas compactas */
+.ev-section > div[style*="grid-template-columns"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+}
+
+/* Input groups dos IVs */
+.ev-section .ev-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.ev-section .ev-input-group label {
+  font-family: 'minecraftia';
+  color: #ffd700;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+/* Botão F6 */
+.ev-section > div[style*="flex"] button {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'minecraftia';
+  background-color: yellow;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.ev-section > div[style*="flex"] button:hover {
+  background-color: #ffff66;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 255, 0, 0.3);
+}
+
+/* Preview dos IVs */
+.ev-section .ev-total {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #444;
+  font-family: 'minecraftia';
+  color: white;
+  font-size: 13px;
+  text-align: center;
+}
+
+.ev-section .ev-total strong {
+  color: yellow;
+  font-weight: bold;
+}
+
+/* Responsividade para IVs */
+@media (max-width: 768px) {
+  .ev-section > div[style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .ev-section select {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .ev-section .ev-input-group label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ev-section > div[style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .ev-section select {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .ev-section .ev-total {
+    font-size: 12px;
+  }
+}
