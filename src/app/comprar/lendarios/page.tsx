@@ -129,7 +129,6 @@ export default function ComprarLendarios() {
       if (webhookUrl) {
         const tipoEmoji = itemSelecionado.tipo === 'lendario' ? '🔥' : '✨'
         const tipoNome = itemSelecionado.tipo === 'lendario' ? 'Lendário' : 'Shiny'
-        const ovoInfo = itemSelecionado.estaNoOvo ? ' 🥚 (No Ovo)' : ''
         
         const embed = {
           embeds: [{
@@ -139,27 +138,33 @@ export default function ComprarLendarios() {
               {
                 name: '👤 Comprador',
                 value: nomeComprador,
-                inline: true
+                inline: false
               },
               {
                 name: '💬 Discord',
                 value: userDiscord || 'Não informado',
-                inline: true
+                inline: false
               },
               {
                 name: '🎯 Item',
-                value: `${itemSelecionado.nome}${ovoInfo}`,
+                value: itemSelecionado.nome,
                 inline: false
               },
               {
                 name: '💰 Preço',
                 value: `${itemSelecionado.preco}KK`,
-                inline: true
+                inline: false
               }
             ],
             timestamp: new Date().toISOString(),
             footer: {
-              text: 'MandaShop - Sistema de Pedidos'
+              text: `MandaShop - Sistema de Pedidos • ${new Date().toLocaleString('pt-BR', { 
+                day: '2-digit', 
+                month: '2-digit', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}`
             }
           }]
         }
@@ -173,15 +178,15 @@ export default function ComprarLendarios() {
         })
       }
 
-        const colecao = itemSelecionado.tipo === 'lendario' ? 'lendarios' : 'shinys'
-    const itemRef = doc(db, colecao, itemSelecionado.id)
-    await deleteDoc(itemRef)
-    
-    console.log(`✅ Item ${itemSelecionado.nome} deletado da coleção ${colecao}`)
+      const colecao = itemSelecionado.tipo === 'lendario' ? 'lendarios' : 'shinys'
+      const itemRef = doc(db, colecao, itemSelecionado.id)
+      await deleteDoc(itemRef)
+      
+      console.log(`✅ Item ${itemSelecionado.nome} deletado da coleção ${colecao}`)
 
-    alert('Compra realizada com sucesso!')
-    fecharModal()
-    carregarTodosItens() // Recarrega a lista após deletar
+      alert('Compra realizada com sucesso!')
+      fecharModal()
+      carregarTodosItens() // Recarrega a lista após deletar
     } catch (error) {
       console.error('Erro ao processar compra:', error)
       alert('Erro ao processar compra. Tente novamente.')
