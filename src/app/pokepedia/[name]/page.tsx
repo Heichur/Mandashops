@@ -437,7 +437,7 @@ export default function PokemonDetailPage() {
           )}
         </div>
         
-              {/* SPAWNS - NOVA SEÇÃO */}
+              {/* SPAWNS*/}
         <div className="pokemon-content-section spawns-section">
           <h3 className="pokemon-section-header">🌍 Spawns</h3>
 
