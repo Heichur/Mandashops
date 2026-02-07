@@ -49,13 +49,14 @@ export default function RankingPage() {
       if (docSnap.exists()) {
         const dados = docSnap.data()
         
-        // Converter o objeto em array e ordenar
+        // Converter o objeto em array, ordenar e pegar apenas os 10 primeiros
         const compradoresArray: Comprador[] = Object.entries(dados)
           .map(([nome, pedidos]) => ({
             nome,
             pedidos: Number(pedidos)
           }))
           .sort((a, b) => b.pedidos - a.pedidos)
+          .slice(0, 10) // Limita aos 10 primeiros
         
         setCompradores(compradoresArray)
       } else {
