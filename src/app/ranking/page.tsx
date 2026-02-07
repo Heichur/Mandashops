@@ -14,6 +14,8 @@ interface Comprador {
 
 export default function RankingPage() {
   const [compradores, setCompradores] = useState<Comprador[]>([])
+  const [todosCompradores, setTodosCompradores] = useState<Comprador[]>([])
+  const [usuarioAtual, setUsuarioAtual] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [mesAtual, setMesAtual] = useState('')
 
@@ -25,6 +27,10 @@ export default function RankingPage() {
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ]
     setMesAtual(`${meses[agora.getMonth()]} ${agora.getFullYear()}`)
+
+    // Obter nome do usuário do localStorage
+    const nomeUsuario = localStorage.getItem('nomeUsuario') || ''
+    setUsuarioAtual(nomeUsuario)
 
     // Carregar dados do Firebase
     carregarCompradores()
@@ -49,19 +55,23 @@ export default function RankingPage() {
       if (docSnap.exists()) {
         const dados = docSnap.data()
         
-        // Converter o objeto em array, ordenar e pegar apenas os 10 primeiros
+        // Converter o objeto em array completo e ordenar
         const compradoresArray: Comprador[] = Object.entries(dados)
           .map(([nome, pedidos]) => ({
             nome,
             pedidos: Number(pedidos)
           }))
           .sort((a, b) => b.pedidos - a.pedidos)
-          .slice(0, 10) // Limita aos 10 primeiros
         
-        setCompradores(compradoresArray)
+        // Guardar lista completa
+        setTodosCompradores(compradoresArray)
+        
+        // Pegar apenas os 10 primeiros para exibir
+        setCompradores(compradoresArray.slice(0, 10))
       } else {
         console.log('Documento não encontrado para este mês')
         setCompradores([])
+        setTodosCompradores([])
       }
       
       setLoading(false)
@@ -79,6 +89,22 @@ export default function RankingPage() {
       default: return `${index + 1}º`
     }
   }
+
+  // Encontrar posição do usuário atual
+  const encontrarPosicaoUsuario = () => {
+    if (!usuarioAtual) return null
+    
+    const index = todosCompradores.findIndex(c => c.nome === usuarioAtual)
+    if (index === -1) return null
+    
+    return {
+      posicao: index + 1,
+      comprador: todosCompradores[index]
+    }
+  }
+
+  const posicaoUsuario = encontrarPosicaoUsuario()
+  const usuarioNoTop10 = posicaoUsuario && posicaoUsuario.posicao <= 10
 
   return (
     <section id="TopCompradores">
@@ -109,22 +135,47 @@ export default function RankingPage() {
             <p>Nenhum comprador encontrado este mês.</p>
           </div>
         ) : (
-          <div className="ranking-lista">
-            {compradores.map((comprador, index) => (
-              <div 
-                key={`${comprador.nome}-${index}`} 
-                className={`comprador-item ${index < 3 ? 'top-tres' : ''}`}
-              >
-                <span className="posicao">
-                  {obterMedalha(index)}
-                </span>
-                <span className="nome">{comprador.nome}</span>
-                <span className="pedidos">
-                  {comprador.pedidos} pedido{comprador.pedidos !== 1 ? 's' : ''}
-                </span>
+          <>
+            <div className="ranking-lista">
+              {compradores.map((comprador, index) => (
+                <div 
+                  key={`${comprador.nome}-${index}`} 
+                  className={`comprador-item ${index < 3 ? 'top-tres' : ''} ${comprador.nome === usuarioAtual ? 'usuario-atual' : ''}`}
+                >
+                  <span className="posicao">
+                    {obterMedalha(index)}
+                  </span>
+                  <span className="nome">
+                    {comprador.nome}
+                    {comprador.nome === usuarioAtual && ' (Você)'}
+                  </span>
+                  <span className="pedidos">
+                    {comprador.pedidos} pedido{comprador.pedidos !== 1 ? 's' : ''}
+                  </span>
+                </div>
+              ))}
+            </div>
+            
+            {/* Mostrar posição do usuário se não estiver no top 10 */}
+            {posicaoUsuario && !usuarioNoTop10 && (
+              <div className="sua-posicao">
+                <div className="divisor">
+                  <span>• • •</span>
+                </div>
+                <div className="comprador-item usuario-atual destaque">
+                  <span className="posicao">
+                    {posicaoUsuario.posicao}º
+                  </span>
+                  <span className="nome">
+                    {posicaoUsuario.comprador.nome} (Você)
+                  </span>
+                  <span className="pedidos">
+                    {posicaoUsuario.comprador.pedidos} pedido{posicaoUsuario.comprador.pedidos !== 1 ? 's' : ''}
+                  </span>
+                </div>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
       
