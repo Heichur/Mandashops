@@ -3856,3 +3856,24 @@ p {
     font-size: 12px;
   }
 }
+
+.usuario-atual {
+  background-color: #fffbeb;
+  border-left: 4px solid #f59e0b;
+}
+
+.sua-posicao {
+  margin-top: 2rem;
+}
+
+.divisor {
+  text-align: center;
+  color: #999;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.sua-posicao .comprador-item.destaque {
+  background-color: #fef3c7;
+  border: 2px solid #f59e0b;
+}
