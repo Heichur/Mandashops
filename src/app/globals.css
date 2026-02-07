@@ -3857,23 +3857,49 @@ p {
   }
 }
 
+/* Estilos para a posição do usuário */
 .usuario-atual {
-  background-color: #fffbeb;
-  border-left: 4px solid #f59e0b;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a1a 100%) !important;
+  border-left: 4px solid #ffd700 !important;
+  border-color: #ffd700 !important;
 }
 
 .sua-posicao {
   margin-top: 2rem;
+  width: 100%;
 }
 
 .divisor {
   text-align: center;
-  color: #999;
-  margin: 1rem 0;
+  color: #666;
+  margin: 1.5rem 0;
   font-size: 1.2rem;
+  font-family: 'minecraftia';
 }
 
 .sua-posicao .comprador-item.destaque {
-  background-color: #fef3c7;
-  border: 2px solid #f59e0b;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a1a 100%);
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .sua-posicao {
+    margin-top: 1.5rem;
+  }
+  
+  .divisor {
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
 }

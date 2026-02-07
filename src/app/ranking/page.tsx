@@ -15,9 +15,9 @@ interface Comprador {
 export default function RankingPage() {
   const [compradores, setCompradores] = useState<Comprador[]>([])
   const [todosCompradores, setTodosCompradores] = useState<Comprador[]>([])
-  const [usuarioAtual, setUsuarioAtual] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [mesAtual, setMesAtual] = useState('')
+  const [nomeUsuario, setNomeUsuario] = useState('')
 
   useEffect(() => {
     // Definir mês atual
@@ -29,8 +29,11 @@ export default function RankingPage() {
     setMesAtual(`${meses[agora.getMonth()]} ${agora.getFullYear()}`)
 
     // Obter nome do usuário do localStorage
-    const nomeUsuario = localStorage.getItem('nomeUsuario') || ''
-    setUsuarioAtual(nomeUsuario)
+    if (typeof window !== 'undefined') {
+      const nome = localStorage.getItem('nomeUsuario') || ''
+      setNomeUsuario(nome)
+      console.log('Nome do usuário:', nome)
+    }
 
     // Carregar dados do Firebase
     carregarCompradores()
@@ -43,7 +46,7 @@ export default function RankingPage() {
       // Obter mês e ano atual
       const agora = new Date()
       const ano = agora.getFullYear()
-      const mes = String(agora.getMonth() + 1).padStart(2, '0') // "01", "02", etc.
+      const mes = String(agora.getMonth() + 1).padStart(2, '0')
       
       // Nome do documento: compradores_YYYY_MM
       const nomeDocumento = `compradores_${ano}_${mes}`
@@ -62,6 +65,8 @@ export default function RankingPage() {
             pedidos: Number(pedidos)
           }))
           .sort((a, b) => b.pedidos - a.pedidos)
+        
+        console.log('Lista completa:', compradoresArray)
         
         // Guardar lista completa
         setTodosCompradores(compradoresArray)
@@ -92,9 +97,23 @@ export default function RankingPage() {
 
   // Encontrar posição do usuário atual
   const encontrarPosicaoUsuario = () => {
-    if (!usuarioAtual) return null
+    if (!nomeUsuario || !nomeUsuario.trim()) {
+      console.log('Nome do usuário vazio')
+      return null
+    }
     
-    const index = todosCompradores.findIndex(c => c.nome === usuarioAtual)
+    console.log('Procurando usuário:', nomeUsuario)
+    console.log('Total de compradores:', todosCompradores.length)
+    
+    // Normalizar nome do usuário
+    const nomeNormalizado = nomeUsuario.toLowerCase().trim()
+    
+    const index = todosCompradores.findIndex(c => 
+      c.nome.toLowerCase().trim() === nomeNormalizado
+    )
+    
+    console.log('Índice encontrado:', index)
+    
     if (index === -1) return null
     
     return {
@@ -105,6 +124,9 @@ export default function RankingPage() {
 
   const posicaoUsuario = encontrarPosicaoUsuario()
   const usuarioNoTop10 = posicaoUsuario && posicaoUsuario.posicao <= 10
+
+  console.log('Posição do usuário:', posicaoUsuario)
+  console.log('Está no top 10?', usuarioNoTop10)
 
   return (
     <section id="TopCompradores">
@@ -140,14 +162,14 @@ export default function RankingPage() {
               {compradores.map((comprador, index) => (
                 <div 
                   key={`${comprador.nome}-${index}`} 
-                  className={`comprador-item ${index < 3 ? 'top-tres' : ''} ${comprador.nome === usuarioAtual ? 'usuario-atual' : ''}`}
+                  className={`comprador-item ${index < 3 ? 'top-tres' : ''} ${comprador.nome.toLowerCase().trim() === nomeUsuario.toLowerCase().trim() ? 'usuario-atual' : ''}`}
                 >
                   <span className="posicao">
                     {obterMedalha(index)}
                   </span>
                   <span className="nome">
                     {comprador.nome}
-                    {comprador.nome === usuarioAtual && ' (Você)'}
+                    {comprador.nome.toLowerCase().trim() === nomeUsuario.toLowerCase().trim() && ' (Você)'}
                   </span>
                   <span className="pedidos">
                     {comprador.pedidos} pedido{comprador.pedidos !== 1 ? 's' : ''}
