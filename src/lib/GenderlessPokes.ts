@@ -30,5 +30,6 @@ export const Pokes_Genderless = [
   'Falinks',
   'Rufflet',
   'Impidimp',
-  'Indeedee Macho'
+  'Indeedee Macho',
+  'Tandemaus'
 ]

@@ -25,6 +25,46 @@ export default function EggMovesSelect({
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Função para converter nome formatado de volta para o formato da API
+  const convertToApiFormat = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')  // Substitui espaços por hífens
+  }
+
+  // Função para obter o nome base (sem formas específicas) para buscar a espécie
+  const getSpeciesName = (name: string): string => {
+    const apiName = convertToApiFormat(name)
+    
+    // Lista de sufixos de formas que devem ser removidos para buscar a espécie
+    const formSuffixes = [
+      '-disguised', '-busted',  // Mimikyu
+      '-midday', '-midnight', '-dusk',  // Lycanroc
+      '-red-striped', '-blue-striped', '-white-striped',  // Basculin
+      '-standard', '-zen',  // Darmanitan
+      '-incarnate', '-therian',  // Forças da Natureza
+      '-altered', '-origin',  // Giratina
+      '-land', '-sky',  // Shaymin
+      '-aria', '-pirouette',  // Meloetta
+      '-ordinary', '-resolute',  // Keldeo
+      '-baile', '-pom-pom', '-pau', '-sensu',  // Oricorio
+      '-solo', '-school',  // Wishiwashi
+      '-shield', '-blade',  // Aegislash
+      '-plant', '-sandy', '-trash',  // Wormadam
+      '-red-meteor', '-orange-meteor', '-yellow-meteor', '-green-meteor', '-blue-meteor', '-indigo-meteor', '-violet-meteor'  // Minior
+    ]
+    
+    // Remove o sufixo de forma se existir
+    for (const suffix of formSuffixes) {
+      if (apiName.endsWith(suffix)) {
+        return apiName.replace(suffix, '')
+      }
+    }
+    
+    return apiName
+  }
+
   useEffect(() => {
     if (!pokemonName) {
       setEggMoves([])
@@ -35,10 +75,18 @@ export default function EggMovesSelect({
     const fetchEggMoves = async () => {
       setLoading(true)
       try {
+        // Obtém o nome base da espécie (sem sufixos de forma)
+        const speciesName = getSpeciesName(pokemonName)
+        
+        // Log para debug
+        console.log('🔍 Pokemon name recebido:', pokemonName)
+        console.log('🔍 Nome da espécie:', speciesName)
+        
         // Busca dados da espécie do Pokémon
-        const speciesResponse = await fetch(
-          `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`
-        )
+        const speciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${speciesName}`
+        console.log('🔍 URL da requisição:', speciesUrl)
+        
+        const speciesResponse = await fetch(speciesUrl)
         
         if (!speciesResponse.ok) {
           throw new Error('Espécie não encontrada')

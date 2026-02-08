@@ -20,6 +20,14 @@ export default function AbilitySelect({
   const [abilities, setAbilities] = useState<Array<{name: string, isHidden: boolean}>>([])
   const [loading, setLoading] = useState(false)
 
+  // Função para converter nome formatado de volta para o formato da API
+  const convertToApiFormat = (name: string): string => {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')  // Substitui espaços por hífens
+  }
+
   useEffect(() => {
     if (pokemonName) {
       loadAbilities()
@@ -32,7 +40,10 @@ export default function AbilitySelect({
   const loadAbilities = async () => {
     setLoading(true)
     try {
-      const details = await pokemonAPI.getPokemonDetails(pokemonName)
+      // Converte o nome para o formato da API
+      const apiName = convertToApiFormat(pokemonName)
+      const details = await pokemonAPI.getPokemonDetails(apiName)
+      
       if (details) {
         setAbilities(details.abilities)
       }
