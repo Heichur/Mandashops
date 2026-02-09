@@ -116,6 +116,8 @@ export default function CompraCompetitiva() {
       // Analisar IVs
       const dadosIVs = analisarIVsUnificado(ivs)
       
+      console.log('Dados IVs (Competitivo):', dadosIVs)
+      
       if (!dadosIVs.valido) {
         alert(dadosIVs.mensagem)
         setEnviando(false)
@@ -131,6 +133,8 @@ export default function CompraCompetitiva() {
       const precoEVs = 30000 // Preço fixo para EV training
       
       const precoTotal = calculoIVs.preco + precoBreedavel + precoHidden + precoEggMoves + precoLevel + precoEVs
+      
+      console.log('Preço total calculado (Competitivo):', precoTotal)
 
       // Formatar EVs para exibição
       const evsFormatados = `HP: ${evs.hp}, ATK: ${evs.atk}, DEF: ${evs.def}, SpA: ${evs.spa}, SpD: ${evs.spd}, SPE: ${evs.spe}`
@@ -168,20 +172,28 @@ export default function CompraCompetitiva() {
       // Registrar no ranking
       await registrarPedidoRanking(nomeUsuario)
 
-      // Enviar webhook
-      const webhookUrl = await buscarWebhookUrl()
-      if (webhookUrl) {
+      // Enviar webhook para canal COMPETITIVO específico
+      const webhookComp = process.env.NEXT_PUBLIC_DISCORD_COMP_WEBHOOK_URL
+      if (webhookComp) {
         const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
-        await enviarWebhook(mensagemWebhook, webhookUrl)
+        await enviarWebhook(mensagemWebhook, webhookComp)
+      } else {
+        console.warn('Webhook competitivo não configurada, usando webhook padrão')
+        const webhookUrl = await buscarWebhookUrl()
+        if (webhookUrl) {
+          const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
+          await enviarWebhook(mensagemWebhook, webhookUrl)
+        }
       }
 
       // Mostrar mensagem de sucesso
       const haInfo = hiddenHabilidade ? ' + Hidden Ability (+15k)' : ''
       
-      alert(`✅ Pedido COMPETITIVO enviado com sucesso!
+      alert(`✅ PEDIDO COMPETITIVO ENVIADO COM SUCESSO!
 
 Seu pokémon competitivo já está em preparação, assim que ficar pronto, te notificamos para retirar na loja. Agradecemos a preferência!
 
+🎮 TIPO: Compra Competitiva
 🔵 Pokémon: ${selectedPokemon}
 📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}
 ⚡ EVs: ${evsFormatados}
@@ -192,8 +204,9 @@ Seu pokémon competitivo já está em preparação, assim que ficar pronto, te n
       router.push('/')
 
     } catch (error) {
-      console.error('Erro ao enviar pedido:', error)
-      alert('❌ Erro ao enviar pedido. Tente novamente.')
+      console.error('Erro completo ao enviar pedido (Competitivo):', error)
+      console.error('Stack trace:', error instanceof Error ? error.stack : 'N/A')
+      alert(`❌ Erro ao enviar pedido: ${error instanceof Error ? error.message : 'Erro desconhecido'}. Verifique o console para mais detalhes.`)
     } finally {
       setEnviando(false)
     }

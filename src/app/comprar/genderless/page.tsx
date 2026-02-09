@@ -75,6 +75,8 @@ export default function CompraGenderless() {
       // Analisar IVs
       const dadosIVs = analisarIVsUnificado(ivs)
       
+      console.log('Dados IVs:', dadosIVs)
+      
       if (!dadosIVs.valido) {
         alert(dadosIVs.mensagem)
         setEnviando(false)
@@ -82,8 +84,10 @@ export default function CompraGenderless() {
       }
 
       // Calcular preços GENDERLESS
-      // Genderless tem precificação especial e mais alta
+      // Genderless tem precificação especial 
       const calculoIVs = calcularPrecoIVs(dadosIVs)
+      
+      console.log('Cálculo IVs:', calculoIVs)
       
       // Preço base genderless é significativamente maior
       let precoBaseGenderless = 0
@@ -96,13 +100,15 @@ export default function CompraGenderless() {
           ? 120000  // F5 Breedável: 120k
           : 100000  // F5 Castrado: 100k
       } else {
-        // Para outros IVs, usar cálculo normal + taxa genderless alta
+        // Para outros IVs, usar cálculo normal +
         precoBaseGenderless = calculoIVs.preco + 100000
       }
       
       const precoHidden = hiddenHabilidade ? 15000 : 0
       const precoEggMoves = eggMoves.length * 10000
       const precoTotal = precoBaseGenderless + precoHidden + precoEggMoves
+      
+      console.log('Preço total calculado:', precoTotal)
 
       // Montar objeto do pedido
       const pedidoData = {
@@ -135,11 +141,18 @@ export default function CompraGenderless() {
       // Registrar no ranking
       await registrarPedidoRanking(nomeUsuario)
 
-      // Enviar webhook
-      const webhookUrl = await buscarWebhookUrl()
-      if (webhookUrl) {
+      // Enviar webhook para canal GENDERLESS específico
+      const webhookGenderless = process.env.NEXT_PUBLIC_DISCORD_GENDERLESS_WEBHOOK_URL
+      if (webhookGenderless) {
         const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
-        await enviarWebhook(mensagemWebhook, webhookUrl)
+        await enviarWebhook(mensagemWebhook, webhookGenderless)
+      } else {
+        console.warn('Webhook genderless não configurada, usando webhook padrão')
+        const webhookUrl = await buscarWebhookUrl()
+        if (webhookUrl) {
+          const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
+          await enviarWebhook(mensagemWebhook, webhookUrl)
+        }
       }
 
       // Mostrar mensagem de sucesso
@@ -159,8 +172,9 @@ Seu pokémon genderless já está em preparação, assim que ficar pronto, te no
       router.push('/')
 
     } catch (error) {
-      console.error('Erro ao enviar pedido:', error)
-      alert('❌ Erro ao enviar pedido. Tente novamente.')
+      console.error('Erro completo ao enviar pedido:', error)
+      console.error('Stack trace:', error instanceof Error ? error.stack : 'N/A')
+      alert(`❌ Erro ao enviar pedido: ${error instanceof Error ? error.message : 'Erro desconhecido'}. Verifique o console para mais detalhes.`)
     } finally {
       setEnviando(false)
     }
