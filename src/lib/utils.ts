@@ -106,10 +106,13 @@ export function calcularPrecoIVs(dadosIVs: IVsData): IVsCalculation {
     tipoIVFinal = 'F6'
   }
 
-  // Preços corretos: F5 = 80k, F6 = 150k
+  // Preços para NORMAL e COMPETITIVO
   const precos: Record<string, number> = {
-    F6: 150000,
-    F5: 80000
+    F6: 90000,
+    F5: 70000,
+    F4: 40000,
+    F3: 30000,
+    F2: 25000
   }
 
   const foiUpgradado = tipoIVFinal !== tipoOriginal
