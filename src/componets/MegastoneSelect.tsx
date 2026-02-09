@@ -15,7 +15,11 @@ interface Megastone {
   stock?: number
 }
 
-export default function MegastoneSelect() {
+interface MegastoneSelectProps {
+  onSelect?: (megastoneName: string, price: number) => void // ✅ ADICIONADO: Prop para callback
+}
+
+export default function MegastoneSelect({ onSelect }: MegastoneSelectProps) { // ✅ ADICIONADO: Receber prop
   const [selectedMegastone, setSelectedMegastone] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -67,9 +71,16 @@ export default function MegastoneSelect() {
 
   const handleSelect = (megastone: Megastone) => {
     const name = megastone.name || megastone.nome || ''
+    const price = megastone.value || megastone.valor || 0
+    
     setSelectedMegastone(name)
     setIsOpen(false)
     setSearchTerm('')
+    
+    // ✅ ADICIONADO: Chamar callback com nome e preço da megastone
+    if (onSelect) {
+      onSelect(name, price)
+    }
   }
 
   const getPrice = (stone: Megastone) => {

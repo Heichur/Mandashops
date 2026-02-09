@@ -67,6 +67,8 @@ export default function CompraCompetitiva() {
   const [habilidade, setHabilidade] = useState('')
   const [hiddenHabilidade, setHiddenHabilidade] = useState(false)
   const [eggMoves, setEggMoves] = useState<string[]>([])
+  const [megastone, setMegastone] = useState('') // ✅ Nome da megastone
+  const [megastonePrice, setMegastonePrice] = useState(0) // ✅ Preço da megastone do Firebase
   const [enviando, setEnviando] = useState(false)
   const [evs, setEvs] = useState<EVs>({
     hp: 0,
@@ -131,10 +133,13 @@ export default function CompraCompetitiva() {
       const precoEggMoves = eggMoves.length * 10000
       const precoLevel = level === '50' ? 40000 : 80000
       const precoEVs = 30000 // Preço fixo para EV training
+      // ✅ Usar preço real do Firebase (já vem em valor absoluto, ex: 700000)
+      const precoMegastone = megastone && megastone !== '' ? megastonePrice : 0
       
-      const precoTotal = calculoIVs.preco + precoBreedavel + precoHidden + precoEggMoves + precoLevel + precoEVs
+      const precoTotal = calculoIVs.preco + precoBreedavel + precoHidden + precoEggMoves + precoLevel + precoEVs + precoMegastone
       
       console.log('Preço total calculado (Competitivo):', precoTotal)
+      console.log('Megastone selecionada:', megastone, '- Preço:', precoMegastone)
 
       // Formatar EVs para exibição
       const evsFormatados = `HP: ${evs.hp}, ATK: ${evs.atk}, DEF: ${evs.def}, SpA: ${evs.spa}, SpD: ${evs.spd}, SPE: ${evs.spe}`
@@ -159,6 +164,8 @@ export default function CompraCompetitiva() {
         hiddenHabilidade,
         level: parseInt(level),
         evs: evsFormatados,
+        megastone: megastone || 'Nenhuma', // ✅ Nome da megastone
+        megastonePrice: precoMegastone, // ✅ Preço da megastone
         precoTotal,
         timestamp: new Date(),
         status: 'pendente'
@@ -188,6 +195,7 @@ export default function CompraCompetitiva() {
 
       // Mostrar mensagem de sucesso
       const haInfo = hiddenHabilidade ? ' + Hidden Ability (+15k)' : ''
+      const megaInfo = megastone && megastone !== '' ? ` + ${megastone} (+${Math.round(precoMegastone/1000)}k)` : ''
       
       alert(`✅ PEDIDO COMPETITIVO ENVIADO COM SUCESSO!
 
@@ -197,7 +205,7 @@ Seu pokémon competitivo já está em preparação, assim que ficar pronto, te n
 🔵 Pokémon: ${selectedPokemon}
 📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}
 ⚡ EVs: ${evsFormatados}
-🎯 Level: ${level}${haInfo}
+🎯 Level: ${level}${haInfo}${megaInfo}
 💰 Preço total: ${Math.round(precoTotal/1000)}k`)
 
       // Redirecionar para página inicial
@@ -239,7 +247,12 @@ Seu pokémon competitivo já está em preparação, assim que ficar pronto, te n
         id="abilitySelectComp"
       />
       
-      <MegastoneSelect />
+      <MegastoneSelect 
+        onSelect={(stoneName: string, price: number) => {
+          setMegastone(stoneName)
+          setMegastonePrice(price)
+        }}
+      />
       
       <input 
         type="search" 

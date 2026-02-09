@@ -143,7 +143,17 @@ ${emoji} **TIPO DE COMPRA:** ${tipoCompra.toUpperCase()}
   }
 
   conteudoFormatado += `
-✨ **Hidden Ability:** ${pedido.hiddenHabilidade ? 'Sim (+15k)' : 'Não'}
+✨ **Hidden Ability:** ${pedido.hiddenHabilidade ? 'Sim (+15k)' : 'Não'}`
+
+  // ✅ ADICIONADO: Megastone no webhook (apenas se selecionada)
+  if (pedido.megastone && pedido.megastone !== 'Nenhuma' && pedido.megastone !== '') {
+    const precoMega = pedido.megastonePrice || 0
+    const precoMegaFormatado = precoMega >= 1000 ? `${Math.round(precoMega / 1000)}k` : `${precoMega}`
+    conteudoFormatado += `
+💎 **Megastone:** ${pedido.megastone} (+${precoMegaFormatado})`
+  }
+
+  conteudoFormatado += `
 
 💰 **PREÇO TOTAL:** ${precoFormatado}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
