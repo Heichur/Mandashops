@@ -18,7 +18,7 @@ export default function PokepediaPage() {
 
   const loadPokemon = async () => {
     try {
-      // IMPORTANTE: Passar false ou não passar nada para incluir lendários
+      //Passar false ou não passar nada para incluir lendários
       const list = await pokemonAPI.loadPokemonList(false)
       setPokemonList(list)
       setLoading(false)

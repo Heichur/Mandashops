@@ -3,14 +3,49 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import PokemonSelect from '@/componets/PokemonSelect'
-import AbilitySelect from '@/componets/AbilitySelect'
-import EggMovesSelect from '@/componets/EggMovesSelect'
-import MegastoneSelect from '@/componets/MegastoneSelect'
+import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import EVCalculator from '@/componets/EVCalculator'
+import { analisarIVsUnificado, calcularPrecoIVs } from '@/lib/utils'
+import { 
+  enviarWebhook, 
+  buscarWebhookUrl, 
+  registrarPedidoRanking, 
+  formatarPedidoWebhook,
+  validarCamposObrigatorios 
+} from '@/lib/pedidos'
+import { db } from '@/lib/firebase'
+import { collection, addDoc } from 'firebase/firestore'
 
-const IVSelector = dynamic(() => import("@/componets/IVSelector"), { ssr: false })
+// Importações dinâmicas
+const IVSelector = dynamic(() => import("@/componets/IVSelector"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const PokemonSelect = dynamic(() => import("@/componets/PokemonSelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const AbilitySelect = dynamic(() => import("@/componets/AbilitySelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const EggMovesSelect = dynamic(() => import("@/componets/EggMovesSelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const MegastoneSelect = dynamic(() => import("@/componets/MegastoneSelect"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
+
+const EVCalculator = dynamic(() => import("@/componets/EVCalculator"), { 
+  ssr: false,
+  loading: () => <p>Carregando...</p>
+})
 
 interface EVs {
   hp: number
@@ -22,12 +57,17 @@ interface EVs {
 }
 
 export default function CompraCompetitiva() {
+  const router = useRouter()
   const [selectedPokemon, setSelectedPokemon] = useState('')
   const [nature, setNature] = useState('')
   const [gender, setGender] = useState('')
   const [ivs, setIvs] = useState('')
   const [breedable, setBreedable] = useState('')
   const [level, setLevel] = useState('100')
+  const [habilidade, setHabilidade] = useState('')
+  const [hiddenHabilidade, setHiddenHabilidade] = useState(false)
+  const [eggMoves, setEggMoves] = useState<string[]>([])
+  const [enviando, setEnviando] = useState(false)
   const [evs, setEvs] = useState<EVs>({
     hp: 0,
     atk: 0,
@@ -38,15 +78,125 @@ export default function CompraCompetitiva() {
   })
 
   const handleSubmit = async () => {
-    console.log({
+    if (enviando) return
+
+    // Pegar dados do usuário do localStorage
+    const nomeUsuario = localStorage.getItem('userNickname') || ''
+    const nickDiscord = localStorage.getItem('userDiscord') || ''
+
+    if (!nomeUsuario || !nickDiscord) {
+      alert('Por favor, faça login primeiro!')
+      router.push('/login')
+      return
+    }
+
+    // Validar campos obrigatórios
+    const validacao = validarCamposObrigatorios({
       pokemon: selectedPokemon,
-      nature,
-      gender,
+      habilidades: habilidade,
       ivs,
-      breedable,
-      level,
-      evs
+      breedable
     })
+
+    if (!validacao.valido) {
+      alert(validacao.mensagem)
+      return
+    }
+
+    // Validar EVs (total deve ser <= 510)
+    const totalEVs = Object.values(evs).reduce((acc, val) => acc + val, 0)
+    if (totalEVs > 510) {
+      alert('❌ O total de EVs não pode ultrapassar 510!')
+      return
+    }
+
+    setEnviando(true)
+
+    try {
+      // Analisar IVs
+      const dadosIVs = analisarIVsUnificado(ivs)
+      
+      if (!dadosIVs.valido) {
+        alert(dadosIVs.mensagem)
+        setEnviando(false)
+        return
+      }
+
+      // Calcular preços
+      const calculoIVs = calcularPrecoIVs(dadosIVs)
+      const precoBreedavel = (breedable.toLowerCase() === 'breedavel' || breedable.toLowerCase() === 'breedável') ? 10000 : 0
+      const precoHidden = hiddenHabilidade ? 15000 : 0
+      const precoEggMoves = eggMoves.length * 10000
+      const precoLevel = level === '50' ? 40000 : 80000
+      const precoEVs = 30000 // Preço fixo para EV training
+      
+      const precoTotal = calculoIVs.preco + precoBreedavel + precoHidden + precoEggMoves + precoLevel + precoEVs
+
+      // Formatar EVs para exibição
+      const evsFormatados = `HP: ${evs.hp}, ATK: ${evs.atk}, DEF: ${evs.def}, SpA: ${evs.spa}, SpD: ${evs.spd}, SPE: ${evs.spe}`
+
+      // Montar objeto do pedido
+      const pedidoData = {
+        nomeUsuario,
+        nickDiscord,
+        pokemon: selectedPokemon,
+        tipoCompra: 'competitivo',
+        castradoOuBreedavel: breedable,
+        natureza: nature,
+        habilidades: habilidade,
+        sexo: gender || 'N/A',
+        ivsSolicitados: dadosIVs.tipoIV,
+        ivsZerados: dadosIVs.statsZerados.join(', ') || 'Nenhum',
+        informacoesAdicionais: dadosIVs.informacoesAdicionais.join(', ') || 'Nenhuma',
+        ivsFinal: calculoIVs.tipoFinal,
+        ivsUpgradado: calculoIVs.foiUpgradado,
+        detalhesUpgrade: calculoIVs.detalhesUpgrade || '',
+        eggMoves: eggMoves.join(', ') || 'Nenhum',
+        hiddenHabilidade,
+        level: parseInt(level),
+        evs: evsFormatados,
+        precoTotal,
+        timestamp: new Date(),
+        status: 'pendente'
+      }
+
+      // Salvar no Firestore
+      if (db) {
+        await addDoc(collection(db, 'pedidos'), pedidoData)
+      }
+
+      // Registrar no ranking
+      await registrarPedidoRanking(nomeUsuario)
+
+      // Enviar webhook
+      const webhookUrl = await buscarWebhookUrl()
+      if (webhookUrl) {
+        const mensagemWebhook = formatarPedidoWebhook(pedidoData, dadosIVs, calculoIVs)
+        await enviarWebhook(mensagemWebhook, webhookUrl)
+      }
+
+      // Mostrar mensagem de sucesso
+      const haInfo = hiddenHabilidade ? ' + Hidden Ability (+15k)' : ''
+      
+      alert(`✅ Pedido COMPETITIVO enviado com sucesso!
+
+Seu pokémon competitivo já está em preparação, assim que ficar pronto, te notificamos para retirar na loja. Agradecemos a preferência!
+
+🔵 Pokémon: ${selectedPokemon}
+📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}
+⚡ EVs: ${evsFormatados}
+🎯 Level: ${level}${haInfo}
+💰 Preço total: ${Math.round(precoTotal/1000)}k`)
+
+      // Redirecionar para página inicial
+      router.push('/')
+
+    } catch (error) {
+      console.error('Erro ao enviar pedido:', error)
+      alert('❌ Erro ao enviar pedido. Tente novamente.')
+    } finally {
+      setEnviando(false)
+    }
   }
 
   return (
@@ -55,7 +205,6 @@ export default function CompraCompetitiva() {
         Compra Competitiva - Escolha o pokémon!
       </h1>
       
-      {/* IMPORTANTE: Passar excludeLegendaries={true} */}
       <PokemonSelect 
         onSelect={(pokemon: string) => setSelectedPokemon(pokemon)}
         id="pokemonSelectComp"
@@ -64,11 +213,16 @@ export default function CompraCompetitiva() {
       
       <EggMovesSelect 
         pokemonName={selectedPokemon}
+        onMovesChange={(moves) => setEggMoves(moves)}
         id="eggMovesSelectComp"
       />
       
       <AbilitySelect 
         pokemonName={selectedPokemon}
+        onSelect={(ability: string, isHidden: boolean) => {
+          setHabilidade(ability)
+          setHiddenHabilidade(isHidden)
+        }}
         id="abilitySelectComp"
       />
       
@@ -118,7 +272,9 @@ export default function CompraCompetitiva() {
         </select>
       </div>
       
-      <button onClick={handleSubmit}>Enviar Pedido</button>
+      <button onClick={handleSubmit} disabled={enviando}>
+        {enviando ? 'Enviando...' : 'Enviar Pedido'}
+      </button>
       
       <Link href="/">
         <button id="VoltarCompraComp">Voltar</button>

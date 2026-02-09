@@ -75,14 +75,56 @@ export function formatarPedidoWebhook(pedido: any, dadosIVs: any, calculoIVs: an
     linhaIVs += ` → ${calculoIVs.tipoFinal} (upgrade)`
   }
 
-  let conteudoFormatado = `**🎮 Novo Pedido**
+  // Definir título e emoji baseado no tipo de compra
+  const tipoCompra = pedido.tipoCompra?.toLowerCase() || 'normal'
+  let titulo = ''
+  let emoji = ''
+  
+  if (tipoCompra === 'competitivo') {
+    titulo = '🎮 PEDIDO COMPETITIVO'
+    emoji = '🎮'
+  } else if (tipoCompra === 'genderless') {
+    titulo = '🔮 PEDIDO GENDERLESS'
+    emoji = '🔮'
+  } else {
+    titulo = '📦 NOVO PEDIDO'
+    emoji = '📦'
+  }
+
+  let conteudoFormatado = `**${titulo}**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 👤 **Jogador:** ${pedido.nomeUsuario}
 💬 **Discord:** ${pedido.nickDiscord}
+
+${emoji} **TIPO DE COMPRA:** ${tipoCompra.toUpperCase()}
 🔵 **Pokémon:** ${pedido.pokemon}
-🧬 **Tipo:** ${pedido.castradoOuBreedavel}
+🧬 **Castrado/Breedável:** ${pedido.castradoOuBreedavel}
 🌿 **Natureza:** ${pedido.natureza}
-⚡ **Habilidade:** ${pedido.habilidades}
-⚧ **Gênero:** ${pedido.sexo || 'N/A'}
+⚡ **Habilidade:** ${pedido.habilidades}`
+
+  // Informações específicas de competitivo
+  if (tipoCompra === 'competitivo' && pedido.evs) {
+    conteudoFormatado += `
+⚡ **EVs:** ${pedido.evs}
+🎯 **Level:** ${pedido.level}`
+  }
+
+  // Informações específicas de genderless
+  if (tipoCompra === 'genderless') {
+    const tipoBreed = pedido.castradoOuBreedavel?.toLowerCase().includes('breedavel') || 
+                      pedido.castradoOuBreedavel?.toLowerCase().includes('breedável') 
+                      ? 'Breedável' : 'Castrado'
+    conteudoFormatado += `
+🔮 **Tipo Genderless:** ${pedido.ivsSolicitados} ${tipoBreed}`
+  }
+
+  // Gênero (apenas se não for genderless)
+  if (pedido.sexo && pedido.sexo !== 'Genderless' && pedido.sexo !== 'N/A') {
+    conteudoFormatado += `
+⚧ **Gênero:** ${pedido.sexo}`
+  }
+
+  conteudoFormatado += `
 📊 **IVs:** ${linhaIVs}`
 
   if (pedido.ivsZerados && pedido.ivsZerados !== "Nenhum") {
@@ -95,10 +137,16 @@ export function formatarPedidoWebhook(pedido: any, dadosIVs: any, calculoIVs: an
 ℹ️ **Info Adicional:** ${pedido.informacoesAdicionais}`
   }
 
+  if (pedido.eggMoves && pedido.eggMoves !== 'Nenhum') {
+    conteudoFormatado += `
+🥚 **Egg Moves:** ${pedido.eggMoves}`
+  }
+
   conteudoFormatado += `
-🥚 **Egg Moves:** ${pedido.eggMoves || 'Nenhum'}
 ✨ **Hidden Ability:** ${pedido.hiddenHabilidade ? 'Sim (+15k)' : 'Não'}
-💰 **Preço Total:** ${precoFormatado}`
+
+💰 **PREÇO TOTAL:** ${precoFormatado}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
 
   return conteudoFormatado
 }
