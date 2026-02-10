@@ -14,47 +14,39 @@ export function analisarIVsUnificado(inputIvs: string): IVsData {
 
   const ivsLimpo = inputIvs.trim().toUpperCase()
   
-  // Regex para aceitar APENAS F5 ou F6 (ou 5x31, 6x31) com stats opcionais zerados
-  // Exemplos válidos: F5, F6, F5 -atk, F6 -speed -def, F5-atk-speed
-  const regexCompleto = /^(F[5-6]|[5-6]X31)(\s*-\s*(HP|ATK|DEF|SPA|SPD|SPE|SPEED|SPATK|SPDEF))*$/i
+  // Regex: aceita APENAS F2-F6 com qualquer quantidade de stats zerados
+  // Exemplos válidos: F5, F6, F5 -atk, F6 -speed -def -hp, F4-atk-spa-spd
+  const regexCompleto = /^F[2-6](\s*-\s*(HP|ATK|DEF|SPA|SPD|SPE|SPEED|SPATK|SPDEF))*$/i
   
   if (!regexCompleto.test(ivsLimpo)) {
     return {
       valido: false,
-      mensagem: '"' + inputIvs + '" não é válido. Use apenas F5 ou F6 com stats opcionais (ex: F5 -atk, F6 -speed)',
+      mensagem: '"' + inputIvs + '" não é válido. Use F2, F3, F4, F5 ou F6 com stats opcionais (ex: F5 -atk, F6 -speed -def)',
       statsZerados: [],
       informacoesAdicionais: [],
       qtdStatsZerados: 0
     }
   }
   
-  // Extrair o tipo base (F5, F6, 5x31, 6x31)
-  let tipoBase = ''
-  if (ivsLimpo.startsWith('F')) {
-    tipoBase = ivsLimpo.substring(0, 2) // F5 ou F6
-  } else if (ivsLimpo.includes('X31')) {
-    const num = ivsLimpo.charAt(0)
-    tipoBase = num + 'x31'
-  }
+  // Extrair o tipo base (F2-F6)
+  const tipoBase = ivsLimpo.substring(0, 2) // F2, F3, F4, F5 ou F6
   
-  // Validar que só seja F5 ou F6
-  if (tipoBase !== 'F5' && tipoBase !== 'F6' && tipoBase !== '5x31' && tipoBase !== '6x31') {
+  // Validar que seja F2-F6
+  const tiposValidos = ['F2', 'F3', 'F4', 'F5', 'F6']
+  if (!tiposValidos.includes(tipoBase)) {
     return {
       valido: false,
-      mensagem: 'Apenas F5 ou F6 são permitidos!',
+      mensagem: 'Apenas F2, F3, F4, F5 ou F6 são permitidos!',
       statsZerados: [],
       informacoesAdicionais: [],
       qtdStatsZerados: 0
     }
   }
   
-  // Normalizar para formato F5/F6
-  if (tipoBase === '5x31') tipoBase = 'F5'
-  if (tipoBase === '6x31') tipoBase = 'F6'
-  
-  // Extrair stats zerados
+  // Extrair stats zerados (sem limite de quantidade)
   const statsZerados: string[] = []
   const informacoesAdicionais: string[] = []
+  const statsEncontrados = new Set<string>()
   
   // Procurar por stats após o "-"
   const regexStats = /-\s*(HP|ATK|DEF|SPA|SPD|SPE|SPEED|SPATK|SPDEF)/gi
@@ -71,9 +63,22 @@ export function analisarIVsUnificado(inputIvs: string): IVsData {
     // Converter para lowercase para consistência
     const statLower = stat.toLowerCase()
     
-    if (!statsZerados.includes(statLower)) {
+    // Evitar duplicatas (mas permitir que o usuário digite repetido)
+    if (!statsEncontrados.has(statLower)) {
       statsZerados.push(statLower)
+      statsEncontrados.add(statLower)
       informacoesAdicionais.push(`${stat} zerado`)
+    }
+  }
+  
+  // Validar que não tente zerar mais de 6 stats 
+  if (statsZerados.length > 6) {
+    return {
+      valido: false,
+      mensagem: 'Não é possível zerar mais de 6 stats!',
+      statsZerados: [],
+      informacoesAdicionais: [],
+      qtdStatsZerados: 0
     }
   }
   
@@ -100,10 +105,14 @@ export function calcularPrecoIVs(dadosIVs: IVsData): IVsCalculation {
   const qtdZerados = dadosIVs.qtdStatsZerados
   const tipoOriginal = dadosIVs.tipoIV
 
-  // Aplicar upgrade se houver stats zerados
-  // F5 + 1 stat zerado = F6
-  if (tipoIVFinal === 'F5' && qtdZerados >= 1) {
-    tipoIVFinal = 'F6'
+  // Sistema de upgrade baseado em stats zerados
+  // Cada stat zerado "aumenta" o tier do IV
+  const tiposOrdem = ['F2', 'F3', 'F4', 'F5', 'F6']
+  const indexAtual = tiposOrdem.indexOf(tipoIVFinal)
+  
+  if (indexAtual !== -1 && qtdZerados > 0) {
+    const novoIndex = Math.min(indexAtual + qtdZerados, tiposOrdem.length - 1)
+    tipoIVFinal = tiposOrdem[novoIndex]
   }
 
   // Preços para NORMAL e COMPETITIVO

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { analisarIVsUnificado, calcularPrecoIVs } from '@/lib/utils'
+import { analisarIVsGenderless, calcularPrecoIVsGenderless } from '@/lib/utilsGenderless'
 import { 
   enviarWebhook, 
   buscarWebhookUrl, 
@@ -72,10 +72,10 @@ export default function CompraGenderless() {
     setEnviando(true)
 
     try {
-      // Analisar IVs
-      const dadosIVs = analisarIVsUnificado(ivs)
+      // Analisar IVs com validação GENDERLESS (apenas F5 e F6, máximo 1 stat zerado)
+      const dadosIVs = analisarIVsGenderless(ivs)
       
-      console.log('Dados IVs:', dadosIVs)
+      console.log('Dados IVs Genderless:', dadosIVs)
       
       if (!dadosIVs.valido) {
         alert(dadosIVs.mensagem)
@@ -83,32 +83,23 @@ export default function CompraGenderless() {
         return
       }
 
-      // Calcular preços GENDERLESS
-      // Genderless tem precificação especial 
-      const calculoIVs = calcularPrecoIVs(dadosIVs)
+      // Calcular preços GENDERLESS (preços especiais: F5=120k, F6=190k)
+      const calculoIVs = calcularPrecoIVsGenderless(dadosIVs)
       
-      console.log('Cálculo IVs:', calculoIVs)
+      console.log('Cálculo IVs Genderless:', calculoIVs)
       
-      // Preço base genderless é significativamente maior
-      let precoBaseGenderless = 0
-      if (dadosIVs.tipoIV === '6x31' || dadosIVs.tipoIV === 'F6') {
-        precoBaseGenderless = breedable.toLowerCase().includes('breedavel') || breedable.toLowerCase().includes('breedável') 
-          ? 200000  // F6 Breedável: 200k
-          : 190000  // F6 Castrado: 190k
-      } else if (dadosIVs.tipoIV === '5x31' || dadosIVs.tipoIV === 'F5') {
-        precoBaseGenderless = breedable.toLowerCase().includes('breedavel') || breedable.toLowerCase().includes('breedável')
-          ? 120000  // F5 Breedável: 120k
-          : 100000  // F5 Castrado: 100k
-      } else {
-        // Para outros IVs, usar cálculo normal +
-        precoBaseGenderless = calculoIVs.preco + 100000
-      }
+      // Usar o preço calculado pela função específica do genderless
+      const precoBaseGenderless = calculoIVs.preco
       
       const precoHidden = hiddenHabilidade ? 15000 : 0
       const precoEggMoves = eggMoves.length * 10000
       const precoTotal = precoBaseGenderless + precoHidden + precoEggMoves
       
       console.log('Preço total calculado:', precoTotal)
+      console.log('Breakdown: Base=', precoBaseGenderless, 'Hidden=', precoHidden, 'EggMoves=', precoEggMoves)
+
+      // Determinar tipo (Breedável ou Castrado) baseado no IV final
+      const tipoBreed = calculoIVs.tipoFinal === 'F6' ? 'Castrado' : 'Breedável'
 
       // Montar objeto do pedido
       const pedidoData = {
@@ -116,7 +107,7 @@ export default function CompraGenderless() {
         nickDiscord,
         pokemon: selectedPokemon,
         tipoCompra: 'genderless',
-        castradoOuBreedavel: breedable,
+        castradoOuBreedavel: tipoBreed,
         natureza: nature,
         habilidades: habilidade,
         sexo: 'Genderless',
@@ -157,15 +148,17 @@ export default function CompraGenderless() {
 
       // Mostrar mensagem de sucesso
       const haInfo = hiddenHabilidade ? ' + Hidden Ability (+15k)' : ''
-      const tipoBreed = breedable.toLowerCase().includes('breedavel') || breedable.toLowerCase().includes('breedável') ? 'Breedável' : 'Castrado'
+      const eggMovesInfo = eggMoves.length > 0 ? ` + ${eggMoves.length} Egg Move(s) (+${eggMoves.length * 10}k)` : ''
       
       alert(`✅ PEDIDO GENDERLESS ENVIADO COM SUCESSO!
 
 Seu pokémon genderless já está em preparação, assim que ficar pronto, te notificamos para retirar na loja. Agradecemos a preferência!
 
 🔮 TIPO: Compra Genderless
-🔵 Pokémon: ${selectedPokemon} (Genderless ${dadosIVs.tipoIV} ${tipoBreed})
-📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}${haInfo}
+🔵 Pokémon: ${selectedPokemon} (${tipoBreed})
+📊 IVs: ${dadosIVs.tipoIV}${calculoIVs.foiUpgradado ? ` → ${calculoIVs.tipoFinal} (Upgrade!)` : ''}
+${dadosIVs.statsZerados.length > 0 ? `🔻 Stats Zerados: ${dadosIVs.statsZerados.join(', ')}` : ''}
+${haInfo}${eggMovesInfo}
 💰 Preço total: ${Math.round(precoTotal/1000)}k`)
 
       // Redirecionar para página inicial
@@ -216,7 +209,7 @@ Seu pokémon genderless já está em preparação, assim que ficar pronto, te no
       <input 
         type="text" 
         id="IvsGenderless" 
-        placeholder="Ivs desejados (F5 ou F6 apenas)"
+        placeholder="IVs desejados (F5 ou F6 apenas, máx 1 stat zerado)"
         value={ivs}
         onChange={(e) => setIvs(e.target.value)}
       />
