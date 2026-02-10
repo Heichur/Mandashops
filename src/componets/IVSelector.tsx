@@ -25,36 +25,36 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
   }, [stats])
 
   const gerarStringIVs = (): string => {
-    const parts: string[] = []
-    
     const statsNumericos = Object.entries(stats).map(([key, value]) => ({
       key,
       value: value === 'any' ? 31 : (typeof value === 'string' ? parseInt(value) : value)
     }))
     
-    const todosTrinta = statsNumericos.every(s => s.value === 31)
-    if (todosTrinta) {
+    // Contar quantos stats são 31
+    const countTrinta = statsNumericos.filter(s => s.value === 31).length
+    
+    // Se todos são 31, retorna F6
+    if (countTrinta === 6) {
       return 'F6'
     }
 
-    const countTrinta = statsNumericos.filter(s => s.value === 31).length
-    
-    if (countTrinta >= 2) {
-      const statsNaoTrinta: string[] = []
+    // Se tem entre 2 e 5 IVs perfeitos (31), usar formato FX
+    if (countTrinta >= 2 && countTrinta <= 5) {
+      const statsZerados: string[] = []
+      
+      // Coletar apenas os stats que são 0 (zerados)
       statsNumericos.forEach(({ key, value }) => {
-        if (value !== 31) {
-          const statName = key.toLowerCase()
-          if (value === 0) {
-            statsNaoTrinta.push(`0${statName}`)
-          } else {
-            statsNaoTrinta.push(`${value}${statName}`)
-          }
+        if (value === 0) {
+          statsZerados.push(`-${key.toLowerCase()}`)
         }
       })
       
-      return `F${countTrinta}${statsNaoTrinta.length > 0 ? ', ' + statsNaoTrinta.join(', ') : ''}`
+      // Formato: F5 -atk -spe ou F4 -atk -def
+      return `F${countTrinta}${statsZerados.length > 0 ? ' ' + statsZerados.join(' ') : ''}`
     }
 
+    // Se tem menos de 2 IVs perfeitos, mostrar cada stat individualmente
+    const parts: string[] = []
     statsNumericos.forEach(({ key, value }) => {
       const statName = key.toLowerCase()
       parts.push(`${value}${statName}`)
