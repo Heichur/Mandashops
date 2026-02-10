@@ -1,96 +1,122 @@
 // src/lib/utils.ts
 import { IVsData, IVsCalculation } from './types'
 
+/**
+ * Analisa a string de IVs no formato: "F5, 0atk, -spe"
+ * - F2-F6: tipo de IV base
+ * - 0atk, 0spe: IVs zerados (afetam preço, causam upgrade)
+ * - -atk, -spe: informações adicionais (apenas informativo, NÃO afetam preço)
+ */
 export function analisarIVsUnificado(inputIvs: string): IVsData {
   if (!inputIvs || inputIvs.trim() === '') {
     return {
       valido: false,
-      mensagem: 'Campo IVs é obrigatório!',
+      mensagem: `Campo IVs é obrigatório!
+Formatos aceitos:
+IVs Zerados (afetam preço): 0atk, 0spe, 0hp, etc.
+Informações adicionais: -atk, -spe, -hp, etc.
+Exemplos:
+
+F5 = F5 por 70k
+F5, -atk = F5 por 70k (só informativo)
+F5, 0atk = F6 por 90k (upgrade por IV zerado)
+F4, 0atk, 0spe = F6 por 90k (upgrade por 2 IVs zerados)`,
       statsZerados: [],
       informacoesAdicionais: [],
       qtdStatsZerados: 0
     }
   }
 
-  const ivsLimpo = inputIvs.trim().toUpperCase()
-  
-  // Regex: aceita APENAS F2-F6 com qualquer quantidade de stats zerados
-  // Exemplos válidos: F5, F6, F5 -atk, F6 -speed -def -hp, F4-atk-spa-spd
-  const regexCompleto = /^F[2-6](\s*-\s*(HP|ATK|DEF|SPA|SPD|SPE|SPEED|SPATK|SPDEF))*$/i
-  
-  if (!regexCompleto.test(ivsLimpo)) {
-    return {
-      valido: false,
-      mensagem: '"' + inputIvs + '" não é válido. Use F2, F3, F4, F5 ou F6 com stats opcionais (ex: F5 -atk, F6 -speed -def)',
-      statsZerados: [],
-      informacoesAdicionais: [],
-      qtdStatsZerados: 0
-    }
-  }
-  
-  // Extrair o tipo base (F2-F6)
-  const tipoBase = ivsLimpo.substring(0, 2) // F2, F3, F4, F5 ou F6
-  
-  // Validar que seja F2-F6
-  const tiposValidos = ['F2', 'F3', 'F4', 'F5', 'F6']
-  if (!tiposValidos.includes(tipoBase)) {
-    return {
-      valido: false,
-      mensagem: 'Apenas F2, F3, F4, F5 ou F6 são permitidos!',
-      statsZerados: [],
-      informacoesAdicionais: [],
-      qtdStatsZerados: 0
-    }
-  }
-  
-  // Extrair stats zerados (sem limite de quantidade)
+  const partes = inputIvs.split(',').map(parte => parte.trim()).filter(parte => parte !== '')
+  let tipoIV: string | null = null
   const statsZerados: string[] = []
   const informacoesAdicionais: string[] = []
-  const statsEncontrados = new Set<string>()
-  
-  // Procurar por stats após o "-"
-  const regexStats = /-\s*(HP|ATK|DEF|SPA|SPD|SPE|SPEED|SPATK|SPDEF)/gi
-  let match
-  
-  while ((match = regexStats.exec(ivsLimpo)) !== null) {
-    let stat = match[1].toUpperCase()
+  const erros: string[] = []
+
+  for (const parte of partes) {
+    const parteUpper = parte.toUpperCase()
     
-    // Normalizar nomes de stats
-    if (stat === 'SPEED') stat = 'SPE'
-    if (stat === 'SPATK') stat = 'SPA'
-    if (stat === 'SPDEF') stat = 'SPD'
-    
-    // Converter para lowercase para consistência
-    const statLower = stat.toLowerCase()
-    
-    // Evitar duplicatas (mas permitir que o usuário digite repetido)
-    if (!statsEncontrados.has(statLower)) {
-      statsZerados.push(statLower)
-      statsEncontrados.add(statLower)
-      informacoesAdicionais.push(`${stat} zerado`)
+    // Verifica se é tipo de IV (F2-F6)
+    if (/^F[2-6]$/.test(parteUpper)) {
+      if (tipoIV !== null) {
+        erros.push('Apenas um tipo de IV é permitido')
+      } else {
+        tipoIV = parteUpper
+      }
+    }
+    // Verifica se é IV zerado (0atk, 0spe, etc.) - AFETA PREÇO
+    else if (/^0(hp|atk|def|spa|spd|spe|attack|defense|special|speed)$/i.test(parte.toLowerCase())) {
+      const statNormalizado = parte.toLowerCase()
+        .replace('attack', 'atk')
+        .replace('defense', 'def')
+        .replace('special', 'spa')
+        .replace('speed', 'spe')
+      
+      if (!statsZerados.includes(statNormalizado)) {
+        statsZerados.push(statNormalizado)
+      }
+    }
+    // Verifica se é informação adicional (-atk, -spe, etc.) - NÃO AFETA PREÇO
+    else if (/^-(hp|atk|def|spa|spd|spe|attack|defense|special|speed)$/i.test(parte.toLowerCase())) {
+      const statNormalizado = parte.toLowerCase()
+        .replace('attack', 'atk')
+        .replace('defense', 'def')
+        .replace('special', 'spa')
+        .replace('speed', 'spe')
+      
+      if (!informacoesAdicionais.includes(statNormalizado)) {
+        informacoesAdicionais.push(statNormalizado)
+      }
+    }
+    else {
+      erros.push(`"${parte}" não é um formato válido`)
     }
   }
-  
-  // Validar que não tente zerar mais de 6 stats 
-  if (statsZerados.length > 6) {
+
+  if (!tipoIV) {
+    erros.push('É obrigatório especificar um tipo de IV (F2-F6)')
+  }
+
+  if (erros.length > 0) {
     return {
       valido: false,
-      mensagem: 'Não é possível zerar mais de 6 stats!',
+      mensagem: `Erros encontrados: ${erros.join(', ')}
+
+Formatos corretos: (LEMBRANDO É NECESSÁRIO SEPARAR POR VÍRGULA!!
+EXEMPLO: F5, 0atk  | Se for dois IVs zerados: F4, 0atk, 0spe)
+
+Tipos IV: F2, F3, F4, F5, F6
+IVs zerados: 0atk, 0spe, 0hp, etc. (afetam preço)
+Informações: -atk, -spe, -hp, etc. (apenas informativo)`,
       statsZerados: [],
       informacoesAdicionais: [],
       qtdStatsZerados: 0
     }
   }
-  
+
   return {
     valido: true,
-    tipoIV: tipoBase,
+    tipoIV: tipoIV!,
     statsZerados,
     informacoesAdicionais,
     qtdStatsZerados: statsZerados.length
   }
 }
 
+/**
+ * Calcula o preço dos IVs com sistema de upgrade
+ * Lógica de upgrade:
+ * - F4 + 1 IV zerado = F5
+ * - F4 + 2+ IVs zerados = F6
+ * - F5 + 1+ IV zerado = F6
+ * 
+ * Preços base (mesmos para NORMAL e COMPETITIVO):
+ * - F6 = 90k
+ * - F5 = 70k
+ * - F4 = 40k
+ * - F3 = 30k
+ * - F2 = 25k
+ */
 export function calcularPrecoIVs(dadosIVs: IVsData): IVsCalculation {
   if (!dadosIVs.valido || !dadosIVs.tipoIV) {
     return {
@@ -105,17 +131,20 @@ export function calcularPrecoIVs(dadosIVs: IVsData): IVsCalculation {
   const qtdZerados = dadosIVs.qtdStatsZerados
   const tipoOriginal = dadosIVs.tipoIV
 
-  // Sistema de upgrade baseado em stats zerados
-  // Cada stat zerado "aumenta" o tier do IV
-  const tiposOrdem = ['F2', 'F3', 'F4', 'F5', 'F6']
-  const indexAtual = tiposOrdem.indexOf(tipoIVFinal)
-  
-  if (indexAtual !== -1 && qtdZerados > 0) {
-    const novoIndex = Math.min(indexAtual + qtdZerados, tiposOrdem.length - 1)
-    tipoIVFinal = tiposOrdem[novoIndex]
+  // Sistema de upgrade: F4 + IVs zerados pode virar F5 ou F6
+  if (tipoIVFinal === 'F4') {
+    if (qtdZerados >= 2) {
+      tipoIVFinal = 'F6'
+    } else if (qtdZerados === 1) {
+      tipoIVFinal = 'F5'
+    }
+  } 
+  // F5 + pelo menos 1 IV zerado = F6
+  else if (tipoIVFinal === 'F5' && qtdZerados >= 1) {
+    tipoIVFinal = 'F6'
   }
 
-  // Preços para NORMAL e COMPETITIVO
+  // Tabela de preços (mesma para NORMAL e COMPETITIVO)
   const precos: Record<string, number> = {
     F6: 90000,
     F5: 70000,
@@ -128,7 +157,8 @@ export function calcularPrecoIVs(dadosIVs: IVsData): IVsCalculation {
   let detalhesUpgrade = ''
 
   if (foiUpgradado) {
-    detalhesUpgrade = `Upgrade: ${tipoOriginal} + ${qtdZerados} stat(s) zerado(s) = ${tipoIVFinal}`
+    const motivoUpgrade = qtdZerados === 1 ? '1 IV zerado' : `${qtdZerados} IVs zerados`
+    detalhesUpgrade = `Upgrade: ${tipoOriginal} → ${tipoIVFinal} (${motivoUpgrade})`
   }
 
   return {
