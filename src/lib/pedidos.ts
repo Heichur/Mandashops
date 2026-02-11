@@ -98,7 +98,7 @@ export function formatarPedidoWebhook(pedido: any, dadosIVs: any, calculoIVs: an
 
 ${emoji} **TIPO DE COMPRA:** ${tipoCompra.toUpperCase()}
 🔵 **Pokémon:** ${pedido.pokemon}
-🧬 **Castrado/Breedável:** ${pedido.castradoOuBreedavel}
+🧬 **Castrado/Breedavel:** ${pedido.castradoOuBreedavel}
 🌿 **Natureza:** ${pedido.natureza}
 ⚡ **Habilidade:** ${pedido.habilidades}`
 

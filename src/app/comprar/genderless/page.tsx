@@ -84,7 +84,8 @@ export default function CompraGenderless() {
       }
 
       // Calcular preços GENDERLESS (preços especiais: F5=120k, F6=190k)
-      const calculoIVs = calcularPrecoIVsGenderless(dadosIVs)
+      // CORREÇÃO: Agora passa o parâmetro 'breedable' para a função
+      const calculoIVs = calcularPrecoIVsGenderless(dadosIVs, breedable)
       
       console.log('Cálculo IVs Genderless:', calculoIVs)
       
@@ -98,8 +99,11 @@ export default function CompraGenderless() {
       console.log('Preço total calculado:', precoTotal)
       console.log('Breakdown: Base=', precoBaseGenderless, 'Hidden=', precoHidden, 'EggMoves=', precoEggMoves)
 
-      // Determinar tipo (Breedável ou Castrado) baseado no IV final
-      const tipoBreed = calculoIVs.tipoFinal === 'F6' ? 'Castrado' : 'Breedável'
+      // Determinar tipo (Breedável ou Castrado) baseado no que o usuário digitou
+      const tipoNormalizado = breedable.toLowerCase()
+      const tipoBreed = (tipoNormalizado === 'breedavel' || tipoNormalizado === 'breedável') 
+        ? 'Breedável' 
+        : 'Castrado'
 
       // Montar objeto do pedido
       const pedidoData = {
