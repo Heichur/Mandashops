@@ -84,7 +84,7 @@ export default function CompraGenderless() {
       }
 
       // Calcular preços GENDERLESS (preços especiais: F5=120k, F6=190k)
-      // CORREÇÃO: Agora passa o parâmetro 'breedable' para a função
+
       const calculoIVs = calcularPrecoIVsGenderless(dadosIVs, breedable)
       
       console.log('Cálculo IVs Genderless:', calculoIVs)

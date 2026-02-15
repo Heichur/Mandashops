@@ -40,17 +40,24 @@ export default function IVSelector({ onChange }: IVSelectorProps) {
 
     // Se tem entre 2 e 5 IVs perfeitos (31), usar formato FX
     if (countTrinta >= 2 && countTrinta <= 5) {
-      const statsZerados: string[] = []
+      const partes: string[] = [`F${countTrinta}`]
       
-      // Coletar apenas os stats que são 0 (zerados)
+      // Coletar os stats que NÃO são 31
       statsNumericos.forEach(({ key, value }) => {
-        if (value === 0) {
-          statsZerados.push(`-${key.toLowerCase()}`)
+        if (value !== 31) {
+          const statName = key.toLowerCase()
+          // ✅ CORREÇÃO: Usar formato "0stat" para IVs zerados (não "-stat")
+          if (value === 0) {
+            partes.push(`0${statName}`)
+          } else {
+            // Para valores customizados diferentes de 0 e 31
+            partes.push(`${value}${statName}`)
+          }
         }
       })
       
-      // Formato: F5 -atk -spe ou F4 -atk -def
-      return `F${countTrinta}${statsZerados.length > 0 ? ' ' + statsZerados.join(' ') : ''}`
+      // Formato: F5, 0atk, 0spe (com vírgulas e espaços)
+      return partes.join(', ')
     }
 
     // Se tem menos de 2 IVs perfeitos, mostrar cada stat individualmente
